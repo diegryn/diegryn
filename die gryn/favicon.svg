@@ -1,0 +1,17 @@
+<!-- Save as favicon.svg and upload to your web root (example: https://diegryn.com/favicon.svg) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Die Gryn favicon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="0.6" stop-color="#FF2E93"/>
+      <stop offset="1" stop-color="#00C896"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" rx="64" ry="64" fill="#0A0A0A" />
+  <circle cx="256" cy="240" r="196" fill="url(#g)" opacity="1"/>
+
+  <!-- DG text - uses system sans fallback. For perfect rendering, convert text to paths in a vector editor -->
+  <text x="50%" y="54%" text-anchor="middle" font-family="Helvetica, Arial, sans-serif"
+        font-weight="800" font-size="220" fill="#ffffff" dy=".03em">DG</text>
+</svg>

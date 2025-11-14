@@ -1,0 +1,372 @@
+/* ======= ESTILOS GENERALES Y RESET ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Colores de Marca:
+   - Rosa/Magenta (Botones Secundarios): #CF5B6D
+   - Verde/Oliva (FUND ME): #A9B94D
+   - Blanco de Texto: #fff
+*/
+
+/* ======================================================== */
+/* 1. HEADER (Barra de Navegación Fija) */
+/* ======================================================== */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 100;
+    color: #fff;
+}
+
+/* Estilo del Logo (imágenes) */
+.logo-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-img {
+    height: 180px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-heart {
+    height: 12px;
+    width: auto;
+    object-fit: contain;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #CF5B6D;
+    /* Color de acento al pasar el ratón */
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+}
+
+/* ======================================================== */
+/* 2. SECCIÓN PRINCIPAL (HERO) */
+/* ======================================================== */
+
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+
+    /* FONDO EDITORIAL (Asumiendo que también es .png por la última indicación) */
+    background-image: url('AlfonLopez_x_Die_Gryn_Ediorial_002 (1).jpg');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 70px;
+    overflow: hidden;
+    
+}
+
+/* Overlay (Capar oscura) */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    z-index: -1;
+    
+}
+
+/* Contenido Central (Título, Subtítulo, Botón) */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* Espaciado entre elementos */
+    padding: 10px;
+    max-width: 100%;
+    /* Mueve el contenido hacia abajo (para centrar visualmente el título en el torso) */
+    transform: translateY(20vh);
+    
+}
+
+/* Imagen del Título FAKE LOVE */
+.single-title-img {
+    /* Ancho relativo al viewport para que sea grande y responsivo */
+    width: 80vw;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Subtítulo "debut single" */
+.single-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Botón LISTEN NOW central (Píldora) */
+.listen-button-hero {
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 999px;
+    /* Estilo Píldora */
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    /* Margen para separarlo de los iconos */
+}
+
+.listen-button-hero:hover {
+    background-color: #CF5B6D;
+    color: #fff;
+}
+
+/* Iconos de Redes Sociales en el Hero (Inferior) */
+.social-buttons-hero {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 35px;
+}
+
+.hero-icon {
+    color: #fff;
+    font-size: 28px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.hero-icon:hover {
+    color: #CF5B6D;
+    transform: translateY(-5px);
+}
+
+/* ======================================================== */
+/* 3. SECCIÓN DEL SENCILLO (Scroll) */
+/* ======================================================== */
+
+.single-section {
+    min-height: 90vh;
+    width: 100%;
+
+    /* FONDO ARTÍSTICO (Asumiendo .png) */
+    background-image: url('Fake\ Love\ BG.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #fff;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.single-content {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Carátula del Sencillo (IMAGEN PNG) */
+.single-cover-scroll {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+}
+
+/* GRID de Botones de Plataformas */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.grid-btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s, opacity 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    border-radius: 999px;
+    /* Estilo Píldora */
+}
+
+.grid-btn i {
+    font-size: 1.2rem;
+}
+
+/* Estilos de Botones de Plataformas (Magenta) */
+.platform-spotify,
+.platform-apple,
+.platform-youtube,
+.platform-tidal {
+    background-color: #CF5B6D;
+}
+
+.grid-btn:hover {
+    opacity: 0.9;
+}
+
+/* Botón FUND ME (Oliva/Verde) */
+.fund-me-button {
+    text-decoration: none;
+    background-color: #A9B94D;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 999px;
+    /* Estilo Píldora */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.fund-me-button:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+
+/* ======================================================== */
+/* 4. FOOTER (Información Legal) */
+/* ======================================================== */
+.main-footer {
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #fff;
+    color: #888;
+    border-top: 1px solid #eee;
+    font-size: 0.75rem;
+}
+
+.main-footer a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.main-footer a:hover {
+    color: #000;
+}
+
+
+/* ======================================================== */
+/* 5. RESPONSIVE DESIGN (Móviles) */
+/* ======================================================== */
+@media (max-width: 768px) {
+
+    /* HEADER Móvil */
+    .main-header {
+        width: 100px;
+        margin-left: -10%;
+        /* padding: 15px 10px; */
+        /* background-color: rgba(0, 0, 0, 0.5); */
+    }
+
+    .main-nav a:not(.nav-icon) {
+        display: none;
+    }
+
+    .main-nav {
+        margin-left: auto;
+    }
+
+    /* HERO Móvil */
+    .single-title-img {
+        width: 90vw;
+        max-width: none;
+        margin-bottom: 35px;
+        
+    }
+
+    /* El contenido se mueve más abajo en móvil */
+    .main-content {
+        /* transform: translateY(1vh); */
+        margin-left: -5%;
+        gap: 10px;
+    }
+
+    .listen-button-hero {
+        margin-bottom: 30px;
+        /* Reducir margen en móvil */
+    }
+
+    .social-buttons-hero {
+        gap: 20px;
+        bottom: 30px;
+        margin-bottom: 20px;
+    }
+
+    .hero-icon {
+        font-size: 30px;
+    }
+
+    /* SECCIÓN SCROLL Móvil */
+    .single-cover-scroll {
+        width: 250px;
+        height: 250px;
+    }
+
+    .platform-grid {
+        grid-template-columns: 1fr;
+        /* Una sola columna en móvil */
+        max-width: 300px;
+    }
+}

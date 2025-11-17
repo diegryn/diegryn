@@ -169,6 +169,7 @@ body {
     bottom: 40px;
     display: flex;
     gap: 35px;
+    transform: translateY(10vh)
 }
 
 .hero-icon {

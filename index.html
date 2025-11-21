@@ -46,8 +46,8 @@
                         class="fa-brands fa-tiktok"></i></a>
                 <a href="https://www.youtube.com/@DieGryn" target="_blank" class="hero-icon"><i
                         class="fa-brands fa-youtube"></i></a>
-                <a href="https://open.spotify.com/album/3pk7YkD3PW3XTy5wT3nA0w?si=wB6zQFLHTMCIjkY6St1bnA" target="_blank" class="hero-icon"><i
-                        class="fa-brands fa-spotify"></i></a>
+                <a href="https://open.spotify.com/album/3pk7YkD3PW3XTy5wT3nA0w?si=wB6zQFLHTMCIjkY6St1bnA"
+                    target="_blank" class="hero-icon"><i class="fa-brands fa-spotify"></i></a>
                 <!-- <a href="mailto:contact@diegryn.com" target="_blank" class="hero-icon email-icon-hero"><i
                         class="fa-solid fa-envelope"></i></a> -->
             </div>
@@ -59,14 +59,14 @@
             <img src="Fake Love Art Cover.jpg" alt="Portada del Sencillo Fake Love" class="single-cover-scroll">
 
             <div class="platform-grid">
-                <a href="https://open.spotify.com/album/3pk7YkD3PW3XTy5wT3nA0w" target="_blank" class="grid-btn platform-spotify"><i
-                        class="fa-brands fa-spotify"></i></a>
-                <a href="https://music.apple.com/dk/album/fake-love/1852067870?i=1852067871" target="_blank" class="grid-btn platform-apple"><i
-                        class="fa-brands fa-apple"></i></a>
-                <a href="https://music.youtube.com/watch?v=gnYvpRweLck&si=XZtvJN9cqAtAyt73" target="_blank" class="grid-btn platform-youtube"><i
-                        class="fa-brands fa-youtube"></i></a>
-                <a href="https://music.amazon.es/albums/B0G1PJMLZ8?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES&ref=dm_sh_Kv02PtTntbuScMdh6UEKxMCb7" target="_blank" class="grid-btn platform-amazon"><i
-                        class="fa-brands fa-amazon"></i></a>
+                <a href="https://open.spotify.com/album/3pk7YkD3PW3XTy5wT3nA0w" target="_blank"
+                    class="grid-btn platform-spotify"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://music.apple.com/dk/album/fake-love/1852067870?i=1852067871" target="_blank"
+                    class="grid-btn platform-apple"><i class="fa-brands fa-apple"></i></a>
+                <a href="https://music.youtube.com/watch?v=gnYvpRweLck&si=XZtvJN9cqAtAyt73" target="_blank"
+                    class="grid-btn platform-youtube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://music.amazon.es/albums/B0G1PJMLZ8?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES&ref=dm_sh_Kv02PtTntbuScMdh6UEKxMCb7"
+                    target="_blank" class="grid-btn platform-amazon"><i class="fa-brands fa-amazon"></i></a>
             </div>
             <a href="http://paypal.me/diegryn" target="_blank" class="fund-me-button">FUND ME</a>
         </div>
@@ -75,7 +75,7 @@
     <footer class="main-footer">
         <div class="text-footer">
             <p>
-                ©2025 Die Gryn  |
+                ©2025 Die Gryn |
                 <!-- <a href="#">Privacy Policy</a> | -->
                 <!-- <a href="#">Terms of Use</a> |
                 <a href="#">Cookies Policy</a> |
@@ -84,6 +84,26 @@
             </p>
         </div>
     </footer>
+    <script>
+let lastScroll = 0;
+const header = document.querySelector(".main-header");
+
+window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    // Si bajas -> ocultar
+    if (currentScroll > lastScroll && currentScroll > 50) {
+        header.classList.add("hide");
+    } 
+    // Si subes -> mostrar
+    else {
+        header.classList.remove("hide");
+    }
+
+    lastScroll = currentScroll;
+});
+</script>
+
 
 </body>
 

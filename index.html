@@ -56,9 +56,23 @@
 
     <section class="single-section">
         <div class="single-content">
-            <img src="Fake Love Art Cover.jpg" alt="Portada del Sencillo Fake Love" class="single-cover-scroll">
+            <div class="platform-grid-cover">
 
-            <div class="platform-grid">
+                <div class="item">
+                    <img class="single-cover-scroll" src="Fake Love Art Cover.jpg" />
+                    <a class="grid-btn platform-spotify" href="https://melodymover.lnk.to/fakelove">Fake Love<i
+                            class="fa-solid fa-circle-play"></i></a>
+                </div>
+
+                <div class="item">
+                    <img class="single-cover-scroll" src="remix.jpeg" />
+                    <a class="grid-btn platform-spotify" href="https://ffm.to/fakeloveremix">Fake Love Mix<i
+                            class="fa-solid fa-circle-play"></i></a>
+                </div>
+
+            </div>
+
+            <!-- <div class="platform-grid">
                 <a href="https://open.spotify.com/album/3pk7YkD3PW3XTy5wT3nA0w" target="_blank"
                     class="grid-btn platform-spotify"><i class="fa-brands fa-spotify"></i></a>
                 <a href="https://music.apple.com/dk/album/fake-love/1852067870?i=1852067871" target="_blank"
@@ -69,7 +83,7 @@
                     target="_blank" class="grid-btn platform-amazon"><i class="fa-brands fa-amazon"></i></a>
             </div>
             <a href="http://paypal.me/diegryn" target="_blank" class="fund-me-button">FUND ME</a>
-        </div>
+        </div> -->
     </section>
 
     <footer class="main-footer">
@@ -85,24 +99,24 @@
         </div>
     </footer>
     <script>
-let lastScroll = 0;
-const header = document.querySelector(".main-header");
+        let lastScroll = 0;
+        const header = document.querySelector(".main-header");
 
-window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.scrollY;
 
-    // Si bajas -> ocultar
-    if (currentScroll > lastScroll && currentScroll > 50) {
-        header.classList.add("hide");
-    } 
-    // Si subes -> mostrar
-    else {
-        header.classList.remove("hide");
-    }
+            // Si bajas -> ocultar
+            if (currentScroll > lastScroll && currentScroll > 50) {
+                header.classList.add("hide");
+            }
+            // Si subes -> mostrar
+            else {
+                header.classList.remove("hide");
+            }
 
-    lastScroll = currentScroll;
-});
-</script>
+            lastScroll = currentScroll;
+        });
+    </script>
 
 
 </body>

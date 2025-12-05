@@ -30,10 +30,12 @@ body {
     color: #fff;
     background: transparent;
 }
+
 .main-header.hide {
     transform: translateY(-100%);
     transition: transform 0.3s ease;
 }
+
 .logo-name {
     display: flex;
     align-items: center;
@@ -183,16 +185,40 @@ body {
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    /* solo separa de su botón */
+    margin-left: 0;
+    /* nuevo */
 }
 
-.platform-grid {
+.platform-grid-cover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    max-width: 400px;
+    gap: 30px;
     width: 100%;
-    margin-bottom: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.platform-grid-cover .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.platform-grid-cover .item a {
+    width: 100%;
+    /* el botón ocupa el 100% del contenedor */
+    max-width: 350px;
+    /* mismo ancho que tu imagen desktop */
+    text-align: center;
+    /* centra el icono/texto */
+}
+
+.item .platform-spotify i {
+    font-size: 22px;
+    /* cámbialo al tamaño que quieras */
 }
 
 .grid-btn {
@@ -345,5 +371,31 @@ body {
 
     .text-footer {
         width: 100%;
+    }
+
+    .platform-grid-cover {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .single-cover-scroll {
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .platform-grid-cover {
+        grid-template-columns: 1fr;
+        max-width: 330px;
+    }
+
+    .platform-grid-cover .item {
+        width: 100%;
+    }
+
+    .single-cover-scroll {
+        margin-left: 0 !important;
     }
 }

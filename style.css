@@ -399,3 +399,25 @@ body {
         margin-left: 0 !important;
     }
 }
+.top-nav {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.top-nav a:hover {
+  opacity: 1;
+}

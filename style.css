@@ -399,13 +399,21 @@ body {
         margin-left: 0 !important;
     }
 }
-.top-nav {
+.site-header {
   position: fixed;
-  top: 20px;
-  right: 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.top-nav {
   display: flex;
   gap: 20px;
-  z-index: 1000;
 }
 
 .top-nav a {

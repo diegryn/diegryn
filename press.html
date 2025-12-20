@@ -4,51 +4,57 @@
   <meta charset="UTF-8" />
   <title>Press — Die Gryn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      margin: 0;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-  </style>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Press</h1>
+  <!-- HEADER (same structure as home) -->
+  <header class="main-header">
+    <div class="logo-name">
+      <img src="logo.png" alt="Die Gryn" class="logo-img" />
+    </div>
 
-    <p>
-      For press, radio and industry enquiries:
-    </p>
+    <nav class="main-nav top-nav">
+      <a href="/">HOME</a>
+      <a href="/press.html">PRESS</a>
+    </nav>
+  </header>
 
-    <p>
-      <a href="mailto:contact@diegryn.com">contact@diegryn.com</a>
-    </p>
+  <!-- HERO SECTION (same background & feeling) -->
+  <section class="hero-section">
+    <div class="main-content">
 
-    <p>
-      <a href="/">← Back to site</a>
-    </p>
-  </div>
+      <h1 style="font-size: 1.4rem; letter-spacing: 2px;">PRESS</h1>
+
+      <p style="max-width: 420px; font-size: 0.85rem; opacity: 0.9;">
+        For press, radio, sync & industry enquiries
+      </p>
+
+      <a
+        href="mailto:contact@diegryn.com"
+        class="listen-button-hero"
+        style="margin-top: 15px;"
+      >
+        CONTACT
+      </a>
+
+      <p style="margin-top: 25px; font-size: 0.7rem; opacity: 0.7;">
+        <a href="/" style="color: white; text-decoration: none;">← Back to home</a>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    © 2025 Die Gryn
+  </footer>
 
 </body>
 </html>

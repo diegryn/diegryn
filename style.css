@@ -25,7 +25,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 8px 20px;
+    /*padding: 15px 20px; */
     z-index: 100;
     color: #fff;
     background: transparent;
@@ -38,7 +39,7 @@ body {
 
 .logo-name {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /*center;*/
     gap: 5px;
 }
 
@@ -46,6 +47,8 @@ body {
     height: 180px;
     width: auto;
     object-fit: contain;
+    margin-top: -10px;
+
 }
 
 .main-nav a {

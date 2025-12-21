@@ -298,6 +298,28 @@ body {
 /* ======================================================== */
 
 @media (max-width: 768px) {
+        /* ============================= */
+        /* MOBILE HEADER & NAV FIX */
+        /* ============================= */
+        
+        .main-header {
+            padding: 10px 15px;
+        }
+        
+        .logo-img {
+            height: 110px;
+            margin-top: 0;
+        }
+        
+        .top-nav {
+            gap: 12px;
+        }
+        
+        .top-nav a {
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
 
     /* HEADER */
     .main-header {

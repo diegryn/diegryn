@@ -26,12 +26,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 8px 20px;
-    top: 0;
-    /*padding: 15px 20px; */
+    /*top: 0;
+    padding: 15px 20px; */
     z-index: 100;
-    color: #fff;
+    /*color: #fff; */
     background: transparent;
 }
+
 .main-nav {
     display: flex;
     align-items: center;

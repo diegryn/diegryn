@@ -31,6 +31,12 @@ body {
     color: #fff;
     background: transparent;
 }
+.main-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -5px;
+}
 
 .main-header.hide {
     transform: translateY(-100%);
@@ -441,4 +447,16 @@ body {
 
 .top-nav a:hover {
   opacity: 1;
+}
+.main-nav {
+    margin-top: -8px;
+}
+
+.top-nav {
+    gap: 14px;
+}
+
+.top-nav a {
+    font-size: 12px;
+    padding: 4px 0;
 }

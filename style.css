@@ -467,3 +467,8 @@ body {
     gap: 10px;
     padding-right: 15px;
   }
+
+  .top-nav a {
+    font-size: 14px;
+  }
+}

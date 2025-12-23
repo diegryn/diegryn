@@ -26,6 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 8px 20px;
+    top: 0;
     /*padding: 15px 20px; */
     z-index: 100;
     color: #fff;
@@ -470,5 +471,13 @@ body {
 
   .top-nav a {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 12px 8px;
+    font-size: 0.65rem;
+    line-height: 1.4;
   }
 }

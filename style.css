@@ -549,3 +549,20 @@ body {
   margin-bottom: 12px;
 }
 
+
+.legal-box {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 520px;
+  margin: 20px auto 0;
+  text-align: left;
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.legal-box p {
+  margin-bottom: 18px;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}

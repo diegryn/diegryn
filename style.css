@@ -525,29 +525,38 @@ body {
   }
 }
 
+/* ======================================================== */
+/*  LEGAL PAGE STYLING  */
+/* ======================================================== */
 
-.legal-box {
-  max-width: 520px;
-  margin: 10px auto 0;
-  padding: 25px 28px;
-  background: rgba(0, 0, 0, 0.30); /* lighter transparency */
-  border-radius: 14px;
-  color: #fff;
+.legal-title {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  margin-top: -20px;
+}
+
+.legal-glass {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 22px 26px;
+  background: rgba(0,0,0,0.18); /* extremely subtle */
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 12px;
   text-align: left;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  color: #fff;
+  line-height: 1.52;
+  font-size: 0.92rem;
 }
 
-.legal-box p {
-  margin-bottom: 16px;
-  line-height: 1.45;
-  font-size: 0.9rem;
+.legal-glass p {
+  margin-bottom: 14px;
 }
 
-/* Fix spacing between title and box ONLY on legal pages */
-.hero-section .main-content h1 {
-  margin-bottom: 10px !important;
-  margin-top: -10px !important;
-  transform: translateY(0) !important;
+@media (max-width: 768px) {
+  .legal-glass {
+    max-width: 90vw;
+    padding: 20px;
+  }
 }
-

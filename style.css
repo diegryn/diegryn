@@ -535,12 +535,13 @@ body {
   background-image: url("AlfonLopez_x_Die_Gryn_Ediorial_002.jpg");
   background-size: cover;
   background-position: center;
-  padding-top: 150px;     /* lowers the title */
+  padding-top: 300px;   /* LOWERED HERE */
   padding-bottom: 80px;
   text-align: center;
   position: relative;
   color: #fff;
 }
+
 
 .legal-title {
   font-size: 1.3rem;

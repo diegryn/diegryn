@@ -526,16 +526,6 @@ body {
   }
 }
 
-
-/* Email link */
-.email-link {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.email-link:hover {
-  opacity: 0.75;
-}
 /* ======================================================== */
 /*  UNIVERSAL LEGAL PAGE STYLE (NO GLASS)  */
 /* ======================================================== */
@@ -625,4 +615,13 @@ body {
     font-size: 0.85rem;
     line-height: 1.55;
   }
+}
+/* Email link */
+.email-link {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.email-link:hover {
+  opacity: 0.75;
 }

@@ -526,53 +526,6 @@ body {
   }
 }
 
-/* ======================================================== */
-/*  LEGAL PAGE STYLING  */
-/* ======================================================== */
-
-.legal-hero {
-  min-height: 100vh;
-  width: 100%;
-  background-image: url("AlfonLopez_x_Die_Gryn_Ediorial_002.jpg");
-  background-size: cover;
-  background-position: center top;
-  padding-top: 320px;   /* keeps everything BELOW your face */
-  padding-bottom: 90px;
-  text-align: center;
-  position: relative;
-  color: #fff;
-}
-
-.legal-title {
-  font-size: 1.35rem;
-  letter-spacing: 2px;
-  margin-bottom: 26px;
-  font-weight: 400;
-  color: #fff;
-}
-
-.legal-text {
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 22px 26px;
-
-  /* Very subtle glass effect */
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  border-radius: 14px;
-  text-align: left;
-
-  /* Smaller, minimal text */
-  color: #fff;
-  font-size: 0.88rem;
-  line-height: 1.48;
-}
-
-.legal-text p {
-  margin-bottom: 16px;
-}
 
 /* Email link */
 .email-link {
@@ -583,56 +536,32 @@ body {
 .email-link:hover {
   opacity: 0.75;
 }
-
-/* NAV hover pink */
-.top-nav a:hover {
-  color: #CF5B6D;
-  opacity: 1;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .legal-hero {
-    padding-top: 260px; 
-  }
-  .legal-text {
-    max-width: 90vw;
-    padding: 20px;
-    font-size: 0.9rem;
-  }
-}
-
-
-.email-link {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.email-link:hover {
-  opacity: 0.8;
-}
 /* ======================================================== */
-/*  PRESS PAGE  */
+/*  UNIVERSAL LEGAL PAGE STYLE (NO GLASS)  */
 /* ======================================================== */
 
+.legal-hero,
 .press-hero {
   min-height: 100vh;
   width: 100%;
   background-image: url("AlfonLopez_x_Die_Gryn_Ediorial_002.jpg");
   background-size: cover;
   background-position: center top;
-  padding-top: 320px;  /* Positions below your face */
+  padding-top: 320px; /* pushes content below your face */
   text-align: center;
   color: #fff;
 }
 
+/* TITLES */
+.legal-title,
 .press-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   letter-spacing: 2px;
   margin-bottom: 14px;
+  text-transform: uppercase;
 }
 
+/* SUBTITLE (only used in Press) */
 .press-subtitle {
   font-size: 0.8rem;
   opacity: 0.85;
@@ -640,6 +569,32 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* MAIN TEXT */
+.legal-text {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.legal-text p {
+  margin-bottom: 14px;
+}
+
+/* LINKS INSIDE LEGAL PAGES */
+.legal-text a {
+  color: #CF5B6D;
+  text-decoration: none;
+  font-weight: 500;
+}
+.legal-text a:hover {
+  opacity: 0.8;
+}
+
+/* PRESS BUTTON */
 .press-button {
   text-decoration: none;
   background: #fff;
@@ -650,6 +605,7 @@ body {
   font-weight: 600;
   transition: all 0.3s ease;
   display: inline-block;
+  margin-top: 10px;
 }
 
 .press-button:hover {
@@ -658,12 +614,15 @@ body {
   transform: translateY(-2px);
 }
 
-/* MOBILE */
+/* MOBILE FIXES */
 @media (max-width: 768px) {
+  .legal-hero,
   .press-hero {
     padding-top: 260px;
   }
-  .press-subtitle {
-    font-size: 0.9rem;
+
+  .legal-text {
+    font-size: 0.85rem;
+    line-height: 1.55;
   }
 }

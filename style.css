@@ -594,3 +594,13 @@ body {
     font-size: 0.86rem;
   }
 }
+
+.email-link {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.email-link:hover {
+  opacity: 0.8;
+}

@@ -576,12 +576,13 @@ body {
 
 /* LINKS INSIDE LEGAL PAGES */
 .legal-text a {
-  color: #CF5B6D;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
 }
+
 .legal-text a:hover {
-  opacity: 0.8;
+  color: #CF5B6D;
 }
 
 /* PRESS BUTTON */

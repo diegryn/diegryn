@@ -504,6 +504,7 @@ body {
 }
 
 .top-nav a:hover {
+    color: #CF5B6D;
   opacity: 1;
 }
 
@@ -526,7 +527,7 @@ body {
 }
 
 /* ======================================================== */
-/*  LEGAL PAGE — FINAL CLEAN DESIGN                         */
+/*  LEGAL PAGE STYLING  */
 /* ======================================================== */
 
 .legal-hero {
@@ -534,66 +535,73 @@ body {
   width: 100%;
   background-image: url("AlfonLopez_x_Die_Gryn_Ediorial_002.jpg");
   background-size: cover;
-  background-position: center;
-  padding-top: 300px;   /* LOWERED HERE */
-  padding-bottom: 80px;
+  background-position: center top;
+  padding-top: 320px;   /* keeps everything BELOW your face */
+  padding-bottom: 90px;
   text-align: center;
   position: relative;
   color: #fff;
 }
 
-
 .legal-title {
-  font-size: 1.3rem;
-  letter-spacing: 3px;
-  margin-bottom: 25px;    /* tightens title → text spacing */
-  color: #fff;            /* pure white */
-  text-shadow: 0 0 5px rgba(0,0,0,0.35);
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+  margin-bottom: 26px;
+  font-weight: 400;
+  color: #fff;
 }
 
-/* TEXT BOX */
 .legal-text {
-  max-width: 540px;
+  max-width: 560px;
   margin: 0 auto;
-  padding: 26px 28px;
+  padding: 22px 26px;
 
-  /* subtle glass */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Very subtle glass effect */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   border-radius: 14px;
   text-align: left;
-  color: #fff;
-  line-height: 1.55;
-  font-size: 0.88rem;
 
-  box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+  /* Smaller, minimal text */
+  color: #fff;
+  font-size: 0.88rem;
+  line-height: 1.48;
 }
 
 .legal-text p {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
-/* White links */
-.legal-text a,
-.legal-text .email {
-  color: #fff !important;
+/* Email link */
+.email-link {
+  color: #fff;
   text-decoration: underline;
-  font-weight: 500;
+  text-underline-offset: 3px;
+}
+.email-link:hover {
+  opacity: 0.75;
 }
 
+/* NAV hover pink */
+.top-nav a:hover {
+  color: #CF5B6D;
+  opacity: 1;
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .legal-hero {
-    padding-top: 140px;
+    padding-top: 260px; 
   }
-
   .legal-text {
-    max-width: 88vw;
-    padding: 20px 18px;
-    font-size: 0.86rem;
+    max-width: 90vw;
+    padding: 20px;
+    font-size: 0.9rem;
   }
 }
+
 
 .email-link {
   color: #fff;

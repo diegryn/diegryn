@@ -626,3 +626,10 @@ body {
 .email-link:hover {
   opacity: 0.75;
 }
+
+
+.seo-artist-line {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 12px;
+}

@@ -6,67 +6,45 @@
 
   <title>EPK — Die Gryn</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-
-  <!-- Main site CSS -->
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-<!-- ===================================================== -->
-<!-- HEADER (UNCHANGED, SAME AS REST OF SITE) -->
-<!-- ===================================================== -->
-
+<!-- HEADER -->
 <header class="main-header">
   <a href="https://diegryn.com">
     <img src="die_gryn_logo.png" alt="Die Gryn" class="logo-img">
   </a>
 
   <nav class="top-nav">
-    <a href="https://diegryn.com/#music">MUSIC</a>
+    <a href="/#music">MUSIC</a>
     <a href="https://diegryn.bandcamp.com" target="_blank">SHOP</a>
     <a href="https://diegryn.mailerpage.io/" target="_blank">SIGN UP</a>
-    <a href="https://diegryn.com/epk">PRESS</a>
+    <a href="/epk">PRESS</a>
   </nav>
 </header>
 
-<!-- ===================================================== -->
-<!-- EPK PDF EMBED -->
-<!-- ===================================================== -->
+<!-- BACKGROUND (same image as hero, but passive) -->
+<div class="epk-background"></div>
 
-<section class="epk-wrapper">
+<!-- PDF OVERLAY -->
+<div class="epk-overlay">
+  <iframe 
+    src="/assets/EPK.pdf"
+    title="Die Gryn EPK"
+    loading="lazy"
+  ></iframe>
+</div>
 
-  <!-- Optional download link -->
-  <p class="epk-download">
-    <a href="/assets/EPK.pdf" target="_blank">
-      Download EPK (PDF)
-    </a>
-  </p>
-
-  <!-- PDF container -->
-  <div class="epk-pdf-container">
-    <iframe 
-      src="/assets/DieGryn_EPK.pdf"
-      title="Die Gryn EPK"
-      loading="lazy"
-    ></iframe>
-  </div>
-
-</section>
-
-<!-- ===================================================== -->
-<!-- FOOTER (UNCHANGED) -->
-<!-- ===================================================== -->
-
-<footer class="main-footer">
+<!-- FOOTER -->
+<footer class="main-footer epk-footer">
   <p>
     ©2026 Die Gryn |
-    <a href="https://diegryn.com/privacy">Privacy</a> |
-    <a href="https://diegryn.com/cookies">Cookies</a> |
-    <a href="https://diegryn.com/terms">Terms</a> |
-    <a href="https://diegryn.com/epk">Press</a>
+    <a href="/privacy">Privacy</a> |
+    <a href="/cookies">Cookies</a> |
+    <a href="/terms">Terms</a>
   </p>
 </footer>
 

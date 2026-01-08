@@ -1,10 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>EPK — Die Gryn</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+  <!-- Main site CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- HEADER (UNCHANGED, SAME AS REST OF SITE) -->
+<!-- ===================================================== -->
+
+<header class="main-header">
+  <a href="https://diegryn.com">
+    <img src="die_gryn_logo.png" alt="Die Gryn" class="logo-img">
+  </a>
+
+  <nav class="top-nav">
+    <a href="https://diegryn.com/#music">MUSIC</a>
+    <a href="https://diegryn.bandcamp.com" target="_blank">SHOP</a>
+    <a href="https://diegryn.mailerpage.io/" target="_blank">SIGN UP</a>
+    <a href="https://diegryn.com/epk">PRESS</a>
+  </nav>
+</header>
+
+<!-- ===================================================== -->
+<!-- EPK PDF EMBED -->
+<!-- ===================================================== -->
+
 <section class="epk-wrapper">
+
+  <!-- Optional download link -->
+  <p class="epk-download">
+    <a href="/assets/DieGryn_EPK.pdf" target="_blank">
+      Download EPK (PDF)
+    </a>
+  </p>
+
+  <!-- PDF container -->
   <div class="epk-pdf-container">
     <iframe 
-      src="/assets/EPK.pdf"
-      width="100%"
-      height="100%"
-      style="border:none;"
+      src="/assets/DieGryn_EPK.pdf"
+      title="Die Gryn EPK"
+      loading="lazy"
     ></iframe>
   </div>
+
 </section>
+
+<!-- ===================================================== -->
+<!-- FOOTER (UNCHANGED) -->
+<!-- ===================================================== -->
+
+<footer class="main-footer">
+  <p>
+    ©2026 Die Gryn |
+    <a href="https://diegryn.com/privacy">Privacy</a> |
+    <a href="https://diegryn.com/cookies">Cookies</a> |
+    <a href="https://diegryn.com/terms">Terms</a> |
+    <a href="https://diegryn.com/epk">Press</a>
+  </p>
+</footer>
+
+</body>
+</html>

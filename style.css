@@ -636,3 +636,60 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.epk-section {
+  max-width: 760px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.epk-section h2 {
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.epk-info-list {
+  list-style: none;
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.epk-info-list li {
+  margin-bottom: 8px;
+}
+
+.epk-embed {
+  margin-top: 25px;
+}
+
+.epk-embed iframe {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.epk-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+  margin: 60px auto;
+}
+
+.epk-contact {
+  font-size: 0.8rem;
+}
+
+.epk-contact a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.epk-contact a:hover {
+  opacity: 0.8;
+}

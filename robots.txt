@@ -1,3 +1,7 @@
 User-agent: *
+Disallow: /epk
+Disallow: /epk/
 Disallow: /epk.pdf
+Disallow: /epk-spanish
+Disallow: /epk-spanish/
 Disallow: /epk-spanish.pdf

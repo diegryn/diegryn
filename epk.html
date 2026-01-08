@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>EPK — Die Gryn</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
@@ -14,10 +13,9 @@
 
 <!-- HEADER -->
 <header class="main-header">
-  <a href="https://diegryn.com">
+  <a href="/">
     <img src="die_gryn_logo.png" alt="Die Gryn" class="logo-img">
   </a>
-
   <nav class="top-nav">
     <a href="/#music">MUSIC</a>
     <a href="https://diegryn.bandcamp.com" target="_blank">SHOP</a>
@@ -26,25 +24,30 @@
   </nav>
 </header>
 
-<!-- BACKGROUND (same image as hero, but passive) -->
-<div class="epk-background"></div>
+<!-- HERO (LIKE HOMEPAGE) -->
+<section class="hero-section epk-hero">
+  <!-- empty on purpose, image comes from CSS -->
+</section>
 
-<!-- PDF OVERLAY -->
-<div class="epk-overlay">
-  <iframe 
-    src="/EPK.pdf"
-    title="Die Gryn EPK"
-    loading="lazy"
-  ></iframe>
-</div>
+<!-- WHITE DOCUMENT SECTION -->
+<section class="epk-document">
+  <div class="epk-document-inner">
+    <iframe 
+      src="/EPK.pdf"
+      title="Die Gryn EPK"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="main-footer epk-footer">
+<footer class="main-footer">
   <p>
     ©2026 Die Gryn |
     <a href="/privacy">Privacy</a> |
     <a href="/cookies">Cookies</a> |
-    <a href="/terms">Terms</a>
+    <a href="/terms">Terms</a> |
+    <a href="/epk">Press</a>
   </p>
 </footer>
 

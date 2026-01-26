@@ -5,3 +5,25 @@ Disallow: /epk.pdf
 Disallow: /epk-spanish
 Disallow: /epk-spanish/
 Disallow: /epk-spanish.pdf
+
+
+  <!-- User-agent: *
+Disallow: /epk
+Disallow: /epk/
+Disallow: /epk.pdf
+Disallow: /epk-spanish
+Disallow: /epk-spanish/
+Disallow: /epk-spanish.pdf
+
+Disallow: /press
+Disallow: /press/
+
+Disallow: /terms
+Disallow: /terms/
+
+Disallow: /cookies
+Disallow: /cookies/
+
+Disallow: /privacy
+Disallow: /privacy/
+ -->

@@ -6,8 +6,9 @@ Disallow: /epk-spanish
 Disallow: /epk-spanish/
 Disallow: /epk-spanish.pdf
 
+<!--
 
-  <!-- User-agent: *
+  // User-agent: *
 Disallow: /epk
 Disallow: /epk/
 Disallow: /epk.pdf

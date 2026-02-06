@@ -161,17 +161,23 @@
             </p>
         </div>
     </footer>
-          <script>
-    document.addEventListener("scroll", () => {
+      <script>
+        let lastScroll = 0;
         const header = document.querySelector(".main-header");
-        if (window.scrollY > 10) {
-            header.style.opacity = "0";
-            header.style.pointerEvents = "none";
-            header.style.transition = "opacity 0.4s ease";
-        }
-    });
-    </script>
-
+        
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.scrollY;
+        
+            if (currentScroll > 10) {
+                header.classList.add("hide");
+            } else {
+                header.classList.remove("hide");
+            }
+        
+            lastScroll = currentScroll;
+        });
+  </script>
+  
 </body>
 
 </html>

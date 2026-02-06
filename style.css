@@ -32,7 +32,9 @@ body {
     /*color: #fff; */
     background: transparent;
 }
-
+.main-header {
+    transition: opacity 0.4s ease;
+}
 .main-nav {
     display: flex;
     align-items: center;

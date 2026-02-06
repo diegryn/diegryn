@@ -162,23 +162,6 @@
         </div>
     </footer>
     <script>
-        let lastScroll = 0;
-        const header = document.querySelector(".main-header");
-
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
-
-            // Si bajas -> ocultar
-            if (currentScroll > lastScroll && currentScroll > 50) {
-                header.classList.add("hide");
-            }
-            // Si subes -> mostrar
-            else {
-                header.classList.remove("hide");
-            }
-
-            lastScroll = currentScroll;
-        });
     </script>
 
 

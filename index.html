@@ -161,9 +161,16 @@
             </p>
         </div>
     </footer>
-    <script>
+          <script>
+    document.addEventListener("scroll", () => {
+        const header = document.querySelector(".main-header");
+        if (window.scrollY > 10) {
+            header.style.opacity = "0";
+            header.style.pointerEvents = "none";
+            header.style.transition = "opacity 0.4s ease";
+        }
+    });
     </script>
-
 
 </body>
 

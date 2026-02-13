@@ -654,9 +654,4 @@ body {
     .platform-grid-cover {
         grid-template-columns: 1fr; /* single column */
     }
-
-    .platform-grid-cover .item:nth-child(3) {
-        grid-column: auto; /* remove forced centering behavior */
-        justify-self: center;
-    }
 }

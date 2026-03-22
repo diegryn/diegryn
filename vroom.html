@@ -11,20 +11,19 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
-  <div class="left">
+  <div class="header-left">
     <img src="die_gryn_logo.png" class="logo">
     <nav>
-      <a href="#shop">SHOP</a>
       <a href="#music">MUSIC</a>
       <a href="#videos">VIDEOS</a>
-      <a href="#subscribe">SUBSCRIBE</a>
-      <a href="#press">PRESS</a>
+      <a href="#">SHOP</a>
+      <a href="#">SUBSCRIBE</a>
+      <a href="#">PRESS</a>
     </nav>
   </div>
 
-  <div class="right">
+  <div class="header-right">
     <a href="#"><i class="fa-brands fa-instagram"></i></a>
     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
     <a href="#"><i class="fa-brands fa-youtube"></i></a>
@@ -32,7 +31,6 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="overlay">
     <h2>OUT MARCH 27</h2>
@@ -40,17 +38,15 @@
   </div>
 </section>
 
-<!-- MUSIC -->
 <section id="music" class="music">
   <h3>MUSIC</h3>
 
   <div class="carousel">
 
-    <button class="arrow left" onclick="scrollLeft()">‹</button>
+    <button class="arrow-left" onclick="scrollLeft()">‹</button>
 
     <div class="track-container" id="trackContainer">
 
-      <!-- VROOM VROOM FIRST -->
       <div class="track">
         <a href="https://ffm.to/vroom-vroom" target="_blank">
           <img src="vroomvroom1.jpg">
@@ -88,12 +84,11 @@
 
     </div>
 
-    <button class="arrow right" onclick="scrollRight()">›</button>
+    <button class="arrow-right" onclick="scrollRight()">›</button>
 
   </div>
 </section>
 
-<!-- VIDEOS -->
 <section id="videos" class="videos">
   <h3>VIDEOS</h3>
 
@@ -104,10 +99,8 @@
     </a>
     <p>Fake Love Acoustic</p>
   </div>
-
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>
     ©2026 Die Gryn |
@@ -120,11 +113,10 @@
 
 <script>
 function scrollLeft() {
-  document.getElementById("trackContainer").scrollBy({ left: -300, behavior: "smooth" });
+  document.getElementById("trackContainer").scrollBy({ left: -250, behavior: "smooth" });
 }
-
 function scrollRight() {
-  document.getElementById("trackContainer").scrollBy({ left: 300, behavior: "smooth" });
+  document.getElementById("trackContainer").scrollBy({ left: 250, behavior: "smooth" });
 }
 </script>
 

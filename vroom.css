@@ -5,15 +5,13 @@
   box-sizing: border-box;
 }
 
-/* 🔥 ESTO EVITA TODO LO GIGANTE */
 img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   display: block;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -28,6 +26,7 @@ body {
 .header {
   position: fixed;
   width: 100%;
+  top: 0;
   z-index: 100;
 }
 
@@ -35,13 +34,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 
-.left {
+.nav-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 .logo {
@@ -49,12 +48,12 @@ body {
 }
 
 nav a {
-  font-size: 12px;
   color: white;
+  font-size: 12px;
   text-decoration: none;
 }
 
-.right a {
+.nav-right a {
   color: white;
   margin-left: 12px;
 }
@@ -70,15 +69,20 @@ nav a {
 
 .hero-content {
   text-align: center;
-}
-
-.hero h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
   color: white;
 }
 
+.hero h1 {
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.hero p {
+  margin: 10px 0;
+}
+
 .cta {
+  display: inline-block;
   padding: 10px 25px;
   border: 1px solid white;
   color: white;
@@ -87,43 +91,41 @@ nav a {
 
 /* MUSIC */
 .music {
-  background: #f0efe9;
-  padding: 80px 0;
+  background: #f5f5f5;
+  padding: 120px 0 80px;
 }
 
-.music h3 {
-  margin-bottom: 30px;
+.music h2 {
+  margin-bottom: 40px;
 }
 
-/* 🔥 CONTROL TOTAL DEL CARRUSEL */
+/* CARRUSEL */
 .carousel {
   position: relative;
-  max-width: 100%;
-  overflow: hidden;
 }
 
 .tracks {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   overflow-x: auto;
+  padding-bottom: 10px;
 }
 
-/* 🔥 ESTO ARREGLA TODO */
 .track {
-  min-width: 160px;
-  flex-shrink: 0;
+  min-width: 150px;
   text-align: center;
 }
 
 .track img {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .track p {
-  font-size: 12px;
   margin-top: 8px;
+  font-size: 12px;
 }
 
 /* ARROWS */
@@ -141,18 +143,14 @@ nav a {
 
 /* VIDEOS */
 .videos {
-  padding: 80px 0;
+  padding: 100px 0;
   text-align: center;
 }
 
 .video {
-  max-width: 400px;
+  max-width: 300px;
   margin: auto;
   position: relative;
-}
-
-.video img {
-  width: 100%;
 }
 
 .play {

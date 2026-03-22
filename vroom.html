@@ -5,127 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Die Gryn</title>
 
-<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.header a {
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("vroomvroom3.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 40px;
+  letter-spacing: 3px;
+}
+
+.hero p {
+  margin: 10px 0;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 1px solid white;
+  margin-top: 10px;
+  color: white;
+}
+
+/* MUSIC */
+.music {
+  background: #f2f2f2;
+  padding: 80px 0;
+}
+
+.tracks {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.track {
+  min-width: 180px;
+}
+
+.track img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* VIDEO */
+.videos {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.video {
+  max-width: 400px;
+  margin: auto;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header class="header">
-  <div class="container header-inner">
-    
-    <div class="left">
-      <img src="die_gryn_logo.png" class="logo">
-
-      <nav>
-        <a href="#music">MUSIC</a>
-        <a href="#videos">VIDEOS</a>
-        <a href="#">SHOP</a>
-        <a href="#">SUBSCRIBE</a>
-        <a href="#">PRESS</a>
-      </nav>
+  <div class="header-inner">
+    <div>
+      <a href="#music">MUSIC</a>
+      <a href="#videos">VIDEOS</a>
+      <a href="#">SHOP</a>
+      <a href="#">SUBSCRIBE</a>
+      <a href="#">PRESS</a>
     </div>
-
-    <div class="right">
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="#"><i class="fa-brands fa-youtube"></i></a>
-      <a href="#"><i class="fa-brands fa-spotify"></i></a>
-    </div>
-
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h2>OUT MARCH 27</h2>
-    <a href="https://ffm.to/vroom-vroom" target="_blank" class="cta">LISTEN NOW</a>
+    <h1>VROOM VROOM</h1>
+    <p>OUT MARCH 27</p>
+    <a href="https://ffm.to/vroom-vroom" class="cta">LISTEN NOW</a>
   </div>
 </section>
 
-<!-- MUSIC -->
 <section id="music" class="music">
   <div class="container">
 
-    <h3>MUSIC</h3>
+    <h2>MUSIC</h2>
 
-    <div class="carousel">
+    <div class="tracks">
 
-      <button class="arrow left" onclick="scrollLeft()">‹</button>
-
-      <div class="tracks" id="tracks">
-
-        <div class="track">
-          <a href="https://ffm.to/vroom-vroom"><img src="vroomvroom1.jpg"></a>
-          <p>VROOM VROOM</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/fake-love-mixes"><img src="mixes.jpg"></a>
-          <p>Fran Garro Mixes</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/die-gryn-fake-love-extended-version"><img src="fake.love_extendedc_cover.JPG"></a>
-          <p>Extended Version</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/fake-love-acoustic"><img src="fake.love_acoustic_cover.JPG"></a>
-          <p>Acoustic Version</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix"><img src="fake.love_schweigen_cover.JPG"></a>
-          <p>Schweigen Mix</p>
-        </div>
-
+      <div class="track">
+        <img src="vroomvroom1.jpg">
+        <p>VROOM VROOM</p>
       </div>
 
-      <button class="arrow right" onclick="scrollRight()">›</button>
+      <div class="track">
+        <img src="mixes.jpg">
+        <p>Mixes</p>
+      </div>
+
+      <div class="track">
+        <img src="fake.love_extendedc_cover.JPG">
+        <p>Extended</p>
+      </div>
+
+      <div class="track">
+        <img src="fake.love_acoustic_cover.JPG">
+        <p>Acoustic</p>
+      </div>
 
     </div>
 
   </div>
 </section>
 
-<!-- VIDEOS -->
 <section id="videos" class="videos">
   <div class="container">
 
-    <h3>VIDEOS</h3>
+    <h2>VIDEOS</h2>
 
     <div class="video">
-      <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs">
-        <img src="fake-love-acoustic-video.jpg">
-        <div class="play">▶</div>
-      </a>
+      <img src="fake-love-acoustic-video.jpg">
       <p>Fake Love Acoustic</p>
     </div>
 
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <p>
-    ©2026 Die Gryn |
-    <a href="https://diegryn.com/privacy">Privacy</a>
-    <a href="https://diegryn.com/cookies">Cookies</a>
-    <a href="https://diegryn.com/terms">Terms</a>
-    <a href="https://diegryn.com/press">Press</a>
-  </p>
-</footer>
-
-<script>
-function scrollLeft(){
-  document.getElementById("tracks").scrollBy({left:-300, behavior:"smooth"});
-}
-function scrollRight(){
-  document.getElementById("tracks").scrollBy({left:300, behavior:"smooth"});
-}
-</script>
 
 </body>
 </html>

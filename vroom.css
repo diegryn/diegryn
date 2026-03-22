@@ -1,7 +1,15 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* 🔥 ESTO EVITA TODO LO GIGANTE */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 body {
@@ -9,9 +17,9 @@ body {
   overflow-x: hidden;
 }
 
-/* 🔥 MASTER CONTAINER */
+/* CONTAINER */
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: auto;
   padding: 0 20px;
 }
@@ -67,6 +75,7 @@ nav a {
 .hero h2 {
   font-size: 18px;
   margin-bottom: 20px;
+  color: white;
 }
 
 .cta {
@@ -86,9 +95,11 @@ nav a {
   margin-bottom: 30px;
 }
 
-/* 🔥 CARRUSEL CONTROLADO */
+/* 🔥 CONTROL TOTAL DEL CARRUSEL */
 .carousel {
   position: relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .tracks {
@@ -97,8 +108,11 @@ nav a {
   overflow-x: auto;
 }
 
+/* 🔥 ESTO ARREGLA TODO */
 .track {
   min-width: 160px;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .track img {
@@ -143,7 +157,7 @@ nav a {
 
 .play {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

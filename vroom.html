@@ -1,124 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Die Gryn — Vroom Vroom</title>
-
-<link rel="stylesheet" href="vroom.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header class="main-header">
-  <img src="die_gryn_logo.png" class="logo">
-
-  <nav class="nav">
-    <a href="#music">MUSIC</a>
-    <a href="#">SHOP</a>
-    <a href="#">SIGN UP</a>
-    <a href="#">PRESS</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="overlay"></div>
-
-  <div class="hero-content">
-    <h1>VROOM VROOM</h1>
-    <p>OUT MARCH 27</p>
-
-    <a href="https://ffm.to/vroom-vroom" target="_blank" class="btn">LISTEN NOW</a>
-
-    <div class="icons">
-      <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/channel/UCE1_baikqR-EqUrZMrhCljQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
-      <a href="https://music.apple.com/dk/artist/die-gryn/1852066460" target="_blank"><i class="fa-brands fa-apple"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- IDENTITY -->
-<section class="identity">
-  <p>I make pop music for people to dance to and reflect on.</p>
-  <span>Creating awareness, community and a space where you can feel seen.</span>
-</section>
-
-<!-- VROOM -->
-<section class="vroom">
-  <img src="vroomvroom1.jpg">
-
-  <div>
-    <h2>VROOM VROOM</h2>
-    <p>A high-energy pop release that plays with speed, masculinity and performance.</p>
-    <a href="https://ffm.to/vroom-vroom" target="_blank" class="btn-dark">STREAM</a>
-  </div>
-</section>
-
-<!-- MUSIC -->
-<section class="music" id="music">
-  <h2>PREVIOUS RELEASES</h2>
-
-  <div class="carousel-wrapper">
-    <button class="arrow left" onclick="move(-1)">‹</button>
-
-    <div class="carousel" id="carousel">
-
-      <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="card">
-        <img src="Fake Love Art Cover.jpg">
-      </a>
-
-      <a href="https://ffm.to/fake-love-mixes" target="_blank" class="card">
-        <img src="mixes.jpg">
-      </a>
-
-      <a href="https://ffm.to/fake-love-acoustic" target="_blank" class="card">
-        <img src="fake.love_acoustic_cover.JPG">
-      </a>
-
-      <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank" class="card">
-        <img src="fake.love_extendedc_cover.JPG">
-      </a>
-
-    </div>
-
-    <button class="arrow right" onclick="move(1)">›</button>
-  </div>
-</section>
-
-<!-- VIDEO -->
-<section class="videos">
-  <h2>VIDEOS</h2>
-
-  <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video">
-    <img src="IMG_6433.jpg">
-    <div class="play">▶</div>
-  </a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  ©2026 Die Gryn
-</footer>
-
-<script>
-let scrollX = 0;
-
-function move(direction){
-  const carousel = document.getElementById("carousel");
-  scrollX += direction * 220;
-  carousel.style.transform = `translateX(-${scrollX}px)`;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-</script>
 
-</body>
-</html>
+body {
+  font-family: sans-serif;
+  background: #0e0e0e;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  z-index: 100;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  height: 40px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+.right a {
+  color: white;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("vroomvroom3.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  text-align: center;
+}
+
+.overlay h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.cta {
+  padding: 12px 30px;
+  border: 1px solid white;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.cta:hover {
+  background: white;
+  color: black;
+}
+
+/* MUSIC */
+.music {
+  padding: 100px 40px;
+  background: #f0efe9;
+  color: black;
+}
+
+.music h3 {
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.carousel {
+  position: relative;
+}
+
+.track-container {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.track {
+  min-width: 220px;
+  text-align: center;
+}
+
+.track img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.track p {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 40%;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.left {
+  left: -20px;
+}
+
+.right {
+  right: -20px;
+}
+
+/* VIDEOS */
+.videos {
+  padding: 100px 40px;
+  background: #111;
+}
+
+.video {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+
+.video img {
+  width: 100%;
+}
+
+.play {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  font-size: 30px;
+}
+
+.video p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  background: #0e0e0e;
+}
+
+footer a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}

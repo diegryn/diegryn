@@ -9,20 +9,31 @@ body {
   overflow-x: hidden;
 }
 
+/* 🔥 MASTER CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
 /* HEADER */
 .header {
   position: fixed;
   width: 100%;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
   z-index: 100;
 }
 
-.header-left {
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.left {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
 }
 
 .logo {
@@ -35,9 +46,9 @@ nav a {
   text-decoration: none;
 }
 
-.header-right a {
+.right a {
   color: white;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 
 /* HERO */
@@ -49,36 +60,38 @@ nav a {
   align-items: center;
 }
 
-.overlay h2 {
-  font-size: 16px;
+.hero-content {
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
 .cta {
   padding: 10px 25px;
   border: 1px solid white;
-  text-decoration: none;
   color: white;
+  text-decoration: none;
 }
 
 /* MUSIC */
 .music {
   background: #f0efe9;
-  padding: 80px 20px;
+  padding: 80px 0;
 }
 
 .music h3 {
-  max-width: 900px;
-  margin: 0 auto 30px;
+  margin-bottom: 30px;
 }
 
+/* 🔥 CARRUSEL CONTROLADO */
 .carousel {
-  max-width: 900px;   /* 🔥 ESTO ARREGLA TODO */
-  margin: auto;
   position: relative;
 }
 
-.track-container {
+.tracks {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -86,48 +99,46 @@ nav a {
 
 .track {
   min-width: 160px;
-  text-align: center;
 }
 
 .track img {
-  width: 160px;       /* 🔥 CONTROL TOTAL */
+  width: 160px;
   height: 160px;
   object-fit: cover;
 }
 
 .track p {
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 8px;
 }
 
 /* ARROWS */
-.arrow-left,
-.arrow-right {
+.arrow {
   position: absolute;
   top: 40%;
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   background: none;
   cursor: pointer;
 }
 
-.arrow-left { left: -10px; }
-.arrow-right { right: -10px; }
+.arrow.left { left: -10px; }
+.arrow.right { right: -10px; }
 
 /* VIDEOS */
 .videos {
-  padding: 80px 20px;
+  padding: 80px 0;
   text-align: center;
 }
 
 .video {
-  max-width: 350px;
+  max-width: 400px;
   margin: auto;
   position: relative;
 }
 
 .video img {
-  width: 100%;   /* 🔥 ESTO ARREGLA LA IMAGEN GIGANTE */
+  width: 100%;
 }
 
 .play {

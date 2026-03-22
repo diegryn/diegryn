@@ -14,18 +14,14 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   background: black;
-}
-
-/* VARIABLES (IMPORTANTE) */
-:root {
-  --accent-red: #e63946;
+  color: white;
 }
 
 /* CONTAINER */
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 /* HEADER */
@@ -34,83 +30,69 @@ body {
   width: 100%;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(6px);
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
+  padding: 26px 40px;
 }
 
-/* NAV LEFT */
+/* LEFT */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 35px;
 }
 
 .logo {
-  height: 38px;
+  height: 42px;
 }
 
-/* MENU LINKS */
+/* MENU */
+nav {
+  display: flex;
+  gap: 24px;
+}
+
 nav a {
-  position: relative;
   color: white;
   font-size: 14px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
-  opacity: 0.7;
-  transition: all 0.25s ease;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
 }
 
 nav a:hover {
   opacity: 1;
 }
 
-/* underline elegante */
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 1px;
-  background: white;
-  transition: width 0.25s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* NAV RIGHT (SOCIALS) */
+/* RIGHT (SOCIALS) */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
-/* ICONOS REDES */
 .nav-right img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: all 0.25s ease;
-  filter: brightness(0) invert(1);
 }
 
+/* HOVER ROJO SUAVE */
 .nav-right img:hover {
   opacity: 1;
-  transform: scale(1.1);
-  filter: brightness(0) saturate(100%) invert(32%) sepia(92%) saturate(3000%) hue-rotate(345deg) brightness(95%) contrast(105%);
+  transform: scale(1.05);
+  filter: sepia(1) saturate(6) hue-rotate(-15deg);
 }
 
-/* FIX AMAZON ALIGN */
+/* AMAZON FIX */
 .nav-right img.amazon {
   transform: translateY(1px);
 }
@@ -124,56 +106,49 @@ nav a:hover::after {
   align-items: center;
 }
 
-/* IMAGEN */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url("vroomvroom3.jpg") center 35% / cover no-repeat;
-  filter: brightness(0.85) contrast(1.05);
+  filter: brightness(0.9);
   z-index: 0;
 }
 
-/* OVERLAY */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.2),
     rgba(0,0,0,0.1),
     rgba(0,0,0,0.4)
   );
   z-index: 1;
 }
 
-/* CONTENIDO */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  color: white;
 }
 
-/* TITULO */
 .hero h1 {
-  font-size: 56px;
+  font-size: 60px;
   letter-spacing: 5px;
   font-weight: 500;
 }
 
-/* SUB */
 .hero p {
-  margin: 10px 0;
+  margin: 12px 0;
   opacity: 0.85;
 }
 
-/* BOTON */
 .cta {
   display: inline-block;
   margin-top: 18px;
-  padding: 12px 32px;
+  padding: 12px 34px;
   border: 1px solid white;
   color: white;
   text-decoration: none;
@@ -187,56 +162,67 @@ nav a:hover::after {
 
 /* MUSIC */
 .music {
-  background: #f5f5f5;
-  padding: 120px 0 80px;
+  background: #f3f3f3;
+  color: black;
+  padding: 140px 0 100px;
 }
 
 .music h2 {
-  margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
-/* CARRUSEL */
+/* CAROUSEL */
 .carousel {
   position: relative;
 }
 
+/* TRACKS */
 .tracks {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 20px;
 }
 
+/* CADA TRACK (3 visibles) */
 .track {
-  min-width: 150px;
+  min-width: calc((100% - 80px) / 3);
   text-align: center;
 }
 
+/* COVER GRANDE */
 .track img {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 10px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* HOVER */
 .track img:hover {
-  transform: scale(1.08);
+  transform: scale(1.04);
   opacity: 0.9;
 }
 
+/* TITULO */
 .track p {
-  margin-top: 8px;
-  font-size: 12px;
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 /* ARROWS */
 .arrow {
   position: absolute;
   top: 40%;
-  font-size: 22px;
+  font-size: 28px;
   border: none;
   background: none;
   cursor: pointer;
+  color: black;
 }
 
 .arrow.left { left: -10px; }
@@ -244,12 +230,12 @@ nav a:hover::after {
 
 /* VIDEOS */
 .videos {
-  padding: 100px 0;
+  padding: 120px 0;
   text-align: center;
 }
 
 .video {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   position: relative;
 }
@@ -267,7 +253,7 @@ nav a:hover::after {
 
 /* FOOTER */
 footer {
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   font-size: 12px;
 }

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Die Gryn — Vroom Vroom</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="vroom.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
@@ -17,10 +16,10 @@
 <body>
 
 <!-- HEADER -->
-<header class="header">
+<header class="main-header">
   <img src="die_gryn_logo.png" class="logo">
 
-  <nav>
+  <nav class="nav">
     <a href="#music">MUSIC</a>
     <a href="#">SHOP</a>
     <a href="#">SIGN UP</a>
@@ -30,141 +29,95 @@
 
 <!-- HERO -->
 <section class="hero">
-
   <div class="overlay"></div>
 
   <div class="hero-content">
     <h1>VROOM VROOM</h1>
     <p>OUT MARCH 27</p>
 
-    <a href="https://ffm.to/vroom-vroom" target="_blank" class="btn">
-      LISTEN NOW
-    </a>
+    <a href="https://ffm.to/vroom-vroom" target="_blank" class="btn">LISTEN NOW</a>
 
     <div class="icons">
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-tiktok"></i>
-      <i class="fa-brands fa-youtube"></i>
-      <i class="fa-brands fa-spotify"></i>
-      <i class="fa-brands fa-apple"></i>
+      <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/channel/UCE1_baikqR-EqUrZMrhCljQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+      <a href="https://music.apple.com/dk/artist/die-gryn/1852066460" target="_blank"><i class="fa-brands fa-apple"></i></a>
     </div>
   </div>
-
 </section>
 
-<!-- TEXT -->
-<section class="identity fade">
-  <p>
-    I make pop music for people to dance to and reflect on.
-    <span>Creating awareness, community and a space where you can feel seen.</span>
-  </p>
+<!-- IDENTITY -->
+<section class="identity">
+  <p>I make pop music for people to dance to and reflect on.</p>
+  <span>Creating awareness, community and a space where you can feel seen.</span>
 </section>
 
 <!-- VROOM -->
-<section class="vroom fade">
-
+<section class="vroom">
   <img src="vroomvroom1.jpg">
 
   <div>
     <h2>VROOM VROOM</h2>
     <p>A high-energy pop release that plays with speed, masculinity and performance.</p>
-
-    <a href="https://ffm.to/vroom-vroom" class="btn-dark" target="_blank">
-      STREAM
-    </a>
+    <a href="https://ffm.to/vroom-vroom" target="_blank" class="btn-dark">STREAM</a>
   </div>
-
 </section>
 
 <!-- MUSIC -->
-<section class="music fade" id="music">
+<section class="music" id="music">
+  <h2>PREVIOUS RELEASES</h2>
 
-<h2>PREVIOUS RELEASES</h2>
+  <div class="carousel-wrapper">
+    <button class="arrow left" onclick="move(-1)">‹</button>
 
-<div class="carousel-container">
+    <div class="carousel" id="carousel">
 
-<button id="prev">‹</button>
+      <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="card">
+        <img src="Fake Love Art Cover.jpg">
+      </a>
 
-<div class="carousel">
-  <a href="https://melodymover.lnk.to/fakelove" class="card"><img src="Fake Love Art Cover.jpg"></a>
-  <a href="https://ffm.to/fake-love-mixes" class="card"><img src="mixes.jpg"></a>
-  <a href="https://ffm.to/fake-love-acoustic" class="card"><img src="fake.love_acoustic_cover.JPG"></a>
-  <a href="https://ffm.to/die-gryn-fake-love-extended-version" class="card"><img src="fake.love_extendedc_cover.JPG"></a>
-  <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix" class="card"><img src="fake.love_schweigen_cover.JPG"></a>
-</div>
+      <a href="https://ffm.to/fake-love-mixes" target="_blank" class="card">
+        <img src="mixes.jpg">
+      </a>
 
-<button id="next">›</button>
+      <a href="https://ffm.to/fake-love-acoustic" target="_blank" class="card">
+        <img src="fake.love_acoustic_cover.JPG">
+      </a>
 
-</div>
+      <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank" class="card">
+        <img src="fake.love_extendedc_cover.JPG">
+      </a>
 
+    </div>
+
+    <button class="arrow right" onclick="move(1)">›</button>
+  </div>
 </section>
 
 <!-- VIDEO -->
-<section class="videos fade">
+<section class="videos">
+  <h2>VIDEOS</h2>
 
-<h2>VIDEOS</h2>
-
-<a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video">
-  <img src="IMG_6433.jpg">
-  <div class="play">▶</div>
-</a>
-
+  <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video">
+    <img src="IMG_6433.jpg">
+    <div class="play">▶</div>
+  </a>
 </section>
 
-<footer>©2026 Die Gryn</footer>
+<!-- FOOTER -->
+<footer>
+  ©2026 Die Gryn
+</footer>
 
-<!-- JS -->
 <script>
-const carousel = document.querySelector(".carousel");
-const cards = document.querySelectorAll(".card");
-let index = 0;
+let scrollX = 0;
 
-function update() {
-  cards.forEach((card, i) => {
-    card.style.transform = "scale(0.75)";
-    card.style.opacity = "0.4";
-  });
-
-  cards[index].style.transform = "scale(1)";
-  cards[index].style.opacity = "1";
-
-  if(cards[index-1]) {
-    cards[index-1].style.transform = "scale(0.85)";
-    cards[index-1].style.opacity = "0.7";
-  }
-
-  if(cards[index+1]) {
-    cards[index+1].style.transform = "scale(0.85)";
-    cards[index+1].style.opacity = "0.7";
-  }
-
-  const offset = index * 220;
-  carousel.style.transform = `translateX(-${offset}px)`;
+function move(direction){
+  const carousel = document.getElementById("carousel");
+  scrollX += direction * 220;
+  carousel.style.transform = `translateX(-${scrollX}px)`;
 }
-
-document.getElementById("next").onclick = () => {
-  index = (index + 1) % cards.length;
-  update();
-};
-
-document.getElementById("prev").onclick = () => {
-  index = (index - 1 + cards.length) % cards.length;
-  update();
-};
-
-update();
-
-/* fade */
-const faders = document.querySelectorAll(".fade");
-
-window.addEventListener("scroll", () => {
-  faders.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      el.classList.add("show");
-    }
-  });
-});
 </script>
 
 </body>

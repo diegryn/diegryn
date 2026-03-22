@@ -1,140 +1,154 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Die Gryn – Vroom Vroom</title>
-  <meta name="description" content="Vroom Vroom by Die Gryn. A high-energy pop release.">
+<title>Die Gryn – Vroom Vroom</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="vroom.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vroom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="main-header">
-  <a href="/">
-    <img src="die_gryn_logo.png" class="logo-img">
-  </a>
+  <img src="die_gryn_logo.png" class="logo-img">
 
   <nav class="top-nav">
     <a href="#music">MUSIC</a>
-    <a href="https://diegryn.bandcamp.com" target="_blank">SHOP</a>
-    <a href="https://diegryn.mailerpage.io/" target="_blank">SIGN UP</a>
-    <a href="/press">PRESS</a>
+    <a href="#">SHOP</a>
+    <a href="#">SIGN UP</a>
+    <a href="#">PRESS</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<section class="hero-section-vroom">
-  <div class="hero-overlay"></div>
+<section class="hero fade-in">
+  <div class="overlay"></div>
 
-  <div class="hero-text">
+  <div class="hero-content">
     <h1>VROOM VROOM</h1>
     <p>OUT MARCH 27</p>
+    <a href="#" class="btn-main">LISTEN NOW</a>
 
-    <a href="#" class="listen-button-hero">LISTEN NOW</a>
-
-    <div class="social-buttons-hero">
-      <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/channel/UCE1_baikqR-EqUrZMrhCljQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+    <div class="socials">
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-tiktok"></i>
+      <i class="fa-brands fa-youtube"></i>
+      <i class="fa-brands fa-spotify"></i>
     </div>
   </div>
 </section>
 
-<!-- IDENTITY TEXT -->
-<section class="identity-section">
+<!-- IDENTITY -->
+<section class="identity fade-in">
   <p>
-    I make pop music for people to dance to and reflect on.<br>
+    I make pop music for people to dance to and reflect on.
     <span>Creating awareness, community and a space where you can feel seen.</span>
   </p>
 </section>
 
-<!-- VROOM VROOM MAIN -->
-<section class="vroom-section">
-  <div class="vroom-content">
-
-    <div class="vroom-cover">
-      <img src="vroomvroom1.jpg" alt="Vroom Vroom Cover">
-    </div>
-
-    <div class="vroom-text">
-      <h2>VROOM VROOM</h2>
-      <p>
-        A high-energy pop release that plays with speed, masculinity and performance.
-        A satire that invites you in — to feel, question and move.
-      </p>
-
-      <a href="#" class="main-btn">STREAM</a>
-    </div>
-
+<!-- VROOM -->
+<section class="vroom fade-in">
+  <img src="vroomvroom1.jpg">
+  <div>
+    <h2>VROOM VROOM</h2>
+    <p>
+      A high-energy pop release that plays with speed, masculinity and performance.
+    </p>
+    <a href="#" class="btn-dark">STREAM</a>
   </div>
 </section>
 
-<!-- MUSIC CAROUSEL -->
-<section class="music-section" id="music">
+<!-- CAROUSEL -->
+<section class="music fade-in" id="music">
   <h2>PREVIOUS RELEASES</h2>
 
-  <div class="carousel-container">
+  <div class="carousel-wrapper">
 
-    <button class="carousel-btn left">&#10094;</button>
+    <button class="arrow left">&#10094;</button>
 
     <div class="carousel">
 
-      <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="carousel-item active">
+      <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="card">
         <img src="Fake Love Art Cover.jpg">
         <p>Fake Love</p>
       </a>
 
-      <a href="https://ffm.to/fake-love-mixes" target="_blank" class="carousel-item">
+      <a href="https://ffm.to/fake-love-mixes" target="_blank" class="card">
         <img src="mixes.jpg">
-        <p>Fran Garro Mix</p>
+        <p>Mix</p>
       </a>
 
-      <a href="https://ffm.to/fake-love-acoustic" target="_blank" class="carousel-item">
+      <a href="https://ffm.to/fake-love-acoustic" target="_blank" class="card">
         <img src="fake.love_acoustic_cover.JPG">
         <p>Acoustic</p>
       </a>
 
-      <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank" class="carousel-item">
+      <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank" class="card">
         <img src="fake.love_extendedc_cover.JPG">
         <p>Extended</p>
       </a>
 
     </div>
 
-    <button class="carousel-btn right">&#10095;</button>
+    <button class="arrow right">&#10095;</button>
 
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <p>©2026 Die Gryn</p>
-</footer>
+<!-- VIDEO -->
+<section class="videos fade-in">
+  <h2>VIDEOS</h2>
 
-<!-- JS -->
+  <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video">
+    <img src="IMG_6433.jpg">
+    <div class="play">▶</div>
+  </a>
+</section>
+
+<footer>©2026 Die Gryn</footer>
+
 <script>
-const track = document.querySelector(".carousel-track");
-const leftBtn = document.querySelector(".carousel-btn.left");
-const rightBtn = document.querySelector(".carousel-btn.right");
+const cards = document.querySelectorAll(".card");
+let current = 1;
 
-leftBtn.addEventListener("click", () => {
-  track.scrollBy({ left: -300, behavior: "smooth" });
+function updateCarousel() {
+  cards.forEach((card, i) => {
+    card.classList.remove("active", "left", "right");
+
+    if (i === current) card.classList.add("active");
+    else if (i === current - 1) card.classList.add("left");
+    else if (i === current + 1) card.classList.add("right");
+  });
+}
+
+document.querySelector(".right").onclick = () => {
+  current = (current + 1) % cards.length;
+  updateCarousel();
+};
+
+document.querySelector(".left").onclick = () => {
+  current = (current - 1 + cards.length) % cards.length;
+  updateCarousel();
+};
+
+updateCarousel();
+
+/* FADE IN */
+const faders = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
 });
 
-rightBtn.addEventListener("click", () => {
-  track.scrollBy({ left: 300, behavior: "smooth" });
-});
+faders.forEach(el => observer.observe(el));
 </script>
 
 </body>

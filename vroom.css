@@ -1,0 +1,275 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background: #f6f4ef;
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  z-index: 100;
+}
+
+.logo-img {
+  height: 110px;
+}
+
+.top-nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.top-nav a {
+  color: white;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.top-nav a:hover {
+  color: #CF5B6D;
+}
+
+/* ================= HERO ================= */
+.hero-section-vroom {
+  height: 100vh;
+  width: 100%;
+  background-image: url("vroomvroom3.jpg");
+  background-size: cover;
+  background-position: center 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* overlay para que el texto se vea mejor */
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+}
+
+/* texto */
+.hero-text {
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-family: "Michroma", sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 4px;
+}
+
+.hero-text p {
+  margin: 15px 0;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* botón */
+.listen-button-hero {
+  display: inline-block;
+  background: white;
+  color: black;
+  padding: 12px 35px;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.listen-button-hero:hover {
+  background: #CF5B6D;
+  color: white;
+}
+
+/* social */
+.social-buttons-hero {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-buttons-hero i {
+  font-size: 24px;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.social-buttons-hero i:hover {
+  transform: translateY(-3px);
+}
+
+/* ================= IDENTITY ================= */
+.identity-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.identity-section p {
+  font-size: 1.4rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.identity-section span {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* ================= VROOM SECTION ================= */
+.vroom-section {
+  padding: 80px 20px;
+}
+
+.vroom-content {
+  display: flex;
+  gap: 60px;
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+}
+
+.vroom-cover img {
+  width: 320px;
+  border-radius: 12px;
+}
+
+.vroom-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.vroom-text p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.main-btn {
+  background: black;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* ================= CAROUSEL ================= */
+.music-section {
+  padding: 80px 20px;
+}
+
+.music-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.music-carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  min-width: 220px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+
+.carousel-item p {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+
+/* fake love destacado */
+.main-release {
+  transform: scale(1.1);
+}
+
+/* flechas */
+.carousel-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.carousel-btn.left { left: 0; }
+.carousel-btn.right { right: 0; }
+
+/* ================= FOOTER ================= */
+.main-footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.8rem;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .vroom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .vroom-cover img {
+    width: 80%;
+  }
+
+}

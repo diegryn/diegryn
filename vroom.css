@@ -40,6 +40,18 @@ body {
   width: 100%;
 }
 
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+/* cuando se oculta */
+.header.hide {
+  transform: translateY(-100%);
+}
 
 /* LEFT */
 .nav-left {
@@ -80,20 +92,22 @@ nav a:hover {
 }
 
 .nav-right img {
-  width: 22px;
-  height: 22px;
+  width: 24px; /* apenas más grande */
+  height: 24px;
   object-fit: contain;
   opacity: 0.9;
   transition: all 0.25s ease;
+
+  filter: brightness(0) invert(1); /* 🔥 los vuelve blancos */
 }
 
-/* HOVER ROJO SUAVE */
+/* HOVER ROJO OSCURO (como tu short) */
 .nav-right img:hover {
   opacity: 1;
   transform: scale(1.05);
-  filter: sepia(1) saturate(6) hue-rotate(-15deg);
-}
 
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-10deg) brightness(0.8);
+}
 /* AMAZON FIX */
 .nav-right img.amazon {
   transform: translateY(1px);

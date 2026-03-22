@@ -71,8 +71,9 @@ nav a {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("vroomvroom3.jpg") center 30% / cover no-repeat;
-  filter: brightness(0.65) contrast(1.1);
+  background: url("vroomvroom3.jpg") center 35% / cover no-repeat;
+  filter: brightness(0.85) contrast(1.05);
+  z-index: 0;
 }
 
 .hero::after {
@@ -81,10 +82,46 @@ nav a {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.5),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.7)
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.35)
   );
+    z-index: 1;
+}
+  /* TEXTO */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+/* TÍTULO */
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+/* SUB */
+.hero p {
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+/* BOTÓN */
+.cta {
+  margin-top: 15px;
+  padding: 10px 30px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  background: white;
+  color: black;
 }
 
 .hero-content {

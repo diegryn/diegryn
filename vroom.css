@@ -61,7 +61,7 @@ body {
 }
 
 .logo {
-  height: 42px;
+  height: 60px;
 }
 
 /* MENU */
@@ -106,7 +106,7 @@ nav a:hover {
   opacity: 1;
   transform: scale(1.05);
 
-  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-10deg) brightness(0.8);
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-8deg) brightness(0.75);
 }
 /* AMAZON FIX */
 .nav-right img.amazon {

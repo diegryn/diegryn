@@ -277,6 +277,11 @@ carousel.addEventListener("touchend", (e) => {
   if (diff < -50) next();
 });
 </script>
-  
+  <script>
+function toggleMenu() {
+  const menu = document.querySelector('.mobile-nav');
+  menu.classList.toggle('open');
+}
+</script>
 </body>
 </html>

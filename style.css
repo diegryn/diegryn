@@ -404,113 +404,99 @@ footer a:hover::after {
   transform: translateY(20px);
 }
 
+/* =========================
+   MOBILE (FINAL CLEAN)
+========================= */
 
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* OCULTO EN DESKTOP */
+/* oculto hamburger en desktop */
 .menu-toggle {
   display: none;
 }
-/* =========================
-   MOBILE (like Sombr)
-========================= */
+
 @media (max-width: 768px) {
 
-  /* GENERAL */
-  body {
-    text-align: center;
-  }
-
-  h1, h2 {
-    font-size: 32px;
-    letter-spacing: 3px;
-  }
-
-  p {
-    font-size: 14px;
-  }
-
   /* HEADER */
-  header {
-    padding: 15px 20px;
-  }
-
-  .logo-text {
-    font-size: 20px;
-  }
-
-  /* 🔥 SOLO ocultamos el menú desktop (NO todos los nav) */
   .nav-left nav {
-    display: none;
+    display: none; /* oculta menú desktop */
   }
 
-  /* ocultar redes */
   .nav-right {
-    display: none;
+    display: none; /* oculta redes desktop */
   }
 
-  /* mostrar botón hamburguesa */
   .menu-toggle {
     display: block;
     font-size: 26px;
     cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* 🔥 MOBILE MENU (ESTO ES LO IMPORTANTE) */
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    background: #f5f5f5;
+    color: #8B0000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    transform: translateX(100%);
+    transition: 0.3s ease;
+
+    z-index: 1000;
+  }
+
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav a {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .mobile-socials {
+    display: flex;
+    gap: 25px;
+    margin-top: 40px;
+    font-size: 22px;
   }
 
   /* HERO */
-  .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-  }
-
   .hero-content {
+    margin-top: 80px;
     padding: 20px;
   }
 
   .hero h1 {
     font-size: 42px;
-    line-height: 1.1;
+    letter-spacing: 3px;
   }
 
-  .hero p {
-    margin: 15px 0;
+  /* MUSIC → 1 ITEM */
+  .carousel {
+    overflow: hidden;
   }
 
-  .btn {
-    padding: 12px 20px;
-    font-size: 14px;
+  .tracks {
+    gap: 14px;
   }
 
-  /* MUSIC */
-  .music-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
+  .track {
+    min-width: 100%;
   }
 
-  .music-item img {
-    width: 100%;
-  }
-
-  /* VIDEOS */
+  /* VIDEO */
   .video {
-    padding: 0 20px;
-  }
-
-  .video img {
-    width: 100%;
+    max-width: 90%;
   }
 
   .play-btn {
-    width: 50px;
+    width: 32px;
   }
 
   /* SPACING */
@@ -522,27 +508,4 @@ footer a:hover::after {
     font-size: 12px;
     padding: 20px;
   }
-}
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: black;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  padding: 30px 20px;
-  text-align: center;
-  z-index: 1000;
-}
-
-.mobile-menu a {
-  padding: 15px 0;
-  font-size: 20px;
-  text-decoration: none;
-  color: black;
-}
-
-.mobile-menu.active {
-  display: flex;
 }

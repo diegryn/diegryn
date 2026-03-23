@@ -403,3 +403,126 @@ footer a:hover::after {
 .legal-content {
   transform: translateY(20px);
 }
+
+/* =========================
+   MOBILE (like Sombr)
+========================= */
+@media (max-width: 768px) {
+
+  /* GENERAL */
+  body {
+    text-align: center;
+  }
+
+  h1, h2 {
+    font-size: 32px;
+    letter-spacing: 3px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  /* HEADER */
+  header {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  nav {
+    display: none; /* hide desktop menu */
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    margin: 15px 0;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* MUSIC GRID → STACK */
+  .music-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .music-item img {
+    width: 100%;
+  }
+
+  .music-item h3 {
+    margin-top: 10px;
+  }
+
+  /* VIDEOS */
+  .video {
+    padding: 0 20px;
+  }
+
+  .video img {
+    width: 100%;
+  }
+
+  .play-btn {
+    width: 50px;
+  }
+
+  /* SECTION SPACING */
+  section {
+    padding: 60px 0;
+  }
+
+  /* FOOTER */
+  footer {
+    font-size: 12px;
+    padding: 20px;
+  }
+}
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.mobile-menu a {
+  padding: 15px 0;
+  font-size: 20px;
+}
+.mobile-menu.active {
+  display: flex;
+}

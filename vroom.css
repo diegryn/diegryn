@@ -47,8 +47,11 @@ a:active {
 
 /* 🔥 LOGO MÁS GRANDE REAL */
 .logo {
-    height: 65px;
- 
+    height: 180px;
+    width: auto;
+    object-fit: contain;
+    margin-top: -10px;
+}
 
 /* MENU */
 nav {
@@ -168,14 +171,17 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: auto;
 }
 
 /* TRACKS WRAPPER */
 .tracks {
   display: flex;
-  width: 900px;
-  overflow: hidden;
+  gap: 40px;
+  transition: transform 0.4s ease;
 }
 
 /* 3 ITEMS FIJOS */

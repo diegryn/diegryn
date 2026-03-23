@@ -38,7 +38,7 @@
 
     <div class="nav-left">
       <a href="https://diegryn.com">
-        <img src="die_gryn_logo.png" class="logo">
+      <div class="logo-text">DIE GRYN</div>
       </a>
 
       <nav>
@@ -141,18 +141,22 @@
 <!-- VIDEOS -->
 <section id="videos" class="videos">
   <h2>VIDEOS</h2>
-    
-    <div class="video">
-      <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video-link">
-        
+      <div class="video">
         <div class="video-thumb">
           <img src="fake-love-acoustic-video.jpg" />
-          <img class="play-btn" src="play-button.png" />
+      
+          <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank">
+            <img class="play-btn" src="play-button.png" />
+          </a>
         </div>
-    </a>
-        <p>Fake Love (Acoustic Video)</p>
-        <a ref="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">WATCH NOW</a>
-    </div>
+      
+        <p class="video-title">Fake Love (Acoustic Video)</p>
+      
+        <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch"> WATCH NOW
+        </a>
+      </div>
+
+
   
 </section>
 
@@ -243,7 +247,35 @@ function prev() {
 updateSizes();
 updateActive();
 </script>
+<script>
+let isDown = false;
+let startX;
+let scrollLeft;
 
+const carousel = document.querySelector(".carousel");
+
+carousel.addEventListener("mousedown", (e) => {
+  isDown = true;
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = tracks.scrollLeft;
+});
+
+carousel.addEventListener("mouseleave", () => {
+  isDown = false;
+});
+
+carousel.addEventListener("mouseup", () => {
+  isDown = false;
+});
+
+carousel.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  tracks.scrollLeft = scrollLeft - walk;
+});
+</script>
 
 
 </body>

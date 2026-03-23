@@ -23,12 +23,12 @@ a:active {
   color: inherit;
 }
 
-/* HEADER */
+/* HEADER (YA NO FIJO) */
 .header {
-  position: fixed;
+  position: absolute; /* 🔥 cambia de fixed */
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .header-inner {
@@ -38,19 +38,16 @@ a:active {
   padding: 20px 40px;
 }
 
-/* LEFT */
 .nav-left {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-/* LOGO */
 .logo {
   height: 48px;
 }
 
-/* NAV */
 nav {
   display: flex;
   gap: 24px;
@@ -61,26 +58,21 @@ nav a {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: white;
+  opacity: 0.9;
 }
 
-/* RIGHT ICONS */
 .nav-right {
   display: flex;
   gap: 18px;
 }
 
 .nav-right a {
-  color: white; /* 🔥 FIX redes visibles */
+  color: white;
 }
 
 .nav-right i {
   font-size: 20px;
   opacity: 0.9;
-  transition: 0.2s;
-}
-
-.nav-right a:hover i {
-  color: #8B0000;
 }
 
 /* HERO */
@@ -104,10 +96,13 @@ nav a {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
+  z-index: 1;
 }
 
+/* 🔥 IMPORTANTE: esto arregla el botón */
 .hero-content {
   position: relative;
+  z-index: 2;
   text-align: center;
   transform: translateY(40px);
 }
@@ -115,16 +110,21 @@ nav a {
 .hero h1 {
   font-size: 60px;
   letter-spacing: 5px;
+  color: rgba(255,255,255,0.85); /* 🔥 menos blanco fuerte */
 }
 
 .hero p {
   margin: 14px 0 28px;
 }
 
+/* BOTÓN FUNCIONANDO */
 .cta {
   display: inline-block;
   padding: 12px 34px;
   border: 1px solid white;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
   transition: 0.3s;
 }
 
@@ -133,32 +133,31 @@ nav a {
   color: black;
 }
 
-/* SECTIONS */
+/* SECCIONES */
 .music,
 .videos {
   background: #f3f3f3;
   color: black;
-  padding: 100px 0;
+  padding: 80px 0; /* 🔥 menos espacio */
   text-align: center;
 }
 
-/* TITLES */
+/* TITULOS */
 .music h2,
 .videos h2 {
   color: #8B0000;
-  margin-bottom: 50px;
-  letter-spacing: 2px;
+  margin-bottom: 40px;
 }
 
-/* CAROUSEL WRAPPER (CLAVE) */
+/* CAROUSEL */
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  overflow: hidden; /* 🔥 ESTO ARREGLA TODO */
+  overflow: hidden;
 }
 
 /* TRACKS */
@@ -168,28 +167,44 @@ nav a {
   transition: transform 0.4s ease;
 }
 
-/* EXACTAMENTE 3 ITEMS */
+/* MÁS GRANDES */
 .track {
   flex: 0 0 calc((100% - 60px) / 3);
-  text-align: center;
+  transition: 0.4s;
 }
 
-/* IMAGES IGUALES */
+/* IMAGES */
 .track img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-/* TITLE */
+/* 🔥 EFECTO BLUR LADOS */
+.track {
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+.track:nth-child(2) {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.05);
+}
+
+/* TEXT */
 .track p {
   margin-top: 14px;
   font-weight: bold;
   color: #8B0000;
 }
 
-/* LISTEN NOW */
 .listen {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+}
+.watch {
   display: block;
   margin-top: 6px;
   font-size: 12px;
@@ -214,9 +229,8 @@ nav a {
   width: 100%;
 }
 
-/* 🔥 MÁS ESPACIO DEBAJO */
 .video p {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 /* FOOTER */

@@ -167,16 +167,22 @@
   <script>
 const tracks = document.querySelector(".tracks");
 const carousel = document.querySelector(".carousel");
-const track = document.querySelector(".track");
 
 let index = 0;
 const visible = 3;
 
-function updateCarousel() {
-  const width = track.offsetWidth + 18;
-  tracks.style.transform = `translateX(-${index * width}px)`;
+/* GET WIDTH (always accurate) */
+function getTrackWidth() {
+  const track = document.querySelector(".track");
+  return track.offsetWidth + 18; // must match CSS gap
 }
 
+/* UPDATE POSITION */
+function updateCarousel() {
+  tracks.style.transform = `translateX(-${index * getTrackWidth()}px)`;
+}
+
+/* ARROWS */
 function next() {
   if (index < tracks.children.length - visible) {
     index++;
@@ -191,39 +197,46 @@ function prev() {
   }
 }
 
-/* DRAG */
-let isDown = false;
-let startX;
-let startIndex;
+/* 🔥 DRAG (SMOOTHER + MORE CONTROLLED) */
+let isDragging = false;
+let startX = 0;
 
 carousel.addEventListener("mousedown", (e) => {
-  isDown = true;
+  isDragging = true;
   startX = e.pageX;
-  startIndex = index;
 });
 
-carousel.addEventListener("mouseup", () => isDown = false);
-carousel.addEventListener("mouseleave", () => isDown = false);
+carousel.addEventListener("mouseup", (e) => {
+  if (!isDragging) return;
 
-carousel.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
+  const diff = e.pageX - startX;
 
-  const move = e.pageX - startX;
+  if (diff > 40) prev();
+  if (diff < -40) next();
 
-  if (move > 50 && index > 0) {
-    prev();
-    isDown = false;
-  }
+  isDragging = false;
+});
 
-  if (move < -50 && index < tracks.children.length - visible) {
-    next();
-    isDown = false;
-  }
+carousel.addEventListener("mouseleave", () => {
+  isDragging = false;
+});
+
+/* 🔥 TOUCH SUPPORT (important for mobile) */
+carousel.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff > 40) prev();
+  if (diff < -40) next();
 });
 
 /* INIT */
-window.addEventListener("resize", updateCarousel);
 window.addEventListener("load", updateCarousel);
+window.addEventListener("resize", updateCarousel);
 </script>
   
 </body>

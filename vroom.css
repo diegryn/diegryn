@@ -71,6 +71,13 @@ nav a:hover {
 
 .nav-right i {
   font-size: 16px;
+  transition: 0.25s ease;
+}
+
+/* 🔥 FIX: RED HOVER BACK */
+.nav-right a:hover i {
+  color: #8B0000;
+  transform: scale(1.1);
 }
 
 /* ================= HERO ================= */
@@ -82,11 +89,13 @@ nav a:hover {
   align-items: center;
 }
 
+/* 🔥 FIX: HEAD NOT CUT */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("vroomvroom3.jpg") center / cover no-repeat;
+  background: url("vroomvroom3.jpg") center 20% / cover no-repeat;
+  z-index: 0;
 }
 
 .hero::after {
@@ -94,10 +103,13 @@ nav a:hover {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.3);
+  z-index: 1;
 }
 
+/* 🔥 FIX: BUTTON NOT CLICKABLE */
 .hero-content {
   position: relative;
+  z-index: 2;
   text-align: center;
 }
 
@@ -117,6 +129,8 @@ nav a:hover {
   border: 1px solid white;
   margin-top: 22px;
   font-size: 13px;
+  position: relative;
+  z-index: 3; /* 🔥 clickable fix */
 }
 
 .cta:hover {
@@ -150,7 +164,7 @@ h2 {
 /* ================= CAROUSEL ================= */
 .carousel-wrapper {
   position: relative;
-  max-width: 780px; /* 🔥 tighter like Sombr */
+  max-width: 820px; /* 🔥 balanced */
   margin: 0 auto;
 }
 
@@ -160,12 +174,12 @@ h2 {
 
 .tracks {
   display: flex;
-  gap: 14px; /* 🔥 tighter */
+  gap: 18px;
   transition: transform 0.5s ease;
 }
 
 .track {
-  flex: 0 0 calc((100% - 28px) / 3);
+  flex: 0 0 calc((100% - 36px) / 3);
 }
 
 .track img {
@@ -186,30 +200,35 @@ h2 {
   opacity: 0.7;
 }
 
-/* ARROWS */
+/* ARROWS (outside like Sombr) */
 .arrow {
   position: absolute;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 26px;
+  font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
   color: black;
   opacity: 0.6;
+  z-index: 10;
+}
+
+.arrow:hover {
+  opacity: 1;
 }
 
 .arrow.left {
-  left: -35px;
+  left: -40px;
 }
 
 .arrow.right {
-  right: -35px;
+  right: -40px;
 }
 
 /* ================= VIDEO ================= */
 .video {
-  max-width: 520px; /* 🔥 smaller like Sombr */
+  max-width: 480px; /* 🔥 closer to Sombr */
   margin: 0 auto;
 }
 
@@ -225,14 +244,19 @@ h2 {
   object-fit: cover;
 }
 
-/* PLAY BUTTON */
+/* 🔥 PLAY BUTTON MATCH SIZE */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 55px; /* 🔥 smaller */
+  width: 50px;
   transform: translate(-50%, -50%);
   opacity: 0.9;
+  transition: 0.25s ease;
+}
+
+.video-thumb:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 /* TEXT */
@@ -245,6 +269,10 @@ h2 {
 .watch {
   font-size: 10px;
   opacity: 0.7;
+}
+
+.watch:hover {
+  opacity: 1;
 }
 
 /* ================= FOOTER ================= */

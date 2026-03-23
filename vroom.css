@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  background: black;
+  background: #f5f5f5;
   color: white;
 }
 
@@ -153,7 +153,7 @@ nav a:hover {
 
 .videos {
   padding: 40px 0 30px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
   margin-bottom: 10px;
 }
 
@@ -288,6 +288,7 @@ footer {
   text-align: center;
   font-size: 11px;
   padding-top: 12px;
+  margin-top: 0px;
 }
 
 /* SEO */

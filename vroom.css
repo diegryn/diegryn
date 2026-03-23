@@ -170,61 +170,42 @@ h2 {
   letter-spacing: 2px;
 }
 
-/* ================= CAROUSEL ================= */
-.carousel {
-  max-width: 900px;
-  margin: auto;
-  overflow: hidden;
+/* ================= CAROUSEL WRAPPER ================= */
+.carousel-wrapper {
   position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* CAROUSEL */
+.carousel {
+  overflow: hidden;
 }
 
 /* TRACKS */
 .tracks {
   display: flex;
   gap: 18px;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 /* ITEMS */
 .track {
   min-width: calc(100% / 3);
-  text-align: center;
 }
 
-.track img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-}
-
-.track p {
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.listen {
-  display: block;
-  margin-top: 5px;
-  font-size: 11px;
-  opacity: 0.8;
-}
-
-.listen:hover {
-  opacity: 1;
-}
-
-/* 🔥 ARROWS FIXED */
+/* 🔥 ARROWS OUTSIDE LIKE SOMBR */
 .arrow {
   position: absolute;
-  top: 40%;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 28px;
+  font-size: 34px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 20;
   color: black;
-  opacity: 0.7;
+  opacity: 0.6;
+  z-index: 10;
 }
 
 .arrow:hover {
@@ -232,11 +213,11 @@ h2 {
 }
 
 .arrow.left {
-  left: 10px;
+  left: -50px; /* 🔥 OUTSIDE */
 }
 
 .arrow.right {
-  right: 10px;
+  right: -50px; /* 🔥 OUTSIDE */
 }
 
 /* ================= VIDEO ================= */

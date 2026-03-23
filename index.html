@@ -36,7 +36,6 @@
 
 <header class="header">
   <div class="header-inner">
-
     <div class="nav-left">
       <a href="https://diegryn.com">
       <div class="logo-text">DIE GRYN</div>
@@ -50,7 +49,7 @@
       </nav>
     </div>
     <!-- BOTÓN MOBILE -->
-    <div class="menu-toggle">☰</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <!-- REDES -->    
 <div class="nav-right">
   <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -62,15 +61,21 @@
   <a href="https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn" target="_blank"><i class="fa-brands fa-amazon"></i></a>
   <a href="https://soundcloud.com/diegryn" target="_blank"><i class="fa-brands fa-soundcloud"></i></a> </div>
   </div>
+  </header>
    <!-- MENÚ MOBILE -->
-  <nav class="mobile-menu">
+<nav class="mobile-nav">
     <a href="#music">MUSIC</a>
     <a href="#videos">VIDEOS</a>
     <a href="https://diegryn.bandcamp.com/" target="_blank">SHOP</a>
     <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
-  </nav>
-</header>
 
+  <div class="mobile-socials">
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#"><i class="fa-brands fa-spotify"></i></a>
+  </div>
+</nav>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
@@ -270,16 +275,13 @@ window.addEventListener("resize", () => {
 });
 </script>
     <!-- TU CONTENIDO -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector('.menu-toggle').onclick = () => {
-    document.querySelector('.mobile-menu').classList.toggle('active');
-  };
-});
+function toggleMenu() {
+  document.querySelector('.mobile-nav').classList.toggle('open');
+}
 </script>
   
-
-</body>
-</html>
 </body>
 </html>

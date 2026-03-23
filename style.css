@@ -405,10 +405,6 @@ footer a:hover::after {
 }
 
 
-/* HEADER BASE */
-.header {
-  position: relative;
-}
 
 .header-inner {
   display: flex;
@@ -471,6 +467,7 @@ footer a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
   }
 
   .hero-content {
@@ -529,7 +526,7 @@ footer a:hover::after {
 .mobile-menu {
   display: none;
   flex-direction: column;
-  background: white;
+  background: black;
   position: absolute;
   top: 70px;
   left: 0;

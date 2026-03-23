@@ -187,110 +187,20 @@
     <a href="https://diegryn.com/press">PRESS</a>
   </p>
 </footer>
-<script>
-const tracks = document.querySelector(".tracks");
+  <script>
+/* ================= MOBILE MENU ================= */
+function toggleMenu() {
+  document.querySelector('.mobile-nav').classList.toggle('open');
+}
+
+/* ================= CAROUSEL ================= */
 const carousel = document.querySelector(".carousel");
-
-let index = 0;
-const visible = 3;
-
-/* ================= CLONE FOR INFINITE LOOP ================= */
-const originalItems = Array.from(tracks.children);
-
-originalItems.forEach(item => {
-  const clone = item.cloneNode(true);
-  tracks.appendChild(clone);
-});
-
-/* ================= WIDTH ================= */
-function getTrackWidth() {
-  const track = document.querySelector(".track");
-  return track.offsetWidth + 18; // MUST match CSS gap
-}
-
-/* ================= UPDATE ================= */
-function updateCarousel(animate = true) {
-  if (!animate) {
-    tracks.style.transition = "none";
-  } else {
-    tracks.style.transition = "transform 0.5s ease";
-  }
-
-  tracks.style.transform = `translateX(-${index * getTrackWidth()}px)`;
-}
-
-/* ================= NEXT ================= */
-function next() {
-  index++;
-  updateCarousel(true);
-
-  if (index >= originalItems.length) {
-    setTimeout(() => {
-      updateCarousel(false);
-      index = 0;
-      tracks.style.transform = `translateX(0px)`;
-    }, 500);
-  }
-}
-
-/* ================= PREV ================= */
-function prev() {
-  if (index <= 0) {
-    index = originalItems.length;
-    updateCarousel(false);
-  }
-
-  setTimeout(() => {
-    index--;
-    updateCarousel(true);
-  }, 20);
-}
-
-/* ================= DRAG ================= */
-let startX = 0;
-
-carousel.addEventListener("mousedown", (e) => {
-  startX = e.pageX;
-});
-
-carousel.addEventListener("mouseup", (e) => {
-  const diff = e.pageX - startX;
-
-  if (diff > 40) prev();
-  if (diff < -40) next();
-});
-
-carousel.addEventListener("mouseleave", () => {});
-
-/* ================= TOUCH ================= */
-carousel.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-carousel.addEventListener("touchend", (e) => {
-  const diff = e.changedTouches[0].clientX - startX;
-
-  if (diff > 40) prev();
-  if (diff < -40) next();
-});
-
-/* ================= INIT ================= */
-window.addEventListener("load", () => {
-  updateCarousel();
-});
-
-window.addEventListener("resize", () => {
-  updateCarousel(false);
-});
-<script>
-const carousel = document.querySelector(".carousel");
-const tracks = document.querySelector(".tracks");
 
 let isDown = false;
 let startX;
 let scrollLeft;
 
-/* TOUCH + DRAG */
+/* DRAG (desktop + mobile) */
 carousel.addEventListener("mousedown", startDrag);
 carousel.addEventListener("touchstart", startDrag);
 
@@ -309,7 +219,7 @@ function startDrag(e) {
 
 function moveDrag(e) {
   if (!isDown) return;
-  e.preventDefault(); /* 🔥 CLAVE */
+  e.preventDefault();
 
   const x = e.pageX || e.touches[0].pageX;
   const walk = (x - startX) * 1.5;
@@ -318,6 +228,21 @@ function moveDrag(e) {
 
 function endDrag() {
   isDown = false;
+}
+
+/* ================= ARROWS ================= */
+function next() {
+  carousel.scrollBy({
+    left: carousel.offsetWidth,
+    behavior: "smooth"
+  });
+}
+
+function prev() {
+  carousel.scrollBy({
+    left: -carousel.offsetWidth,
+    behavior: "smooth"
+  });
 }
 </script>
   

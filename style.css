@@ -177,8 +177,7 @@ h2 {
 
 .tracks {
   display: flex;
-  gap: 18px;
-  transition: transform 0.4s ease;
+  gap: 14px;
 }
 
 .track {
@@ -317,6 +316,10 @@ footer a::after {
 
 footer a:hover::after {
   width: 100%;
+}
+footer {
+  margin-top: 60px;   /* 🔥 THIS is what you were missing */
+  line-height: 1.6;   /* improves readability */
 }
 
 /* SEO */
@@ -562,22 +565,40 @@ footer a:hover::after {
   font-size: 20px;
 }
 
+/* ================= CAROUSEL ================= */
 .carousel {
-  touch-action: pan-y; /* 🔥 bloquea scroll horizontal del browser */
+  overflow-x: auto;              /* 🔥 allow swipe */
+  scroll-snap-type: x mandatory; /* 🔥 snap effect */
+  display: flex;
+  gap: 14px;
+  padding-bottom: 10px;
+
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
+/* each item */
+.track {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .track {
-    min-width: 100%;
+
+  .carousel-wrapper {
+    max-width: 100%;
+    padding: 0 20px;
   }
 
-  .tracks {
-    gap: 12px;
+  .track {
+    min-width: 85%;  /* 👈 your idea = correct */
   }
+
 }
 @media (max-width: 768px) {
-  .track {
-    min-width: 100%;
+  footer {
+    padding: 30px 20px 40px;
+    font-size: 12px;
   }
 }
-

@@ -90,7 +90,7 @@ nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("vroomvroom3.jpg") center 45% / cover no-repeat; /* 🔥 lower image */
+  background: url("vroomvroom3.jpg") center 25% / cover no-repeat; /* 🔥 lower image */
 }
 
 .hero::after {

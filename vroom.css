@@ -51,7 +51,6 @@ nav a {
   font-size: 14px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: white;
   opacity: 0.85;
   transition: 0.2s;
 }
@@ -103,7 +102,6 @@ nav a:hover {
   position: relative;
   z-index: 2;
   text-align: center;
-  transform: translateY(40px);
 }
 
 .hero h1 {
@@ -134,11 +132,15 @@ nav a:hover {
 .videos {
   background: #f3f3f3;
   color: black;
-  padding: 60px 0 30px;
   text-align: center;
 }
+
+.music {
+  padding: 60px 0 20px;
+}
+
 .videos {
-  padding: 30px 0 60px;
+  padding: 20px 0 60px;
 }
 
 .music h2,
@@ -148,33 +150,40 @@ nav a:hover {
   letter-spacing: 2px;
 }
 
+/* ================= CAROUSEL ================= */
 .carousel {
   position: relative;
-  max-width: 1000px;
+  max-width: 1050px;
   margin: 0 auto;
   overflow: hidden;
 }
 
+/* TRACKS */
 .tracks {
   display: flex;
-  align-items: center;
   transition: transform 0.4s ease;
 }
 
+/* 🔥 SOLO 3 visibles */
 .track {
-  flex: 0 0 33.333%;
-  padding: 0 10px;
+  flex: 0 0 calc(100% / 3);
+  padding: 0 12px;
   text-align: center;
+
+  opacity: 0.4;
+  filter: blur(2px);
+  transform: scale(0.92);
+  transition: all 0.4s ease;
 }
 
-/* ACTIVO */
+/* CENTRO */
 .track.active {
   opacity: 1;
   filter: blur(0);
   transform: scale(1.05);
 }
 
-/* IMAGE */
+/* IMAGES */
 .track img {
   width: 100%;
   aspect-ratio: 1/1;
@@ -183,15 +192,14 @@ nav a:hover {
 
 /* TEXT */
 .track p {
-  margin-top: 12px;
+  margin-top: 14px;
   font-weight: bold;
   color: #8B0000;
 }
 
-.listen,
-.watch {
+.listen {
   display: block;
-  margin-top: 4px;
+  margin-top: 10px;
   font-size: 12px;
 }
 
@@ -200,27 +208,31 @@ nav a:hover {
   position: absolute;
   top: 45%;
   transform: translateY(-50%);
-  font-size: 28px;
+  font-size: 32px;
   background: none;
   border: none;
   cursor: pointer;
   color: black;
-  z-index: 5;
+  z-index: 10;
 }
 
 .arrow.left {
-  left: -30px;
+  left: -40px;
 }
 
 .arrow.right {
-  right: -30px;
+  right: -40px;
 }
 
-/* ================= VIDEOS ================= */
-
+/* ================= VIDEO ================= */
 .video {
-  max-width: 720px; /* 🔥 tamaño tipo Sombr */
-  margin: 30px auto 20px;
+  max-width: 720px;
+  margin: 30px auto 10px;
+  position: relative;
+}
+
+.video a {
+  display: block;
   position: relative;
 }
 
@@ -229,19 +241,26 @@ nav a:hover {
   display: block;
 }
 
-/* BOTON PLAY SIEMPRE VISIBLE */
-.video::after {
-  content: "";
+/* 🔥 BOTON PLAY REAL */
+.play-btn {
   position: absolute;
-  inset: 0;
-  background: url("play-button.png") center / 70px no-repeat;
-  opacity: 1; /* 🔥 SIEMPRE visible */
-  transition: 0.3s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  opacity: 1;
+  transition: 0.3s;
 }
 
-/* 🔥 HOVER SOLO SOBRE EL VIDEO */
-.video:hover::after {
+.play-btn:hover {
   opacity: 0.6;
+}
+
+/* TEXT VIDEO */
+.watch {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
 }
 
 /* ================= FOOTER ================= */

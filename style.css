@@ -169,7 +169,7 @@ h2 {
 }
 
 .carousel {
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   display: flex;
   cursor: grab;
@@ -179,7 +179,7 @@ h2 {
 .tracks {
   display: flex;
   gap: 18px;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .track {
@@ -492,11 +492,6 @@ footer a:hover::after {
     letter-spacing: 3px;
   }
 
-  /* MUSIC → 1 ITEM */
-  .carousel {
-    overflow: hidden;
-  }
-
   .tracks {
     gap: 14px;
   }
@@ -587,3 +582,4 @@ footer a:hover::after {
     min-width: 100%;
   }
 }
+

@@ -165,16 +165,33 @@
 let index = 0;
 
 const tracks = document.querySelector(".tracks");
-const items = document.querySelectorAll(".track");
+let items = document.querySelectorAll(".track");
+
+// 🔥 CLONAMOS elementos para loop infinito
+const firstClones = [...items].slice(0, 3).map(el => el.cloneNode(true));
+const lastClones = [...items].slice(-3).map(el => el.cloneNode(true));
+
+lastClones.forEach(clone => tracks.prepend(clone));
+firstClones.forEach(clone => tracks.appendChild(clone));
+
+items = document.querySelectorAll(".track");
+
+const visible = 3;
+let trackWidth;
+
+// empezamos en el “bloque real”
+index = 3;
+
+function updateSizes() {
+  trackWidth = items[0].offsetWidth + 25;
+  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+}
+
+window.addEventListener("load", updateSizes);
+window.addEventListener("resize", updateSizes);
 
 function updateCarousel() {
-  const visible = 3;
-  const total = items.length;
-  const trackWidth = items[0].offsetWidth + 25;
-
-  if (index > total - visible) index = total - visible;
-  if (index < 0) index = 0;
-
+  tracks.style.transition = "transform 0.4s ease";
   tracks.style.transform = `translateX(-${index * trackWidth}px)`;
 
   updateActive();
@@ -192,15 +209,36 @@ function updateActive() {
 function next() {
   index++;
   updateCarousel();
+
+  // 🔥 LOOP DERECHO
+  if (index >= items.length - visible) {
+    setTimeout(() => {
+      tracks.style.transition = "none";
+      index = 3;
+      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+    }, 400);
+  }
 }
 
 function prev() {
   index--;
   updateCarousel();
+
+  // 🔥 LOOP IZQUIERDO
+  if (index <= 0) {
+    setTimeout(() => {
+      tracks.style.transition = "none";
+      index = items.length - visible - 3;
+      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+    }, 400);
+  }
 }
 
-updateCarousel();
+// INIT
+updateSizes();
+updateActive();
 </script>
+
 
 
 </body>

@@ -311,3 +311,65 @@ footer a:hover::after {
   position: absolute;
   left: -9999px;
 }
+
+
+/* ================= LEGAL PAGES ================= */
+.legal-page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* BACKGROUND IMAGE */
+.legal-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("VroomVroom7302.jpg") center / cover no-repeat;
+  z-index: 0;
+}
+
+/* DARK OVERLAY */
+.legal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+/* CONTENT */
+.legal-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.legal-content h1 {
+  font-size: 32px;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+}
+
+.legal-text {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.legal-text p {
+  margin-bottom: 14px;
+}
+
+/* LINKS */
+.legal-text a {
+  text-decoration: underline;
+}
+
+/* PRESS BUTTON */
+.legal-content .cta {
+  margin-top: 20px;
+}

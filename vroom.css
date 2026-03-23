@@ -111,6 +111,7 @@ nav a:hover {
   position: relative;
   z-index: 2;
   text-align: center;
+  margin-top: 120px; /* ajustá entre 100–160 según gusto */
 }
 
 .hero h1 {
@@ -147,18 +148,22 @@ nav a:hover {
 }
 
 .music {
-  padding: 80px 0 40px;
+  padding: 60px 0 20px;
 }
 
 .videos {
-  padding: 60px 0 50px;
+  padding: 40px 0 30px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 h2 {
   color: #8B0000;
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-  font-size: 16px;
+  margin-bottom: 24px;
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: 700;
+
 }
 
 /* ================= CAROUSEL ================= */
@@ -282,6 +287,7 @@ footer {
   padding: 18px;
   text-align: center;
   font-size: 11px;
+  padding-top: 12px;
 }
 
 /* SEO */

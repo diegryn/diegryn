@@ -558,3 +558,7 @@ footer a:hover::after {
 
   font-size: 20px;
 }
+
+.carousel {
+  touch-action: pan-y; /* 🔥 bloquea scroll horizontal del browser */
+}

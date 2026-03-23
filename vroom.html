@@ -80,9 +80,10 @@
 <section id="music" class="music">
   <h2>MUSIC</h2>
 
-  <div class="carousel">
-    <button class="arrow left" onclick="prev()">‹</button>
+<div class="carousel-wrapper">
+  <button class="arrow left" onclick="prev()">‹</button>
 
+  <div class="carousel">
     <div class="tracks">
       <div class="track">
         <a href="https://melodymover.lnk.to/fakelove" target="_blank">
@@ -135,7 +136,7 @@
 
     </div>
 
-    <button class="arrow right" onclick="next()">›</button>
+  <button class="arrow right" onclick="next()">›</button>
   </div>
 </section>
 
@@ -166,79 +167,101 @@
     <a href="https://diegryn.com/press">PRESS</a>
   </p>
 </footer>
-  <script>
+<script>
 const tracks = document.querySelector(".tracks");
 const carousel = document.querySelector(".carousel");
 
 let index = 0;
 const visible = 3;
 
-/* GET WIDTH (always accurate) */
+/* ================= CLONE FOR INFINITE LOOP ================= */
+const originalItems = Array.from(tracks.children);
+
+originalItems.forEach(item => {
+  const clone = item.cloneNode(true);
+  tracks.appendChild(clone);
+});
+
+/* ================= WIDTH ================= */
 function getTrackWidth() {
   const track = document.querySelector(".track");
-  return track.offsetWidth + 18; // must match CSS gap
+  return track.offsetWidth + 18; // MUST match CSS gap
 }
 
-/* UPDATE POSITION */
-function updateCarousel() {
+/* ================= UPDATE ================= */
+function updateCarousel(animate = true) {
+  if (!animate) {
+    tracks.style.transition = "none";
+  } else {
+    tracks.style.transition = "transform 0.5s ease";
+  }
+
   tracks.style.transform = `translateX(-${index * getTrackWidth()}px)`;
 }
 
-/* ARROWS */
+/* ================= NEXT ================= */
 function next() {
-  if (index < tracks.children.length - visible) {
-    index++;
-    updateCarousel();
+  index++;
+  updateCarousel(true);
+
+  if (index >= originalItems.length) {
+    setTimeout(() => {
+      updateCarousel(false);
+      index = 0;
+      tracks.style.transform = `translateX(0px)`;
+    }, 500);
   }
 }
 
+/* ================= PREV ================= */
 function prev() {
-  if (index > 0) {
-    index--;
-    updateCarousel();
+  if (index <= 0) {
+    index = originalItems.length;
+    updateCarousel(false);
   }
+
+  setTimeout(() => {
+    index--;
+    updateCarousel(true);
+  }, 20);
 }
 
-/* 🔥 DRAG (SMOOTHER + MORE CONTROLLED) */
-let isDragging = false;
+/* ================= DRAG ================= */
 let startX = 0;
 
 carousel.addEventListener("mousedown", (e) => {
-  isDragging = true;
   startX = e.pageX;
 });
 
 carousel.addEventListener("mouseup", (e) => {
-  if (!isDragging) return;
-
   const diff = e.pageX - startX;
 
   if (diff > 40) prev();
   if (diff < -40) next();
-
-  isDragging = false;
 });
 
-carousel.addEventListener("mouseleave", () => {
-  isDragging = false;
-});
+carousel.addEventListener("mouseleave", () => {});
 
-/* 🔥 TOUCH SUPPORT (important for mobile) */
+/* ================= TOUCH ================= */
 carousel.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
 
 carousel.addEventListener("touchend", (e) => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = endX - startX;
+  const diff = e.changedTouches[0].clientX - startX;
 
   if (diff > 40) prev();
   if (diff < -40) next();
 });
 
-/* INIT */
-window.addEventListener("load", updateCarousel);
-window.addEventListener("resize", updateCarousel);
+/* ================= INIT ================= */
+window.addEventListener("load", () => {
+  updateCarousel();
+});
+
+window.addEventListener("resize", () => {
+  updateCarousel(false);
+});
 </script>
   
 </body>

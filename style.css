@@ -355,13 +355,16 @@ footer a:hover::after {
 }
 
 .legal-text {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.8;
   opacity: 0.9;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left; /* 🔥 CLAVE */
 }
 
 .legal-text p {
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 /* LINKS */
@@ -372,4 +375,31 @@ footer a:hover::after {
 /* PRESS BUTTON */
 .legal-content .cta {
   margin-top: 20px;
+}
+.legal-text strong {
+  display: block;
+  margin-top: 22px;
+  margin-bottom: 6px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.legal-text br {
+  display: none; /* 🔥 eliminamos caos */
+}
+
+.legal-text ul {
+  margin: 10px 0 20px;
+  padding-left: 18px;
+}
+
+.legal-text li {
+  margin-bottom: 6px;
+}
+.legal-content h1 {
+  font-size: 30px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+.legal-content {
+  transform: translateY(20px);
 }

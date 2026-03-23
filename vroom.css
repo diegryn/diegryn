@@ -9,7 +9,6 @@ body {
   font-family: 'Raleway', sans-serif;
   background: black;
   color: white;
-  overflow-x: hidden;
 }
 
 a {
@@ -17,7 +16,6 @@ a {
   text-decoration: none;
 }
 
-/* ================= HEADER ================= */
 /* ================= HEADER ================= */
 .header {
   position: absolute;
@@ -30,69 +28,49 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 26px 55px; /* 🔥 slightly bigger spacing */
+  padding: 22px 50px;
 }
 
-/* LEFT SIDE */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 38px;
+  gap: 34px;
 }
 
-/* LOGO (bigger + stronger presence) */
+/* LOGO */
 .logo-text {
   font-family: 'Times New Roman', serif;
-  font-size: 20px; /* 🔥 bigger */
+  font-size: 24px;
   letter-spacing: 4px;
   font-weight: 600;
   text-transform: uppercase;
-
-  background: linear-gradient(
-    120deg,
-    #ffffff 0%,
-    #e5e5e5 40%,
-    #ffffff 80%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  opacity: 0.95;
 }
 
 /* NAV */
 nav {
   display: flex;
-  gap: 26px;
+  gap: 24px;
 }
 
 nav a {
-  font-size: 14px; /* 🔥 slightly bigger */
-  letter-spacing: 1.8px;
-  font-weight: 600; /* 🔥 slightly thicker */
+  font-size: 13px;
+  letter-spacing: 1.6px;
+  font-weight: 600;
   opacity: 0.8;
-  transition: 0.2s ease;
 }
 
 nav a:hover {
   opacity: 1;
 }
 
-/* SOCIAL ICONS */
+/* SOCIAL */
 .nav-right {
   display: flex;
-  gap: 16px;
+  gap: 14px;
 }
 
 .nav-right i {
-  font-size: 18px; /* 🔥 slightly bigger */
-  transition: 0.25s ease;
-}
-
-.nav-right a:hover i {
-  color: #8B0000;
-  transform: scale(1.1);
+  font-size: 16px;
 }
 
 /* ================= HERO ================= */
@@ -108,39 +86,37 @@ nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("vroomvroom3.jpg") center 20% / cover no-repeat;
+  background: url("vroomvroom3.jpg") center / cover no-repeat;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.3);
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
   text-align: center;
-  margin-top: 160px;
 }
 
 .hero h1 {
-  font-size: 64px;
+  font-size: 60px;
   letter-spacing: 6px;
 }
 
 .hero p {
-  margin-top: 12px;
-  opacity: 0.85;
+  margin-top: 10px;
+  opacity: 0.8;
 }
 
 .cta {
   display: inline-block;
-  padding: 12px 36px;
+  padding: 10px 28px;
   border: 1px solid white;
-  margin-top: 25px;
-  transition: 0.3s;
+  margin-top: 22px;
+  font-size: 13px;
 }
 
 .cta:hover {
@@ -157,94 +133,95 @@ nav a:hover {
 }
 
 .music {
-  padding: 90px 0 30px;
+  padding: 80px 0 40px;
 }
 
 .videos {
-  padding: 40px 0 30px;
+  padding: 60px 0 50px;
 }
 
 h2 {
   color: #8B0000;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   letter-spacing: 2px;
+  font-size: 16px;
 }
 
-/* ================= CAROUSEL WRAPPER ================= */
+/* ================= CAROUSEL ================= */
 .carousel-wrapper {
   position: relative;
-  max-width: 900px;
+  max-width: 780px; /* 🔥 tighter like Sombr */
   margin: 0 auto;
 }
 
-/* CAROUSEL */
 .carousel {
   overflow: hidden;
 }
 
-/* TRACKS */
 .tracks {
   display: flex;
-  gap: 18px;
+  gap: 14px; /* 🔥 tighter */
   transition: transform 0.5s ease;
 }
 
-/* ITEMS */
 .track {
-  flex: 0 0 calc((100% - 36px) / 3); /* 3 items + gaps */
+  flex: 0 0 calc((100% - 28px) / 3);
 }
 
-/* 🔥 ARROWS OUTSIDE LIKE SOMBR */
+.track img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.track p {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.listen {
+  display: block;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ARROWS */
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
-  font-size: 34px;
+  font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
   color: black;
   opacity: 0.6;
-  z-index: 10;
-}
-
-.arrow:hover {
-  opacity: 1;
 }
 
 .arrow.left {
-  left: -50px; /* 🔥 OUTSIDE */
+  left: -35px;
 }
 
 .arrow.right {
-  right: -50px; /* 🔥 OUTSIDE */
+  right: -35px;
 }
 
 /* ================= VIDEO ================= */
-.videos {
-  padding: 80px 20px 60px;
-  background: #f5f5f5;
-  text-align: center;
-}
-
 .video {
-  max-width: 900px; /* 🔥 BIG like Sombr */
+  max-width: 520px; /* 🔥 smaller like Sombr */
   margin: 0 auto;
 }
 
-/* THUMBNAIL */
 .video-thumb {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 2px;
 }
 
-/* IMAGE (cinematic ratio) */
 .video-thumb img:first-child {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* 🔥 KEY FIX */
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
 
@@ -253,45 +230,33 @@ h2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px; /* 🔥 bigger + centered */
+  width: 55px; /* 🔥 smaller */
   transform: translate(-50%, -50%);
   opacity: 0.9;
-  transition: 0.25s ease;
-}
-
-.video-thumb:hover .play-btn {
-  transform: translate(-50%, -50%) scale(1.1);
-  opacity: 1;
 }
 
 /* TEXT */
 .video-title {
-  margin-top: 18px;
-  font-size: 14px;
+  margin-top: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .watch {
-  display: block;
-  margin-top: 6px;
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 10px;
   opacity: 0.7;
 }
 
-.watch:hover {
-  opacity: 1;
-}
 /* ================= FOOTER ================= */
 footer {
   background: #f5f5f5;
   color: black;
-  padding: 20px;
+  padding: 18px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
 }
 
-/* ================= SEO ================= */
+/* SEO */
 .seo-artist-line {
   position: absolute;
   left: -9999px;

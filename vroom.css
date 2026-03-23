@@ -134,8 +134,11 @@ nav a:hover {
 .videos {
   background: #f3f3f3;
   color: black;
-  padding: 60px 0;
+  padding: 60px 0 30px;
   text-align: center;
+}
+.videos {
+  padding: 30px 0 60px;
 }
 
 .music h2,
@@ -145,7 +148,6 @@ nav a:hover {
   letter-spacing: 2px;
 }
 
-/* ================= CAROUSEL ================= */
 .carousel {
   position: relative;
   max-width: 1000px;
@@ -153,22 +155,16 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* TRACK */
 .tracks {
   display: flex;
+  align-items: center;
   transition: transform 0.4s ease;
 }
 
-/* ITEM */
 .track {
   flex: 0 0 33.333%;
-  padding: 0 12px;
+  padding: 0 10px;
   text-align: center;
-
-  opacity: 0.35;
-  filter: blur(3px);
-  transform: scale(0.9);
-  transition: all 0.4s ease;
 }
 
 /* ACTIVO */
@@ -202,28 +198,29 @@ nav a:hover {
 /* ARROWS */
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   font-size: 28px;
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
   color: black;
-  z-index: 2;
+  z-index: 5;
 }
 
 .arrow.left {
-  left: -10px;
+  left: -30px;
 }
 
 .arrow.right {
-  right: -10px;
+  right: -30px;
 }
 
 /* ================= VIDEOS ================= */
+
 .video {
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 720px; /* 🔥 tamaño tipo Sombr */
+  margin: 30px auto 20px;
   position: relative;
 }
 
@@ -232,18 +229,19 @@ nav a:hover {
   display: block;
 }
 
-/* PLAY BUTTON */
+/* BOTON PLAY SIEMPRE VISIBLE */
 .video::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("play-button.png") center / 80px no-repeat;
-  opacity: 0;
-  transition: 0.3s;
+  background: url("play-button.png") center / 70px no-repeat;
+  opacity: 1; /* 🔥 SIEMPRE visible */
+  transition: 0.3s ease;
 }
 
+/* 🔥 HOVER SOLO SOBRE EL VIDEO */
 .video:hover::after {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 /* ================= FOOTER ================= */

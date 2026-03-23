@@ -244,6 +244,14 @@ nav a:hover {
   width: 100%;
   display: block;
 }
+.video-link {
+  display: block;
+  color: inherit;
+}
+
+.video-thumb {
+  position: relative;
+}
 
 /* 🔥 SMALL CLEAN PLAY BUTTON (like Sombr) */
 .play-btn {

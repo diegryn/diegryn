@@ -144,7 +144,7 @@ nav a:hover {
 }
 
 .music {
-  padding: 60px 0 20px;
+  padding: 70px 0 30px;
 }
 
 .videos {
@@ -155,17 +155,16 @@ nav a:hover {
 
 h2 {
   color: #8B0000;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   letter-spacing: 3px;
-  font-size: 20px;
-  font-weight: 700;
-
+  font-size: 22px; /* 🔥 más grande */
+  font-weight: 800; /* 🔥 más fuerte */
 }
 
 /* ================= CAROUSEL ================= */
 .carousel-wrapper {
   position: relative;
-  max-width: 820px; /* 🔥 balanced */
+  max-width: 920px; /* 🔥 balanced */
   margin: 0 auto;
 }
 
@@ -175,12 +174,12 @@ h2 {
 
 .tracks {
   display: flex;
-  gap: 18px;
+  gap: 14px;
   transition: transform 0.5s ease;
 }
 
 .track {
-  flex: 0 0 calc((100% - 36px) / 3);
+  flex: 0 0 calc((100% - 28px) / 3);
 }
 
 .track img {
@@ -190,15 +189,16 @@ h2 {
 }
 
 .track p {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 600;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .listen {
-  display: block;
-  font-size: 10px;
-  opacity: 0.7;
+  font-size: 11px;
+  opacity: 0.75;
+  letter-spacing: 0.5px;
 }
 
 /* ARROWS (outside like Sombr) */

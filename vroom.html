@@ -169,24 +169,32 @@
   </p>
 </footer>
 
-<!-- 🔥 NUEVO SCRIPT CORRECTO -->
-<script>
+  <script>
 let index = 0;
 
 const tracks = document.querySelector(".tracks");
 const items = document.querySelectorAll(".track");
 
 function updateCarousel() {
-  tracks.style.transform = `translateX(-${index * 33.333}%)`;
+  const trackWidth = items[0].offsetWidth + 40; // 40 = gap
+  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
 }
 
 function next() {
-  index = (index + 1) % items.length;
+  if (index < items.length - 3) {
+    index++;
+  } else {
+    index = 0;
+  }
   updateCarousel();
 }
 
 function prev() {
-  index = (index - 1 + items.length) % items.length;
+  if (index > 0) {
+    index--;
+  } else {
+    index = items.length - 3;
+  }
   updateCarousel();
 }
 </script>

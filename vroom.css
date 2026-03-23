@@ -1,4 +1,4 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -12,13 +12,12 @@ body {
   overflow-x: hidden;
 }
 
-/* LINKS */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .header {
   position: absolute;
   top: 0;
@@ -61,14 +60,10 @@ nav a:hover {
   opacity: 1;
 }
 
-/* 🔥 REDES FIX + HOVER */
+/* REDES */
 .nav-right {
   display: flex;
   gap: 18px;
-}
-
-.nav-right a {
-  color: white;
 }
 
 .nav-right i {
@@ -81,7 +76,7 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   height: 100vh;
   position: relative;
@@ -134,51 +129,53 @@ nav a:hover {
   color: black;
 }
 
-/* SECTIONS (MENOS ESPACIO) */
+/* ================= SECTIONS ================= */
 .music,
 .videos {
   background: #f3f3f3;
   color: black;
-  padding: 70px 0; /* 🔥 MÁS TIGHT */
+  padding: 60px 0;
   text-align: center;
 }
 
-/* TITLES */
 .music h2,
 .videos h2 {
   color: #8B0000;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
 }
 
-/* CAROUSEL */
+/* ================= CAROUSEL ================= */
 .carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  max-width: 1050px;
-  margin: auto;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
-/* TRACKS */
+/* TRACK */
 .tracks {
   display: flex;
-  gap: 25px;
   transition: transform 0.4s ease;
 }
 
-/* TRACK */
+/* ITEM */
 .track {
+  flex: 0 0 33.333%;
+  padding: 0 12px;
+  text-align: center;
+
   opacity: 0.35;
   filter: blur(3px);
   transform: scale(0.9);
+  transition: all 0.4s ease;
 }
 
+/* ACTIVO */
 .track.active {
   opacity: 1;
   filter: blur(0);
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* IMAGE */
@@ -188,19 +185,14 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* TEXT FIX */
+/* TEXT */
 .track p {
   margin-top: 12px;
   font-weight: bold;
   color: #8B0000;
 }
 
-.listen {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
-}
-
+.listen,
 .watch {
   display: block;
   margin-top: 4px;
@@ -209,26 +201,43 @@ nav a:hover {
 
 /* ARROWS */
 .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 28px;
   border: none;
   background: none;
   cursor: pointer;
   color: black;
+  z-index: 2;
 }
 
-/* VIDEO */
+.arrow.left {
+  left: -10px;
+}
+
+.arrow.right {
+  right: -10px;
+}
+
+/* ================= VIDEOS ================= */
 .video {
-  max-width: 520px;
-  margin: auto;
+  max-width: 800px;
+  margin: 40px auto;
   position: relative;
 }
 
-/* 🔥 PLAY BUTTON HOVER */
+.video img {
+  width: 100%;
+  display: block;
+}
+
+/* PLAY BUTTON */
 .video::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("play-button.png") center / 70px no-repeat;
+  background: url("play-button.png") center / 80px no-repeat;
   opacity: 0;
   transition: 0.3s;
 }
@@ -237,7 +246,7 @@ nav a:hover {
   opacity: 1;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer {
   background: #f3f3f3;
   color: black;
@@ -246,7 +255,7 @@ footer {
   font-size: 12px;
 }
 
-/* SEO */
+/* ================= SEO ================= */
 .seo-artist-line {
   position: absolute;
   left: -9999px;

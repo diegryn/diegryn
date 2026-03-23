@@ -232,3 +232,12 @@ footer {
 .tracks {
   transition: transform 0.4s ease;
 }
+
+.seo-artist-line {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}

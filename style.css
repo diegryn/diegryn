@@ -516,3 +516,45 @@ footer a:hover::after {
     display: none;
   }
 }
+
+/* 🔥 HEADER DENTRO DEL MENU */
+.mobile-header {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO NEGRO */
+.mobile-logo {
+  font-family: 'Times New Roman', serif;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: black;
+}
+
+/* BOTÓN X */
+.close-menu {
+  font-size: 26px;
+  cursor: pointer;
+  color: #8B0000;
+}
+
+/* 🔥 SOCIALS FIX (QUE ENTREN BIEN) */
+.mobile-socials {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  right: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 🔥 CLAVE */
+  gap: 15px;
+
+  font-size: 20px;
+}

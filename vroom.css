@@ -1,4 +1,4 @@
-/* ================= RESET ================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
   background: black;
   color: white;
   overflow-x: hidden;
@@ -17,7 +17,7 @@ a {
   text-decoration: none;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header {
   position: absolute;
   top: 0;
@@ -29,29 +29,33 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 22px 50px;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
 }
 
-.logo {
-  height: 48px;
+/* 🔥 TEXT LOGO */
+.logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
+/* NAV */
 nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
 }
 
 nav a {
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
-  opacity: 0.85;
+  opacity: 0.75;
   transition: 0.2s;
 }
 
@@ -59,23 +63,22 @@ nav a:hover {
   opacity: 1;
 }
 
-/* REDES */
+/* SOCIAL */
 .nav-right {
   display: flex;
   gap: 18px;
 }
 
 .nav-right i {
-  font-size: 20px;
-  transition: 0.25s ease;
+  font-size: 18px;
+  transition: 0.25s;
 }
 
 .nav-right a:hover i {
-  color: #8B0000;
   transform: scale(1.1);
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero {
   height: 100vh;
   position: relative;
@@ -105,20 +108,15 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 58px;
   letter-spacing: 5px;
-  color: rgba(255,255,255,0.85);
-}
-
-.hero p {
-  margin: 14px 0 28px;
 }
 
 .cta {
   display: inline-block;
-  padding: 12px 34px;
+  padding: 12px 32px;
   border: 1px solid white;
-  cursor: pointer;
+  margin-top: 20px;
   transition: 0.3s;
 }
 
@@ -127,168 +125,133 @@ nav a:hover {
   color: black;
 }
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 .music,
 .videos {
-  background: #f3f3f3;
+  background: #f5f5f5;
   color: black;
   text-align: center;
 }
 
 .music {
-  padding: 60px 0 20px;
+  padding: 80px 0 40px;
 }
 
 .videos {
-  padding: 20px 0 60px;
+  padding: 40px 0 80px;
 }
 
-.music h2,
-.videos h2 {
+h2 {
   color: #8B0000;
-  margin-bottom: 30px;
   letter-spacing: 2px;
+  margin-bottom: 40px;
 }
 
-/* ================= CAROUSEL ================= */
+/* CAROUSEL */
 .carousel {
-  position: relative;
-  max-width: 1050px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: auto;
   overflow: hidden;
+  cursor: grab;
 }
 
-/* TRACKS */
+.carousel:active {
+  cursor: grabbing;
+}
+
 .tracks {
   display: flex;
-  transition: transform 0.4s ease;
+  gap: 20px;
+  transition: transform 0.3s ease;
 }
 
-/* 🔥 SOLO 3 visibles */
+/* CLEAN CARDS */
 .track {
   flex: 0 0 calc(100% / 3);
-  padding: 0 12px;
   text-align: center;
-
-  opacity: 0.4;
-  filter: blur(2px);
-  transform: scale(0.92);
-  transition: all 0.4s ease;
 }
 
-/* CENTRO */
-.track.active {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1.05);
-}
-
-/* IMAGES */
 .track img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-/* TEXT */
 .track p {
-  margin-top: 14px;
-  font-weight: bold;
-  color: #8B0000;
+  margin-top: 12px;
+  font-weight: 600;
 }
 
 .listen {
   display: block;
-  margin-top: 10px;
-  font-size: 12px;
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
 /* ARROWS */
 .arrow {
   position: absolute;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 32px;
+  font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
-  color: black;
-  z-index: 10;
 }
 
 .arrow.left {
-  left: -40px;
+  left: -30px;
 }
 
 .arrow.right {
-  right: -40px;
+  right: -30px;
 }
 
-/* ================= VIDEO ================= */
-
-/* ================= VIDEO ================= */
-
+/* VIDEO */
 .video {
-  max-width: 720px;
-  margin: 30px auto 10px;
-  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.video a {
-  display: block;
-  position: relative;
-}
-
-/* IMAGE */
-.video img:first-child {
+.video-thumb img:first-child {
   width: 100%;
-  display: block;
-}
-.video-link {
-  display: block;
-  color: inherit;
 }
 
-.video-thumb {
-  position: relative;
-}
-
-/* 🔥 SMALL CLEAN PLAY BUTTON (like Sombr) */
+/* PLAY BUTTON */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 55px; /* 🔥 smaller */
-  height: 55px;
-  object-fit: contain;
+  width: 60px;
   opacity: 0.9;
-  transition: 0.25s ease;
-  pointer-events: none; /* important so click goes to link */
+  transition: 0.2s;
 }
 
-/* hover ONLY affects button */
-.video a:hover .play-btn {
-  opacity: 0.6;
-  transform: translate(-50%, -50%) scale(1.05);
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 0.7;
 }
 
-/* TEXT */
+.video-title {
+  margin-top: 18px;
+  font-weight: 600;
+}
+
 .watch {
   display: block;
-  margin-top: 12px;
-  font-size: 12px;
+  margin-top: 8px;
+  font-size: 11px;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer {
-  background: #f3f3f3;
+  background: #f5f5f5;
   color: black;
   padding: 30px;
-  text-align: center;
   font-size: 12px;
 }
-
 /* ================= SEO ================= */
 .seo-artist-line {
   position: absolute;

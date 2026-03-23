@@ -18,14 +18,9 @@ a {
   text-decoration: none;
 }
 
-a:visited,
-a:active {
-  color: inherit;
-}
-
-/* HEADER (YA NO FIJO) */
+/* HEADER */
 .header {
-  position: absolute; /* 🔥 cambia de fixed */
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 10;
@@ -58,9 +53,15 @@ nav a {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: white;
-  opacity: 0.9;
+  opacity: 0.85;
+  transition: 0.2s;
 }
 
+nav a:hover {
+  opacity: 1;
+}
+
+/* 🔥 REDES FIX + HOVER */
 .nav-right {
   display: flex;
   gap: 18px;
@@ -72,7 +73,12 @@ nav a {
 
 .nav-right i {
   font-size: 20px;
-  opacity: 0.9;
+  transition: 0.25s ease;
+}
+
+.nav-right a:hover i {
+  color: #8B0000;
+  transform: scale(1.1);
 }
 
 /* HERO */
@@ -96,10 +102,8 @@ nav a {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
-  z-index: 1;
 }
 
-/* 🔥 IMPORTANTE: esto arregla el botón */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -110,21 +114,18 @@ nav a {
 .hero h1 {
   font-size: 60px;
   letter-spacing: 5px;
-  color: rgba(255,255,255,0.85); /* 🔥 menos blanco fuerte */
+  color: rgba(255,255,255,0.85);
 }
 
 .hero p {
   margin: 14px 0 28px;
 }
 
-/* BOTÓN FUNCIONANDO */
 .cta {
   display: inline-block;
   padding: 12px 34px;
   border: 1px solid white;
   cursor: pointer;
-  position: relative;
-  z-index: 3;
   transition: 0.3s;
 }
 
@@ -133,20 +134,20 @@ nav a {
   color: black;
 }
 
-/* SECCIONES */
+/* SECTIONS (MENOS ESPACIO) */
 .music,
 .videos {
   background: #f3f3f3;
   color: black;
-  padding: 80px 0; /* 🔥 menos espacio */
+  padding: 70px 0; /* 🔥 MÁS TIGHT */
   text-align: center;
 }
 
-/* TITULOS */
+/* TITLES */
 .music h2,
 .videos h2 {
   color: #8B0000;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 /* CAROUSEL */
@@ -154,8 +155,8 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  max-width: 1100px;
+  gap: 15px;
+  max-width: 1050px;
   margin: auto;
   overflow: hidden;
 }
@@ -163,83 +164,81 @@ nav a {
 /* TRACKS */
 .tracks {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   transition: transform 0.4s ease;
 }
 
-/* MÁS GRANDES */
+/* TRACK */
 .track {
-  flex: 0 0 calc((100% - 60px) / 3);
+  flex: 0 0 calc((100% - 50px) / 3);
   text-align: center;
-  transition: all 0.4s ease;
+  transition: 0.4s;
   opacity: 0.4;
   filter: blur(2px);
   transform: scale(0.95);
 }
+
+/* ACTIVE */
 .track.active {
   opacity: 1;
   filter: blur(0);
   transform: scale(1.05);
 }
 
-/* IMAGES */
+/* IMAGE */
 .track img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-/* 🔥 EFECTO BLUR LADOS */
-.track {
-  opacity: 0.5;
-  filter: blur(2px);
-}
-
-.track:nth-child(2) {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1.05);
-}
-
-/* TEXT */
+/* TEXT FIX */
 .track p {
-  margin-top: 14px;
+  margin-top: 12px;
   font-weight: bold;
   color: #8B0000;
 }
 
 .listen {
   display: block;
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 12px;
 }
+
 .watch {
   display: block;
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 12px;
 }
 
 /* ARROWS */
 .arrow {
-  font-size: 30px;
-  background: none;
+  font-size: 28px;
   border: none;
+  background: none;
   cursor: pointer;
   color: black;
 }
 
 /* VIDEO */
 .video {
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
+  position: relative;
 }
 
-.video img {
-  width: 100%;
+/* 🔥 PLAY BUTTON HOVER */
+.video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("play-button.png") center / 70px no-repeat;
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.video p {
-  margin-top: 16px;
+.video:hover::after {
+  opacity: 1;
 }
 
 /* FOOTER */
@@ -251,12 +250,11 @@ footer {
   font-size: 12px;
 }
 
-/* SEO (NO TOCAR) */
+/* SEO */
 .seo-artist-line {
   position: absolute;
   left: -9999px;
   width: 1px;
   height: 1px;
   overflow: hidden;
-  white-space: nowrap;
 }

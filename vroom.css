@@ -286,6 +286,25 @@ footer {
   padding-top: 12px;
   margin-top: 0px;
 }
+footer a {
+  position: relative;
+}
+
+/* underline animation */
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: black;
+  transition: width 0.25s ease;
+}
+
+footer a:hover::after {
+  width: 100%;
+}
 
 /* SEO */
 .seo-artist-line {

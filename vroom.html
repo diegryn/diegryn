@@ -141,21 +141,21 @@
 <!-- VIDEOS -->
 <section id="videos" class="videos">
   <h2>VIDEOS</h2>
-      <div class="video">
-        <div class="video-thumb">
-          <img src="fake-love-acoustic-video.jpg" />
-      
-          <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank">
-            <img class="play-btn" src="play-button.png" />
-          </a>
-        </div>
-      
-        <p class="video-title">Fake Love (Acoustic Video)</p>
-      
-        <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch"> WATCH NOW
-        </a>
-      </div>
+<div class="video">
+  <div class="video-thumb">
+    <img src="fake-love-acoustic-video.jpg">
 
+    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank">
+      <i class="fa-solid fa-play play-btn"></i>
+    </a>
+  </div>
+
+  <p class="video-title">Fake Love (Acoustic Video)</p>
+
+  <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">
+    WATCH NOW
+  </a>
+</div>
 
   
 </section>
@@ -169,114 +169,47 @@
     <a href="https://diegryn.com/press">Press</a>
   </p>
 </footer>
-
 <script>
-let index = 0;
+const carousel = document.querySelector(".carousel");
 
-const tracks = document.querySelector(".tracks");
-let items = document.querySelectorAll(".track");
-
-// 🔥 CLONAMOS elementos para loop infinito
-const firstClones = [...items].slice(0, 3).map(el => el.cloneNode(true));
-const lastClones = [...items].slice(-3).map(el => el.cloneNode(true));
-
-lastClones.forEach(clone => tracks.prepend(clone));
-firstClones.forEach(clone => tracks.appendChild(clone));
-
-items = document.querySelectorAll(".track");
-
-const visible = 3;
-let trackWidth;
-
-// empezamos en el “bloque real”
-index = 3;
-
-function updateSizes() {
-  trackWidth = items[0].offsetWidth + 25;
-  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
-}
-
-window.addEventListener("load", updateSizes);
-window.addEventListener("resize", updateSizes);
-
-function updateCarousel() {
-  tracks.style.transition = "transform 0.4s ease";
-  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
-
-  updateActive();
-}
-
-function updateActive() {
-  items.forEach(item => item.classList.remove("active"));
-
-  const centerIndex = index + 1;
-  if (items[centerIndex]) {
-    items[centerIndex].classList.add("active");
-  }
-}
-
-function next() {
-  index++;
-  updateCarousel();
-
-  // 🔥 LOOP DERECHO
-  if (index >= items.length - visible) {
-    setTimeout(() => {
-      tracks.style.transition = "none";
-      index = 3;
-      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
-    }, 400);
-  }
-}
-
-function prev() {
-  index--;
-  updateCarousel();
-
-  // 🔥 LOOP IZQUIERDO
-  if (index <= 0) {
-    setTimeout(() => {
-      tracks.style.transition = "none";
-      index = items.length - visible - 3;
-      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
-    }, 400);
-  }
-}
-
-// INIT
-updateSizes();
-updateActive();
-</script>
-<script>
 let isDown = false;
 let startX;
 let scrollLeft;
 
-const carousel = document.querySelector(".carousel");
-
+/* DRAG */
 carousel.addEventListener("mousedown", (e) => {
   isDown = true;
   startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = tracks.scrollLeft;
+  scrollLeft = carousel.scrollLeft;
 });
 
-carousel.addEventListener("mouseleave", () => {
-  isDown = false;
-});
-
-carousel.addEventListener("mouseup", () => {
-  isDown = false;
-});
+carousel.addEventListener("mouseleave", () => isDown = false);
+carousel.addEventListener("mouseup", () => isDown = false);
 
 carousel.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - carousel.offsetLeft;
   const walk = (x - startX) * 1.5;
-  tracks.scrollLeft = scrollLeft - walk;
+  carousel.scrollLeft = scrollLeft - walk;
 });
+
+/* ARROWS */
+function next() {
+  const trackWidth = document.querySelector(".track").offsetWidth + 20;
+  carousel.scrollBy({
+    left: trackWidth,
+    behavior: "smooth"
+  });
+}
+
+function prev() {
+  const trackWidth = document.querySelector(".track").offsetWidth + 20;
+  carousel.scrollBy({
+    left: -trackWidth,
+    behavior: "smooth"
+  });
+}
 </script>
-
-
 </body>
 </html>

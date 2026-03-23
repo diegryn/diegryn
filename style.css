@@ -96,6 +96,8 @@ nav a:hover {
   inset: 0;
   background: url("vroomvroom3.jpg") center 20% / cover no-repeat;
   z-index: 0;
+  margin-top: -80px;
+
 }
 
 .hero::after {

@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-/* FORZAR LINKS (NO AZUL NUNCA) */
+/* LINKS */
 a {
   color: inherit;
   text-decoration: none;
@@ -23,44 +23,50 @@ a:active {
   color: inherit;
 }
 
+/* CONTAINER GENERAL */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
 /* HEADER */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 16px 0;
 }
-
 
 /* LEFT */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 28px;
 }
 
-
-/* 🔥 LOGO MÁS GRANDE REAL */
+/* LOGO */
 .logo {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
+  height: 46px;
 }
 
 /* MENU */
 nav {
   display: flex;
-  gap: 24px;
+  gap: 22px;
 }
 
 nav a {
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   opacity: 0.85;
@@ -70,31 +76,19 @@ nav a:hover {
   opacity: 1;
 }
 
-/* RIGHT ICONS (FONT AWESOME) */
+/* RIGHT */
 .nav-right {
   display: flex;
-  gap: 18px;
+  gap: 16px;
 }
 
-.nav-right a {
-  color: white;
-}
-
-/* ICON SIZE */
 .nav-right i {
-  font-size: 20px;
+  font-size: 18px;
   opacity: 0.9;
   transition: all 0.25s ease;
 }
 
-/* 🔴 HOVER ROJO OSCURO (TU COLOR) */
 .nav-right a:hover i {
-  color: #8B0000;
-  transform: scale(1.05);
-}
-
-/* ❌ QUITAR AZUL AL CLICK */
-.nav-right a:active i {
   color: #8B0000;
 }
 
@@ -112,7 +106,6 @@ nav a:hover {
   position: absolute;
   inset: 0;
   background: url("vroomvroom3.jpg") center 35% / cover no-repeat;
-  z-index: 0;
 }
 
 .hero::after {
@@ -120,26 +113,22 @@ nav a:hover {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
-  z-index: 1;
 }
 
-/* 🔥 AJUSTE TEXTO HERO */
 .hero-content {
   position: relative;
-  z-index: 2;
   text-align: center;
-  transform: translateY(-40px);
+  transform: translateY(-20px);
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 58px;
   letter-spacing: 5px;
-  margin-bottom: 10px;
 }
 
 .hero p {
-  margin-bottom: 10px;
-  margin: 14px 0;
+  margin-top: 12px;
+  margin-bottom: 26px; /* 🔥 MÁS ESPACIO */
   opacity: 0.85;
 }
 
@@ -147,7 +136,6 @@ nav a:hover {
   padding: 12px 34px;
   border: 1px solid white;
   transition: all 0.3s ease;
-    margin-top: 18px;
 }
 
 .cta:hover {
@@ -159,54 +147,47 @@ nav a:hover {
 .music {
   background: #f3f3f3;
   color: black;
-  padding: 140px 0;
+  padding: 100px 0; /* 🔥 MENOS ESPACIO */
 }
 
 .music h2 {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   letter-spacing: 2px;
 }
 
-/* 🎯 CAROUSEL REAL (NO SCROLL) */
+/* CAROUSEL */
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
-/* TRACKS WRAPPER */
+/* TRACKS */
 .tracks {
   display: flex;
-  gap: 40px;
+  gap: 30px;
   transition: transform 0.4s ease;
 }
 
-/* 3 ITEMS FIJOS */
+/* MÁS GRANDES */
 .track {
-  flex: 0 0 calc((100% - 80px) / 3);
+  flex: 0 0 calc((100% - 60px) / 3);
   text-align: center;
 }
 
-/* COVER */
 .track img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-/* ❌ SIN HOVER */
-.track img:hover {
-  transform: none;
-}
-
-/* 🔥 TITULO */
 .track p {
-  margin-top: 18px;
+  margin-top: 16px;
   font-size: 14px;
   font-weight: bold;
   color: #8B0000;
@@ -214,23 +195,32 @@ nav a:hover {
 
 /* ARROWS */
 .arrow {
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
   background: none;
   border: none;
   color: black;
-  z-index: 10;
 }
 
 /* VIDEOS */
 .videos {
-  padding: 120px 0;
+  padding: 90px 0; /* 🔥 MÁS COMPACTO */
   text-align: center;
 }
 
+.videos h2 {
+  margin-bottom: 40px;
+}
+
+/* 🔥 VIDEO ARREGLADO */
 .video {
-  max-width: 500px;
+  max-width: 420px; /* antes enorme */
   margin: auto;
+}
+
+.video img {
+  width: 100%;
+  border-radius: 4px;
 }
 
 /* FOOTER */
@@ -239,10 +229,8 @@ footer {
   text-align: center;
   font-size: 12px;
 }
-.tracks {
-  transition: transform 0.4s ease;
-}
 
+/* SEO (NO TOCAR) */
 .seo-artist-line {
   position: absolute;
   left: -9999px;

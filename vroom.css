@@ -225,6 +225,9 @@ nav a:hover {
 }
 
 /* ================= VIDEO ================= */
+
+/* ================= VIDEO ================= */
+
 .video {
   max-width: 720px;
   margin: 30px auto 10px;
@@ -236,27 +239,33 @@ nav a:hover {
   position: relative;
 }
 
-.video img {
+/* IMAGE */
+.video img:first-child {
   width: 100%;
   display: block;
 }
 
-/* 🔥 BOTON PLAY REAL */
+/* 🔥 SMALL CLEAN PLAY BUTTON (like Sombr) */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70px;
-  opacity: 1;
-  transition: 0.3s;
+  width: 55px; /* 🔥 smaller */
+  height: 55px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: 0.25s ease;
+  pointer-events: none; /* important so click goes to link */
 }
 
-.play-btn:hover {
+/* hover ONLY affects button */
+.video a:hover .play-btn {
   opacity: 0.6;
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
-/* TEXT VIDEO */
+/* TEXT */
 .watch {
   display: block;
   margin-top: 12px;

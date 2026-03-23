@@ -169,17 +169,22 @@ h2 {
 }
 
 .carousel {
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  cursor: grab;
+  touch-action: pan-y;
 }
 
 .tracks {
   display: flex;
-  gap: 14px;
+  gap: 18px;
   transition: transform 0.5s ease;
 }
 
 .track {
   flex: 0 0 calc((100% - 28px) / 3);
+   min-width: 33.33%
 }
 
 .track img {
@@ -575,5 +580,10 @@ footer a:hover::after {
 
   .tracks {
     gap: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .track {
+    min-width: 100%;
   }
 }

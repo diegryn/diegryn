@@ -173,8 +173,8 @@ h2 {
 /* ================= CAROUSEL WRAPPER ================= */
 .carousel-wrapper {
   position: relative;
-  max-width: 1000px;
-  margin: auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* CAROUSEL */
@@ -191,7 +191,7 @@ h2 {
 
 /* ITEMS */
 .track {
-  min-width: calc(100% / 3);
+  flex: 0 0 calc((100% - 36px) / 3); /* 3 items + gaps */
 }
 
 /* 🔥 ARROWS OUTSIDE LIKE SOMBR */

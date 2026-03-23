@@ -111,7 +111,7 @@ nav a:hover {
   position: relative;
   z-index: 2;
   text-align: center;
-  transform: translateY(80px); /* 🔥 ajustá esto */
+  transform: translateY(100px); /* 🔥 ajustá esto */
 }
 
 .hero h1 {

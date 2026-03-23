@@ -29,20 +29,20 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 50px;
+  padding: 22px 45px;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
 }
 
 /* LOGO */
 .logo-text {
   font-family: 'Times New Roman', serif;
-  font-size: 22px;
-  letter-spacing: 4px;
+  font-size: 18px;
+  letter-spacing: 3 px;
   font-weight: 500;
   text-transform: uppercase;
 
@@ -62,14 +62,15 @@ a {
 /* NAV */
 nav {
   display: flex;
-  gap: 26px;
+  gap: 22px;
 }
 
 nav a {
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  opacity: 0.7;
-  transition: 0.2s;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  font-weight: 500;
+  opacity: 0.75;
+  transition: 0.2s ease;
 }
 
 nav a:hover {
@@ -79,11 +80,11 @@ nav a:hover {
 /* SOCIAL */
 .nav-right {
   display: flex;
-  gap: 18px;
+  gap: 14px;
 }
 
 .nav-right i {
-  font-size: 18px;
+  font-size: 16px;
   transition: 0.25s ease;
 }
 
@@ -237,8 +238,9 @@ h2 {
 }
 
 /* ================= VIDEO ================= */
+/* ================= VIDEO ================= */
 .video {
-  max-width: 460px;
+  max-width: 420px; /* 🔥 smaller like Sombr */
   margin: 0 auto;
 }
 
@@ -246,43 +248,40 @@ h2 {
   position: relative;
 }
 
+/* IMAGE */
 .video-thumb img:first-child {
   width: 100%;
   display: block;
 }
 
-/* 🔥 YOUR PLAY BUTTON PNG */
+/* 🔥 PLAY BUTTON (SMALL + CONTROLLED) */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 55px;
-  opacity: 0.9;
+  width: 38px; /* 🔥 MUCH smaller */
+  opacity: 0.85;
   transition: 0.2s ease;
 }
 
 .play-btn:hover {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.08);
   opacity: 1;
 }
 
+/* TEXT */
 .video-title {
-  margin-top: 18px;
+  margin-top: 14px;
   font-weight: 600;
 }
 
 .watch {
   display: block;
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 11px;
   opacity: 0.8;
 }
-
-.watch:hover {
-  opacity: 1;
-}
-
 /* ================= FOOTER ================= */
 footer {
   background: #f5f5f5;

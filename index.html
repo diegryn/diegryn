@@ -282,13 +282,42 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   updateCarousel(false);
 });
-</script>
-    <!-- TU CONTENIDO -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
 <script>
-function toggleMenu() {
-  document.querySelector('.mobile-nav').classList.toggle('open');
+const carousel = document.querySelector(".carousel");
+const tracks = document.querySelector(".tracks");
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+/* TOUCH + DRAG */
+carousel.addEventListener("mousedown", startDrag);
+carousel.addEventListener("touchstart", startDrag);
+
+carousel.addEventListener("mousemove", moveDrag);
+carousel.addEventListener("touchmove", moveDrag);
+
+carousel.addEventListener("mouseup", endDrag);
+carousel.addEventListener("mouseleave", endDrag);
+carousel.addEventListener("touchend", endDrag);
+
+function startDrag(e) {
+  isDown = true;
+  startX = e.pageX || e.touches[0].pageX;
+  scrollLeft = carousel.scrollLeft;
+}
+
+function moveDrag(e) {
+  if (!isDown) return;
+  e.preventDefault(); /* 🔥 CLAVE */
+
+  const x = e.pageX || e.touches[0].pageX;
+  const walk = (x - startX) * 1.5;
+  carousel.scrollLeft = scrollLeft - walk;
+}
+
+function endDrag() {
+  isDown = false;
 }
 </script>
   

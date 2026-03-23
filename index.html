@@ -108,6 +108,7 @@
   <h2>MUSIC</h2>
 
 <div class="carousel-wrapper">
+    <button class="arrow left" onclick="moveCarousel(-1)">‹</button>
   <div class="carousel">
     <div class="tracks">
       <div class="track">
@@ -157,6 +158,8 @@
         <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix" target="_blank"class="listen">LISTEN NOW</a>
       </div>
     </div>  </div>
+    <button class="arrow right" onclick="moveCarousel(1)">›</button>
+
   </div>
 </section>
 
@@ -202,6 +205,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+</script>
+  <script>
+let index = 0;
+
+function moveCarousel(direction) {
+  const tracks = document.getElementById("tracks");
+  const items = document.querySelectorAll(".track");
+  const total = items.length;
+
+  index += direction;
+
+  if (index < 0) index = total - 3;
+  if (index > total - 3) index = 0;
+
+  tracks.style.transform = `translateX(-${index * (100 / 3)}%)`;
+}
 </script>
 </body>
 </html>

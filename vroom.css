@@ -248,28 +248,30 @@ h2 {
 
 .video-thumb {
   position: relative;
+  overflow: hidden; /* 🔥 IMPORTANT: hides overflow */
 }
 
-/* IMAGE */
+/* VIDEO IMAGE */
 .video-thumb img:first-child {
   width: 100%;
   display: block;
 }
 
-/* 🔥 PLAY BUTTON (SMALL + CONTROLLED) */
+/* PLAY BUTTON FIX */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 50px;
+
   transform: translate(-50%, -50%);
-  width: 38px; /* 🔥 MUCH smaller */
-  opacity: 0.85;
-  transition: 0.2s ease;
+  object-fit: contain; /* 🔥 prevents weird scaling */
+  pointer-events: auto;
 }
 
+/* hover ONLY on button */
 .play-btn:hover {
   transform: translate(-50%, -50%) scale(1.08);
-  opacity: 1;
 }
 
 /* TEXT */

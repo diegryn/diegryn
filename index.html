@@ -188,63 +188,94 @@
     <a href="https://diegryn.com/press">PRESS</a>
   </p>
 </footer>
-  <script>
-/* ================= MOBILE MENU ================= */
-function toggleMenu() {
-  document.querySelector('.mobile-nav').classList.toggle('open');
+<script>
+const tracks = document.querySelector(".tracks");
+let items = document.querySelectorAll(".track");
+
+let index = 3;
+const visible = 3;
+
+/* CLONE */
+const firstClones = [...items].slice(0, visible).map(el => el.cloneNode(true));
+const lastClones = [...items].slice(-visible).map(el => el.cloneNode(true));
+
+lastClones.forEach(clone => tracks.prepend(clone));
+firstClones.forEach(clone => tracks.appendChild(clone));
+
+items = document.querySelectorAll(".track");
+
+let trackWidth;
+
+function updateSizes() {
+  trackWidth = items[0].offsetWidth + 18;
+  tracks.style.transition = "none";
+  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
 }
 
-/* ================= CAROUSEL ================= */
+window.addEventListener("load", updateSizes);
+window.addEventListener("resize", updateSizes);
+
+/* MOVE */
+function moveToIndex() {
+  tracks.style.transition = "transform 0.4s ease";
+  tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+}
+
+/* NEXT */
+function next() {
+  index++;
+  moveToIndex();
+
+  if (index >= items.length - visible) {
+    setTimeout(() => {
+      tracks.style.transition = "none";
+      index = visible;
+      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+    }, 400);
+  }
+}
+
+/* PREV */
+function prev() {
+  index--;
+  moveToIndex();
+
+  if (index <= 0) {
+    setTimeout(() => {
+      tracks.style.transition = "none";
+      index = items.length - visible * 2;
+      tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+    }, 400);
+  }
+}
+
+/* DRAG (SIMPLIFIED SNAP) */
+let startX = 0;
+
 const carousel = document.querySelector(".carousel");
 
-let isDown = false;
-let startX;
-let scrollLeft;
+carousel.addEventListener("mousedown", (e) => {
+  startX = e.pageX;
+});
 
-/* DRAG (desktop + mobile) */
-carousel.addEventListener("mousedown", startDrag);
-carousel.addEventListener("touchstart", startDrag);
+carousel.addEventListener("mouseup", (e) => {
+  const diff = e.pageX - startX;
 
-carousel.addEventListener("mousemove", moveDrag);
-carousel.addEventListener("touchmove", moveDrag);
+  if (diff > 50) prev();
+  if (diff < -50) next();
+});
 
-carousel.addEventListener("mouseup", endDrag);
-carousel.addEventListener("mouseleave", endDrag);
-carousel.addEventListener("touchend", endDrag);
+/* TOUCH */
+carousel.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
 
-function startDrag(e) {
-  isDown = true;
-  startX = e.pageX || e.touches[0].pageX;
-  scrollLeft = carousel.scrollLeft;
-}
+carousel.addEventListener("touchend", (e) => {
+  const diff = e.changedTouches[0].clientX - startX;
 
-function moveDrag(e) {
-  if (!isDown) return;
-  e.preventDefault();
-
-  const x = e.pageX || e.touches[0].pageX;
-  const walk = (x - startX) * 1.5;
-  carousel.scrollLeft = scrollLeft - walk;
-}
-
-function endDrag() {
-  isDown = false;
-}
-
-/* ================= ARROWS ================= */
-function next() {
-  carousel.scrollBy({
-    left: carousel.offsetWidth,
-    behavior: "smooth"
-  });
-}
-
-function prev() {
-  carousel.scrollBy({
-    left: -carousel.offsetWidth,
-    behavior: "smooth"
-  });
-}
+  if (diff > 50) prev();
+  if (diff < -50) next();
+});
 </script>
   
 </body>

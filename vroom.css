@@ -229,3 +229,6 @@ footer {
   text-align: center;
   font-size: 12px;
 }
+.tracks {
+  transition: transform 0.4s ease;
+}

@@ -18,6 +18,7 @@ a {
 }
 
 /* ================= HEADER ================= */
+/* ================= HEADER ================= */
 .header {
   position: absolute;
   top: 0;
@@ -29,20 +30,21 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 45px;
+  padding: 26px 55px; /* 🔥 slightly bigger spacing */
 }
 
+/* LEFT SIDE */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 38px;
 }
 
-/* LOGO */
+/* LOGO (bigger + stronger presence) */
 .logo-text {
   font-family: 'Times New Roman', serif;
-  font-size: 18px;
-  letter-spacing: 3 px;
+  font-size: 21px; /* 🔥 bigger */
+  letter-spacing: 3.5px;
   font-weight: 500;
   text-transform: uppercase;
 
@@ -62,14 +64,14 @@ a {
 /* NAV */
 nav {
   display: flex;
-  gap: 22px;
+  gap: 26px;
 }
 
 nav a {
-  font-size: 12px;
-  letter-spacing: 1.4px;
-  font-weight: 500;
-  opacity: 0.75;
+  font-size: 13px; /* 🔥 slightly bigger */
+  letter-spacing: 1.6px;
+  font-weight: 500; /* 🔥 slightly thicker */
+  opacity: 0.8;
   transition: 0.2s ease;
 }
 
@@ -77,14 +79,14 @@ nav a:hover {
   opacity: 1;
 }
 
-/* SOCIAL */
+/* SOCIAL ICONS */
 .nav-right {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .nav-right i {
-  font-size: 16px;
+  font-size: 18px; /* 🔥 slightly bigger */
   transition: 0.25s ease;
 }
 

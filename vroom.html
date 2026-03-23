@@ -9,15 +9,11 @@
 
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Michroma&family=Raleway:wght@100..900&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="vroom.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-  <!-- SCHEMA -->
-  <script type="application/ld+json">
+
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicArtist",
@@ -38,10 +34,11 @@
 <body>
 
 <header class="header">
-  <div class="header-inner container">
+  <div class="header-inner">
+
     <div class="nav-left">
       <a href="https://diegryn.com">
-        <img src="die_gryn_logo.png" alt="Die Gryn" class="logo">
+        <img src="die_gryn_logo.png" class="logo">
       </a>
 
       <nav>
@@ -54,14 +51,10 @@
     </div>
 
     <div class="nav-right">
-      <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/channel/UCE1_baikqR-EqUrZMrhCljQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
-      <a href="https://music.apple.com/es/artist/die-gryn/1852066460" target="_blank"><i class="fa-brands fa-apple"></i></a>
-      <a href="https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn" target="_blank"><i class="fa-brands fa-amazon"></i></a>
-      <a href="https://soundcloud.com/diegryn" target="_blank"><i class="fa-brands fa-soundcloud"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#"><i class="fa-brands fa-spotify"></i></a>
     </div>
 
   </div>
@@ -82,80 +75,60 @@
 
 <!-- MUSIC -->
 <section id="music" class="music">
-  <div class="container">
+  <h2>MUSIC</h2>
 
-    <h2>MUSIC</h2>
+  <div class="carousel">
+    <button class="arrow left" onclick="prev()">‹</button>
 
-    <div class="carousel">
+    <div class="tracks">
 
-      <button class="arrow left" onclick="prev()">‹</button>
-
-      <div class="tracks">
-
-        <div class="track">
-          <a href="https://melodymover.lnk.to/fakelove" target="_blank">
-            <img src="Fake Love Art Cover.jpg">
-          </a>
-          <p>Fake Love</p>
-        </div>
-        
-        <div class="track">
-          <a href="https://ffm.to/vroom-vroom" target="_blank">
-            <img src="vroomvroom1.jpg">
-          </a>
-          <p>Vroom Vroom</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/fake-love-mixes" target="_blank">
-            <img src="mixes.jpg">
-          </a>
-          <p>Fran Garro</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank">
-            <img src="fake.love_extendedc_cover.JPG">
-          </a>
-          <p>Extended</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/fake-love-acoustic" target="_blank">
-            <img src="fake.love_acoustic_cover.JPG">
-          </a>
-          <p>Acoustic</p>
-        </div>
-
-        <div class="track">
-          <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix" target="_blank">
-            <img src="fake.love_schweigen_cover.JPG">
-          </a>
-          <p>Schweigen</p>
-        </div>
-
+      <div class="track">
+        <a href="https://ffm.to/vroom-vroom" target="_blank">
+          <img src="vroomvroom1.jpg">
+        </a>
+        <p>Vroom Vroom</p>
+        <a href="https://ffm.to/vroom-vroom" target="_blank" class="listen">LISTEN NOW</a>
       </div>
 
-      <button class="arrow right" onclick="next()">›</button>
+      <div class="track">
+        <a href="https://melodymover.lnk.to/fakelove" target="_blank">
+          <img src="Fake Love Art Cover.jpg">
+        </a>
+        <p>Fake Love</p>
+        <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="listen">LISTEN NOW</a>
+      </div>
+
+      <div class="track">
+        <a href="https://ffm.to/fake-love-mixes" target="_blank">
+          <img src="mixes.jpg">
+        </a>
+        <p>Fran Garro</p>
+        <a href="https://ffm.to/fake-love-mixes" target="_blank" class="listen">LISTEN NOW</a>
+      </div>
+
+      <div class="track">
+        <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank">
+          <img src="fake.love_extendedc_cover.JPG">
+        </a>
+        <p>Extended</p>
+        <a href="#" class="listen">LISTEN NOW</a>
+      </div>
 
     </div>
 
+    <button class="arrow right" onclick="next()">›</button>
   </div>
 </section>
 
 <!-- VIDEOS -->
 <section id="videos" class="videos">
-  <div class="container">
+  <h2>VIDEOS</h2>
 
-    <h2>VIDEOS</h2>
-
-    <div class="video">
-      <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank">
-        <img src="fake-love-acoustic-video.jpg">
-      </a>
-      <p>Fake Love (Acoustic Video)</p>
-    </div>
-
+  <div class="video">
+    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank">
+      <img src="fake-love-acoustic-video.jpg">
+    </a>
+    <p>Fake Love (Acoustic Video)</p>
   </div>
 </section>
 
@@ -169,32 +142,30 @@
   </p>
 </footer>
 
-  <script>
+<script>
 let index = 0;
 
 const tracks = document.querySelector(".tracks");
 const items = document.querySelectorAll(".track");
 
 function updateCarousel() {
-  const trackWidth = items[0].offsetWidth + 40; // 40 = gap
+  const visible = 3;
+  const total = items.length;
+  const trackWidth = items[0].offsetWidth + 30;
+
+  if (index > total - visible) index = 0;
+  if (index < 0) index = total - visible;
+
   tracks.style.transform = `translateX(-${index * trackWidth}px)`;
 }
 
 function next() {
-  if (index < items.length - 3) {
-    index++;
-  } else {
-    index = 0;
-  }
+  index++;
   updateCarousel();
 }
 
 function prev() {
-  if (index > 0) {
-    index--;
-  } else {
-    index = items.length - 3;
-  }
+  index--;
   updateCarousel();
 }
 </script>

@@ -277,6 +277,7 @@ h2 {
 }
 
 /* ================= FOOTER ================= */
+/* ================= FOOTER ================= */
 footer {
   background: #f5f5f5;
   color: black;
@@ -288,7 +289,7 @@ footer {
 }
 
 footer p {
-  max-width: 420px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -296,6 +297,7 @@ footer p {
 /* LINKS */
 footer a {
   position: relative;
+  white-space: nowrap; /* 🔥 evita que se rompan raro */
 }
 
 /* underline animation */
@@ -510,11 +512,6 @@ footer a:hover::after {
   /* SPACING */
   section {
     padding: 60px 0;
-  }
-
-  footer {
-    font-size: 12px;
-    padding: 20px;
   }
 }
 

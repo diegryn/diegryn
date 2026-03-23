@@ -5,23 +5,22 @@
   box-sizing: border-box;
 }
 
-img {
-  width: 100%;
-  display: block;
-}
-
 body {
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
   background: black;
   color: white;
+  overflow-x: hidden;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 30px;
+/* FORZAR LINKS (NO AZUL NUNCA) */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited,
+a:active {
+  color: inherit;
 }
 
 /* HEADER */
@@ -31,37 +30,24 @@ body {
   top: 0;
   z-index: 100;
 }
-  
+
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 26px 40px;
-  width: 100%;
-}
-
-.header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  transition: transform 0.3s ease;
-}
-
-/* cuando se oculta */
-.header.hide {
-  transform: translateY(-100%);
+  padding: 28px 40px;
 }
 
 /* LEFT */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
 }
 
+/* 🔥 LOGO MÁS GRANDE REAL */
 .logo {
-  height: 60px;
+  height: 65px;
 }
 
 /* MENU */
@@ -71,46 +57,42 @@ nav {
 }
 
 nav a {
-  color: white;
   font-size: 14px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  text-decoration: none;
   opacity: 0.85;
-  transition: opacity 0.25s ease;
 }
 
 nav a:hover {
   opacity: 1;
 }
 
-/* RIGHT (SOCIALS) */
+/* RIGHT ICONS (FONT AWESOME) */
 .nav-right {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
-.nav-right img {
-  width: 24px; /* apenas más grande */
-  height: 24px;
-  object-fit: contain;
+.nav-right a {
+  color: white;
+}
+
+/* ICON SIZE */
+.nav-right i {
+  font-size: 20px;
   opacity: 0.9;
   transition: all 0.25s ease;
-
-  filter: brightness(0) invert(1); /* 🔥 los vuelve blancos */
 }
 
-/* HOVER ROJO OSCURO (como tu short) */
-.nav-right img:hover {
-  opacity: 1;
+/* 🔴 HOVER ROJO OSCURO (TU COLOR) */
+.nav-right a:hover i {
+  color: #8B0000;
   transform: scale(1.05);
-
-  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-8deg) brightness(0.75);
 }
-/* AMAZON FIX */
-.nav-right img.amazon {
-  transform: translateY(1px);
+
+/* ❌ QUITAR AZUL AL CLICK */
+.nav-right a:active i {
+  color: #8B0000;
 }
 
 /* HERO */
@@ -127,7 +109,6 @@ nav a:hover {
   position: absolute;
   inset: 0;
   background: url("vroomvroom3.jpg") center 35% / cover no-repeat;
-  filter: brightness(0.9);
   z-index: 0;
 }
 
@@ -135,39 +116,32 @@ nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.1),
-    rgba(0,0,0,0.4)
-  );
+  background: rgba(0,0,0,0.25);
   z-index: 1;
 }
 
+/* 🔥 AJUSTE TEXTO HERO */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
+  transform: translateY(-20px);
 }
 
 .hero h1 {
   font-size: 60px;
   letter-spacing: 5px;
-  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .hero p {
-  margin: 12px 0;
+  margin-bottom: 10px;
   opacity: 0.85;
 }
 
 .cta {
-  display: inline-block;
-  margin-top: 18px;
   padding: 12px 34px;
   border: 1px solid white;
-  color: white;
-  text-decoration: none;
   transition: all 0.3s ease;
 }
 
@@ -180,69 +154,63 @@ nav a:hover {
 .music {
   background: #f3f3f3;
   color: black;
-  padding: 140px 0 100px;
+  padding: 140px 0;
 }
 
 .music h2 {
   text-align: center;
   margin-bottom: 60px;
-  font-size: 20px;
   letter-spacing: 2px;
 }
 
-/* CAROUSEL */
+/* 🎯 CAROUSEL REAL (NO SCROLL) */
 .carousel {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-/* TRACKS */
+/* TRACKS WRAPPER */
 .tracks {
   display: flex;
-  gap: 40px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 0 20px;
+  width: 900px;
+  overflow: hidden;
 }
 
-/* CADA TRACK (3 visibles) */
+/* 3 ITEMS FIJOS */
 .track {
-  min-width: calc((100% - 80px) / 3);
+  flex: 0 0 33.333%;
   text-align: center;
 }
 
-/* COVER GRANDE */
+/* COVER */
 .track img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* HOVER */
+/* ❌ SIN HOVER */
 .track img:hover {
-  transform: scale(1.04);
-  opacity: 0.9;
+  transform: none;
 }
 
-/* TITULO */
+/* 🔥 TITULO */
 .track p {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8B0000;
 }
 
 /* ARROWS */
 .arrow {
-  position: absolute;
-  top: 40%;
   font-size: 28px;
-  border: none;
-  background: none;
   cursor: pointer;
-  color: black;
+  background: none;
+  border: none;
 }
-
-.arrow.left { left: -10px; }
-.arrow.right { right: -10px; }
 
 /* VIDEOS */
 .videos {
@@ -253,18 +221,6 @@ nav a:hover {
 .video {
   max-width: 600px;
   margin: auto;
-  position: relative;
-}
-
-.video img {
-  border-radius: 8px;
-}
-
-.play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* FOOTER */
@@ -272,10 +228,4 @@ footer {
   padding: 30px;
   text-align: center;
   font-size: 12px;
-}
-
-/* SEO */
-.seo-artist-line {
-  position: absolute;
-  left: -9999px;
 }

@@ -73,7 +73,7 @@ nav a:hover {
 }
 
 .nav-right a:hover i {
-  color: #8B0000; /* 🔥 back */
+  color: #8B0000;
   transform: scale(1.1);
 }
 
@@ -90,7 +90,7 @@ nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("vroomvroom3.jpg") center 35% / cover no-repeat;
+  background: url("vroomvroom3.jpg") center 45% / cover no-repeat; /* 🔥 lower image */
 }
 
 .hero::after {
@@ -104,7 +104,7 @@ nav a:hover {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-top: 140px; /* 🔥 lower */
+  margin-top: 140px;
 }
 
 .hero h1 {
@@ -138,31 +138,26 @@ nav a:hover {
 }
 
 .music {
-  padding: 90px 0 40px;
+  padding: 80px 0 30px;
 }
 
 .videos {
-  padding: 50px 0 90px;
+  padding: 40px 0 40px; /* 🔥 less bottom space */
 }
 
 h2 {
   color: #8B0000;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   letter-spacing: 2px;
 }
 
 /* ================= CAROUSEL ================= */
 .carousel {
-  max-width: 1100px;
+  max-width: 900px; /* 🔥 smaller like Sombr */
   margin: auto;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+  overflow: hidden;
+  position: relative;
   cursor: grab;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
 }
 
 .carousel:active {
@@ -171,63 +166,56 @@ h2 {
 
 .tracks {
   display: flex;
-  gap: 20px;
-  padding: 0 10px;
+  gap: 18px;
+  transition: transform 0.4s ease;
 }
 
+/* SMALLER CARDS */
 .track {
-  flex: 0 0 calc(100% / 3);
+  min-width: calc(100% / 3);
   text-align: center;
 }
 
 .track img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
 .track p {
-  margin-top: 12px;
+  margin-top: 10px;
   font-weight: 600;
 }
 
 .listen {
   display: block;
-  margin-top: 6px;
+  margin-top: 5px;
   font-size: 11px;
 }
 
 /* ARROWS */
-.carousel {
-  position: relative;
-}
-
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
-  opacity: 0.6;
-}
-
-.arrow:hover {
-  opacity: 1;
+  z-index: 5;
 }
 
 .arrow.left {
-  left: -35px;
+  left: -40px;
 }
 
 .arrow.right {
-  right: -35px;
+  right: -40px;
 }
 
 /* ================= VIDEO ================= */
 .video {
-  max-width: 520px;
+  max-width: 480px; /* 🔥 smaller like Sombr */
   margin: 0 auto;
 }
 
@@ -237,33 +225,33 @@ h2 {
 
 .video-thumb img:first-child {
   width: 100%;
+  display: block;
 }
 
-/* 🔥 CLEAN PLAY BUTTON (NO GLOW) */
+/* YOUR PLAY BUTTON IMAGE */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px;
-  color: white;
+  width: 65px; /* 🔥 balanced size */
   opacity: 0.9;
   transition: 0.2s;
 }
 
 .play-btn:hover {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.08);
   opacity: 1;
 }
 
 .video-title {
-  margin-top: 22px;
+  margin-top: 18px;
   font-weight: 600;
 }
 
 .watch {
   display: block;
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 11px;
 }
 
@@ -271,7 +259,7 @@ h2 {
 footer {
   background: #f5f5f5;
   color: black;
-  padding: 30px;
+  padding: 20px; /* 🔥 less space */
   text-align: center;
   font-size: 12px;
 }

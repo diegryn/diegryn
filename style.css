@@ -79,7 +79,37 @@ nav a:hover {
   color: #8B0000;
   transform: scale(1.1);
 }
+/* ================= CAROUSEL ================= */
+.carousel-wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+}
 
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 18px;
+
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.tracks {
+  display: flex;
+  gap: 18px;
+}
+
+.track {
+  flex: 0 0 calc((100% - 36px) / 3); /* desktop = 3 */
+  scroll-snap-align: center;
+}
+
+.track img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
 /* ================= HERO ================= */
 .hero {
   height: 100vh;
@@ -161,47 +191,7 @@ h2 {
   font-weight: 800; /* 🔥 más fuerte */
 }
 
-/* ================= CAROUSEL ================= */
-.carousel-wrapper {
-  position: relative;
-  max-width: 920px; /* 🔥 balanced */
-  margin: 0 auto;
-}
 
-.carousel {
-  overflow-x: hidden;
-  display: flex;
-  cursor: grab;
-  touch-action: pan-y;
-}
-
-.tracks {
-  display: flex;
-  gap: 14px;
-}
-
-.track {
-   min-width: 33.33%
-}
-
-.track img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-}
-
-.track p {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.listen {
-  font-size: 11px;
-  opacity: 0.75;
-  letter-spacing: 0.5px;
-}
 
 /* ARROWS (outside like Sombr) */
 .arrow {
@@ -293,7 +283,8 @@ footer {
 footer p {
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.8;
+  padding: 0 10px;
 }
 
 /* LINKS */
@@ -470,10 +461,11 @@ footer {
   transform: translateY(0);
 }
 
-  .mobile-nav a {
-    font-size: 26px;
-    font-weight: 600;
-  }
+.mobile-nav a {
+  font-size: 26px;
+  font-weight: 700;
+  color: #8B0000;
+}
 
   .mobile-socials {
     display: flex;
@@ -565,34 +557,15 @@ footer {
   font-size: 20px;
 }
 
-/* ================= CAROUSEL ================= */
-.carousel {
-  overflow-x: auto;              /* 🔥 allow swipe */
-  scroll-snap-type: x mandatory; /* 🔥 snap effect */
-  display: flex;
-  gap: 14px;
-  padding-bottom: 10px;
-
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
-}
-
-/* each item */
-.track {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-}
-
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
   .carousel-wrapper {
-    max-width: 100%;
     padding: 0 20px;
   }
 
   .track {
-    min-width: 85%;  /* 👈 your idea = correct */
+    flex: 0 0 85%;
   }
 
 }

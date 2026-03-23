@@ -509,3 +509,10 @@ footer a:hover::after {
     padding: 20px;
   }
 }
+
+/* 🔥 OCULTAR MOBILE MENU EN DESKTOP */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+}

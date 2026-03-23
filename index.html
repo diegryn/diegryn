@@ -49,7 +49,9 @@
         <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
       </nav>
     </div>
-
+    <!-- BOTÓN MOBILE -->
+    <div class="menu-toggle">☰</div>
+    <!-- REDES -->    
 <div class="nav-right">
   <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
   <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -60,6 +62,13 @@
   <a href="https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn" target="_blank"><i class="fa-brands fa-amazon"></i></a>
   <a href="https://soundcloud.com/diegryn" target="_blank"><i class="fa-brands fa-soundcloud"></i></a> </div>
   </div>
+   <!-- MENÚ MOBILE -->
+  <nav class="mobile-menu">
+    <a href="#music">MUSIC</a>
+    <a href="#videos">VIDEOS</a>
+    <a href="https://diegryn.bandcamp.com/" target="_blank">SHOP</a>
+    <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -262,6 +271,17 @@ window.addEventListener("resize", () => {
   updateCarousel(false);
 });
 </script>
+    <!-- TU CONTENIDO -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector('.menu-toggle').onclick = () => {
+    document.querySelector('.mobile-menu').classList.toggle('active');
+  };
+});
+</script>
   
+
+</body>
+</html>
 </body>
 </html>

@@ -170,22 +170,20 @@ const items = document.querySelectorAll(".track");
 function updateCarousel() {
   const visible = 3;
   const total = items.length;
-  const trackWidth = items[0].offsetWidth + 30;
+  const trackWidth = items[0].offsetWidth + 25;
 
-  if (index > total - visible) index = 0;
-  if (index < 0) index = total - visible;
+  if (index > total - visible) index = total - visible;
+  if (index < 0) index = 0;
 
   tracks.style.transform = `translateX(-${index * trackWidth}px)`;
 
   updateActive();
 }
 
-/* 🔥 CLAVE: CENTRO DINÁMICO */
 function updateActive() {
   items.forEach(item => item.classList.remove("active"));
 
-  const centerIndex = index + 1; // el del medio (3 visibles)
-  
+  const centerIndex = index + 1;
   if (items[centerIndex]) {
     items[centerIndex].classList.add("active");
   }
@@ -201,9 +199,9 @@ function prev() {
   updateCarousel();
 }
 
-/* INIT */
 updateCarousel();
 </script>
+
 
 </body>
 </html>

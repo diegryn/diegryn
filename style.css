@@ -405,6 +405,21 @@ footer a:hover::after {
 }
 
 
+/* HEADER BASE */
+.header {
+  position: relative;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* OCULTO EN DESKTOP */
+.menu-toggle {
+  display: none;
+}
 /* =========================
    MOBILE (like Sombr)
 ========================= */
@@ -429,17 +444,24 @@ footer a:hover::after {
     padding: 15px 20px;
   }
 
-  .logo {
+  .logo-text {
     font-size: 20px;
   }
 
-  nav {
-    display: none; /* hide desktop menu */
+  /* 🔥 SOLO ocultamos el menú desktop (NO todos los nav) */
+  .nav-left nav {
+    display: none;
   }
 
+  /* ocultar redes */
+  .nav-right {
+    display: none;
+  }
+
+  /* mostrar botón hamburguesa */
   .menu-toggle {
     display: block;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
   }
 
@@ -469,7 +491,7 @@ footer a:hover::after {
     font-size: 14px;
   }
 
-  /* MUSIC GRID → STACK */
+  /* MUSIC */
   .music-grid {
     display: flex;
     flex-direction: column;
@@ -479,10 +501,6 @@ footer a:hover::after {
 
   .music-item img {
     width: 100%;
-  }
-
-  .music-item h3 {
-    margin-top: 10px;
   }
 
   /* VIDEOS */
@@ -498,12 +516,11 @@ footer a:hover::after {
     width: 50px;
   }
 
-  /* SECTION SPACING */
+  /* SPACING */
   section {
     padding: 60px 0;
   }
 
-  /* FOOTER */
   footer {
     font-size: 12px;
     padding: 20px;
@@ -512,18 +529,23 @@ footer a:hover::after {
 .mobile-menu {
   display: none;
   flex-direction: column;
-  background: #fff;
+  background: white;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  z-index: 1000;
 }
 
 .mobile-menu a {
   padding: 15px 0;
   font-size: 20px;
+  text-decoration: none;
+  color: black;
 }
+
 .mobile-menu.active {
   display: flex;
 }

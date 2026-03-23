@@ -47,7 +47,7 @@ a:active {
 
 /* 🔥 LOGO MÁS GRANDE REAL */
 .logo {
-    height: 180px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     margin-top: -10px;

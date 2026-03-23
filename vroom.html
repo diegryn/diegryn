@@ -176,6 +176,19 @@ function updateCarousel() {
   if (index < 0) index = total - visible;
 
   tracks.style.transform = `translateX(-${index * trackWidth}px)`;
+
+  updateActive();
+}
+
+/* 🔥 CLAVE: CENTRO DINÁMICO */
+function updateActive() {
+  items.forEach(item => item.classList.remove("active"));
+
+  const centerIndex = index + 1; // el del medio (3 visibles)
+  
+  if (items[centerIndex]) {
+    items[centerIndex].classList.add("active");
+  }
 }
 
 function next() {
@@ -187,6 +200,9 @@ function prev() {
   index--;
   updateCarousel();
 }
+
+/* INIT */
+updateCarousel();
 </script>
 
 </body>

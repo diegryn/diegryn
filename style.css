@@ -214,7 +214,7 @@ h2 {
 /* ARROWS (outside like Sombr) */
 .arrow {
   position: absolute;
-  top: 45%;
+  top: 40%;
   transform: translateY(-50%);
   font-size: 48px;
   background: none;
@@ -575,21 +575,21 @@ footer a:hover::after {
   .track {
     flex: 0 0 100%;
     margin: 0;
-    padding: 30px;
+    padding: 50px;
   }
   .arrow {
     display: block;
-    font-size: 32px;
+    font-size: 50px;
     top: 45%;
     z-index: 20;
   }
   @media (max-width: 768px) {
   .arrow.left {
-    left: 5px;
+    left: 15px;
   }
 
   .arrow.right {
-    right: 5px;
+    right: 15px;
   }
 }
 }

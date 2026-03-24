@@ -468,13 +468,6 @@ footer a:hover::after {
     align-items: center;
   }
 
-  .mobile-logo {
-    font-family: 'Times New Roman', serif;
-    font-size: 34px;
-    letter-spacing: 5px;
-    color: black;
-  }
-
   .close-menu {
     font-size: 32px;
     cursor: pointer;

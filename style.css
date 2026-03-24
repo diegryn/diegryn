@@ -10,7 +10,9 @@ body {
   background: #f5f5f5;
   color: white;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -97,9 +99,9 @@ nav a:hover {
 }
 
 .track {
-  flex: 0 0 calc((100% - 36px) / 3);
-  margin: 0 6px;
-  text-align: center;
+  flex: 0 0 33.333%;
+  padding: 0 9px; /* espacio interno en vez de margin */
+  box-sizing: border-box;
 }
 
 .track img {
@@ -229,7 +231,7 @@ h2 {
 
 /* ================= VIDEO ================= */
 .video {
-  max-width: 480px; /* 🔥 closer to Sombr */
+  max-width: 420px; /* 🔥 closer to Sombr */
   margin: 0 auto;
 }
 
@@ -271,37 +273,26 @@ h2 {
   font-size: 10px;
   opacity: 0.7;
 }
-
 .watch:hover {
   opacity: 1;
 }
-
-/* ================= FOOTER ================= */
 /* ================= FOOTER ================= */
 footer {
   background: #f5f5f5;
   color: black;
-  padding: 30px 20px;
+  padding: 25px 20px;
   text-align: center;
   font-size: 11px;
   letter-spacing: 0.5px;
   opacity: 0.85;
-  margin-top: 30px;
+  margin-top: 20px; /* 🔥 deja ESTE */
+  line-height: 1.6;
 }
-
-footer p {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-}
-
 /* LINKS */
 footer a {
   position: relative;
   white-space: nowrap; /* 🔥 evita que se rompan raro */
 }
-
 /* underline animation */
 footer a::after {
   content: "";
@@ -313,22 +304,14 @@ footer a::after {
   background: black;
   transition: width 0.25s ease;
 }
-
 footer a:hover::after {
   width: 100%;
 }
-footer {
-  margin-top: 60px;   /* 🔥 THIS is what you were missing */
-  line-height: 1.6;   /* improves readability */
-}
-
 /* SEO */
 .seo-artist-line {
   position: absolute;
   left: -9999px;
 }
-
-
 /* ================= LEGAL PAGES ================= */
 .legal-page {
   min-height: 100vh;
@@ -451,17 +434,20 @@ footer {
 .mobile-nav {
   position: fixed;
   inset: 0;
-  background: #f5f5f5;
   z-index: 9999;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-
+  gap: 50px;
   transform: translateY(-100%);
   transition: 0.4s ease;
+  font-size: 26px;
+  font-weight: 700; /* 🔥 más fuerte */
+  letter-spacing: 1px;
+  color: #8B0000;
+  text-align: center;
+  width: 100%;
 }
 
   .mobile-logo {
@@ -472,45 +458,24 @@ footer {
 .close-menu {
   font-size: 32px; /* 🔥 más grande */
 }
-
-.mobile-nav a {
-  font-size: 28px;
-  font-weight: 800; /* 🔥 más fuerte */
-  letter-spacing: 1px;
-}
-
 .mobile-nav.open {
   transform: translateY(0);
 }
-
-.mobile-nav a {
-  font-size: 26px;
-  font-weight: 700;
-  color: #8B0000;
-}
-
   .mobile-socials {
     display: flex;
     gap: 25px;
     margin-top: 40px;
     font-size: 22px;
   }
-
   /* HERO */
   .hero-content {
     margin-top: 80px;
     padding: 20px;
   }
-
   .hero h1 {
     font-size: 42px;
     letter-spacing: 3px;
   }
-
-  .tracks {
-    gap: 14px;
-  }
-
   /* VIDEO */
   .video {
     max-width: 90%;
@@ -566,7 +531,6 @@ footer {
   bottom: 40px;
   left: 20px;
   right: 20px;
-
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; /* 🔥 CLAVE */
@@ -574,30 +538,19 @@ footer {
 
   font-size: 20px;
 }
-
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
   .carousel {
     overflow: hidden;
   }
-
   .track {
     flex: 0 0 100%;
     margin: 0;
   }
-
   .arrow {
     display: block;
   }
-
 }
-
-.video {
-  max-width: 360px;
-  margin: 0 auto;
-}
-
 @media (max-width: 768px) {
   .video {
     max-width: 85%;

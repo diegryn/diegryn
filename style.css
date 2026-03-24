@@ -433,7 +433,7 @@ footer a:hover::after {
     font-size: 40px;
     cursor: pointer;
     z-index: 1001;
-  }
+  }}
 /* ================= MOBILE MENU ================= */
 
 .mobile-nav {

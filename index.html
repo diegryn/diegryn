@@ -196,7 +196,7 @@ function toggleMenu() {
   menu.classList.toggle('open');
 }
 
-/* CLOSE MENU WHEN CLICKING (safe load) */
+/* CLOSE MENU WHEN CLICKING */
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.mobile-nav a').forEach(link => {
     link.addEventListener('click', () => {
@@ -204,14 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-</script>
-<script>
+
+
+/* ================= CAROUSEL (RESPONSIVE FIXED) ================= */
 const tracks = document.getElementById("tracks");
 let items = document.querySelectorAll(".track");
 
 let index = 1;
 
-// 🔥 CLONES (loop infinito)
+/* CLONES (infinite loop) */
 const firstClone = items[0].cloneNode(true);
 const lastClone = items[items.length - 1].cloneNode(true);
 
@@ -220,18 +221,28 @@ tracks.insertBefore(lastClone, items[0]);
 
 items = document.querySelectorAll(".track");
 
-function updatePosition() {
-  tracks.style.transform = `translateX(-${index * 33.333}%)`;
+/* 🔥 detect how many items per view */
+function getItemsPerView() {
+  return window.innerWidth <= 768 ? 1 : 3;
 }
 
+/* 🔥 update position correctly */
+function updatePosition() {
+  const perView = getItemsPerView();
+  tracks.style.transform = `translateX(-${index * (100 / perView)}%)`;
+}
+
+/* init */
 updatePosition();
 
+/* move */
 function moveCarousel(direction) {
   index += direction;
   tracks.style.transition = "0.4s ease";
   updatePosition();
 }
 
+/* infinite loop fix */
 tracks.addEventListener("transitionend", () => {
   if (index === items.length - 1) {
     tracks.style.transition = "none";
@@ -244,6 +255,11 @@ tracks.addEventListener("transitionend", () => {
     index = items.length - 2;
     updatePosition();
   }
+});
+
+/* 🔥 FIX when resizing screen */
+window.addEventListener("resize", () => {
+  updatePosition();
 });
 </script>
 </body>

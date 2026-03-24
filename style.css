@@ -101,18 +101,16 @@ nav a:hover {
 
 .track {
   flex: 0 0 33.333%;
-  padding: 0 20px; /* espacio interno en vez de margin */
+  padding: 0 16px; /* espacio interno en vez de margin */
   box-sizing: border-box;
   
-}
-* {
-  max-width: 100%;
 }
 
 .track img {
   width: 100%;
+  aspect-ratio: 1 / 1;
   height: auto; /* 🔥 keeps full image */
-  object-fit: contain; /* 🔥 shows entire image */
+  object-fit: cover; /* 🔥 shows entire image */
   display: block;
 }
 
@@ -577,6 +575,7 @@ footer a:hover::after {
   .track {
     flex: 0 0 100%;
     margin: 0;
+    padding: 30px;
   }
   .arrow {
     display: block;

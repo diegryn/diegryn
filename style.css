@@ -590,7 +590,8 @@ footer {
 }
 
 .video {
-  max-width: 380px; /* antes 480 */
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {

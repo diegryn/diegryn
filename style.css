@@ -428,72 +428,81 @@ footer a:hover::after {
     cursor: pointer;
     z-index: 1001;
   }
-  /* 🔥 MOBILE MENU */
-@media (max-width: 768px) {
+/* ================= MOBILE MENU ================= */
+
 .mobile-nav {
-  position: fixed;
-  inset: 0;
-  background: #f5f5f5;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  transform: translateY(-100%);
-  transition: 0.4s ease;
+  display: none;
 }
-.mobile-nav.open {
-  transform: translateY(0);
-}
-/* HEADER */
-.mobile-header {
-  position: absolute;
-  top: 40px;
-  left: 25px;
-  right: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-/* LOGO */
-.mobile-logo {
-  font-family: 'Times New Roman', serif;
-  font-size: 34px; /* 🔥 más grande */
-  letter-spacing: 5px;
-  color: black;
-}
-/* CLOSE BUTTON */
-.close-menu {
-  font-size: 32px;
-  cursor: pointer;
-  color: #8B0000;
-}
-/* 🔥 MENÚ CENTRADO REAL */
-.mobile-nav-links {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  gap: 45px;
-  text-align: center;
-}
-.mobile-nav-links a {
-  font-size: 26px;
-  font-weight: 700;
-  color: #8B0000;
-  letter-spacing: 1px;
-}
-/* SOCIALS */
-.mobile-socials {
-  position: absolute;
-  bottom: 40px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 20px;
+
+/* MOBILE ONLY */
+@media (max-width: 768px) {
+
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: #f5f5f5;
+    z-index: 9999;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: 0.4s ease;
+  }
+
+  .mobile-nav.open {
+    transform: translateY(0);
+  }
+
+  .mobile-header {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobile-logo {
+    font-family: 'Times New Roman', serif;
+    font-size: 34px;
+    letter-spacing: 5px;
+    color: black;
+  }
+
+  .close-menu {
+    font-size: 32px;
+    cursor: pointer;
+    color: #8B0000;
+  }
+
+  .mobile-nav-links {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    text-align: center;
+  }
+
+  .mobile-nav-links a {
+    font-size: 26px;
+    font-weight: 700;
+    color: #8B0000;
+  }
+
+  .mobile-socials {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 20px;
+  }
 }
   /* HERO */
   .hero-content {

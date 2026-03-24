@@ -570,6 +570,9 @@ footer a:hover::after {
   }
   .arrow {
     display: block;
+    font-size: 32px;
+    top: 45%;
+    z-index: 20;
   }
 }
 @media (max-width: 768px) {

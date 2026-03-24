@@ -84,27 +84,21 @@ nav a:hover {
   position: relative;
   max-width: 950px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 18px;
-  overflow: hidden; 
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
+  overflow: hidden;
 }
 
 .tracks {
   display: flex;
   transition: transform 0.4s ease;
-  gap: 18px;
 }
 
 .track {
-  flex: 0 0 calc(100% / 3); /* 🔥 SIEMPRE 3 */
-  scroll-snap-align: center;
+  flex: 0 0 calc(100% / 3);
+  padding: 0 9px; /* 🔥 reemplaza el gap */
   text-align: center;
 }
 
@@ -113,11 +107,13 @@ nav a:hover {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
+
 .track p {
   margin-top: 10px;
-  font-weight: 700; /* 🔥 bold title */
+  font-weight: 700;
   font-size: 13px;
 }
+
 .listen {
   font-size: 11px;
   opacity: 0.6;
@@ -226,11 +222,11 @@ h2 {
 }
 
 .arrow.left {
-  left: -40px;
+  left: -20px;
 }
 
 .arrow.right {
-  right: -40px;
+  right: -20px;
 }
 
 /* ================= VIDEO ================= */
@@ -459,6 +455,9 @@ footer {
   height: 100dvh; /* 🔥 evita bug iOS */
   background: #f5f5f5;
   z-index: 9999; /* 🔥 más alto */
+  transform: translateY(-100%);
+  transition: 0.4s ease;
+}
 }
   .mobile-logo {
   font-size: 26px; /* 🔥 más grande */
@@ -505,10 +504,6 @@ footer {
 
   .tracks {
     gap: 14px;
-  }
-
-  .track {
-    min-width: 100%;
   }
 
   /* VIDEO */
@@ -577,20 +572,21 @@ footer {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
-  .tracks {
-    transform: none !important;
-  }
-
   .carousel {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
   }
 
+  .tracks {
+    transform: none !important;
+  }
+
   .track {
-    flex: 0 0 80%;
+    flex: 0 0 85%;
+    padding: 0;
     scroll-snap-align: center;
   }
+
 }
 
 .video {

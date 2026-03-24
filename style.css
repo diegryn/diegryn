@@ -208,17 +208,15 @@ h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 78px;
+  font-size: 48px;
   background: none;
   border: none;
   cursor: pointer;
   color: black;
   opacity: 0.6;
   z-index: 10;
-}
+  color: #8B0000;
 
-.arrow:hover {
-  opacity: 1;
 }
 
 .arrow.left {
@@ -538,7 +536,7 @@ footer {
 /* 🔥 HEADER DENTRO DEL MENU */
 .mobile-header {
   position: absolute;
-  top: 25px;
+  top: 40px;
   left: 25px;
   right: 25px;
 
@@ -550,8 +548,8 @@ footer {
 /* LOGO NEGRO */
 .mobile-logo {
   font-family: 'Times New Roman', serif;
-  font-size: 28px;
-  letter-spacing: 4px;
+  font-size: 32px;
+  letter-spacing: 5px;
   color: black;
 }
 

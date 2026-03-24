@@ -248,10 +248,10 @@ function moveCarousel(direction) {
   index += direction;
   updatePosition();
 
-  tracks.addEventListener("transitionend", () => {
-    const perView = getItemsPerView();
-    const total = tracks.children.length;
+  const perView = getItemsPerView();
+  const total = tracks.children.length;
 
+  setTimeout(() => {
     if (index >= total - perView) {
       index = perView;
       updatePosition(true);
@@ -263,13 +263,17 @@ function moveCarousel(direction) {
     }
 
     isTransitioning = false;
-  }, { once: true });
+  }, 400); // same as CSS transition
 }
 
-window.addEventListener("resize", setupCarousel);
+let resizeTimeout;
+
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(setupCarousel, 200);
+});
 
 setupCarousel();/* init */
-setupClones();
 </script>
 <script id="swipe-carousel">
 let startX = 0;

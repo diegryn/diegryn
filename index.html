@@ -207,53 +207,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ================= CAROUSEL (TRUE INFINITE) ================= */
 const tracks = document.getElementById("tracks");
-let items = Array.from(document.querySelectorAll(".track"));
+let originalItems = Array.from(document.querySelectorAll(".track"));
 
 let index = 0;
 let isTransitioning = false;
 
-/* how many visible */
 function getItemsPerView() {
   return window.innerWidth <= 768 ? 1 : 3;
 }
 
-/* 🔥 CREATE CLONES PROPERLY */
-function setupClones() {
+function setupCarousel() {
   const perView = getItemsPerView();
 
-  // remove old clones if resizing
   tracks.innerHTML = "";
-  
-  items.forEach(item => tracks.appendChild(item));
 
-  // clone first & last
+  const items = originalItems.map(el => el.cloneNode(true));
+
   const firstClones = items.slice(0, perView).map(el => el.cloneNode(true));
   const lastClones = items.slice(-perView).map(el => el.cloneNode(true));
 
-  lastClones.forEach(clone => tracks.insertBefore(clone, tracks.firstChild));
-  firstClones.forEach(clone => tracks.appendChild(clone));
-
-  items = Array.from(document.querySelectorAll(".track"));
+  lastClones.forEach(el => tracks.appendChild(el));
+  items.forEach(el => tracks.appendChild(el));
+  firstClones.forEach(el => tracks.appendChild(el));
 
   index = perView;
   updatePosition(true);
 }
 
-/* position */
 function updatePosition(noTransition = false) {
   const perView = getItemsPerView();
-  const offset = index * (100 / perView);
 
-  if (noTransition) {
-    tracks.style.transition = "none";
-  } else {
-    tracks.style.transition = "0.4s ease";
-  }
-
-  tracks.style.transform = `translateX(-${offset}%)`;
+  tracks.style.transition = noTransition ? "none" : "0.4s ease";
+  tracks.style.transform = `translateX(-${index * (100 / perView)}%)`;
 }
 
-/* move */
 function moveCarousel(direction) {
   if (isTransitioning) return;
 
@@ -261,32 +248,27 @@ function moveCarousel(direction) {
   index += direction;
   updatePosition();
 
-  tracks.addEventListener("transitionend", handleLoop, { once: true });
+  tracks.addEventListener("transitionend", () => {
+    const perView = getItemsPerView();
+    const total = tracks.children.length;
+
+    if (index >= total - perView) {
+      index = perView;
+      updatePosition(true);
+    }
+
+    if (index < perView) {
+      index = total - (perView * 2);
+      updatePosition(true);
+    }
+
+    isTransitioning = false;
+  }, { once: true });
 }
 
-/* 🔥 LOOP FIX (NO GLITCH) */
-function handleLoop() {
-  const perView = getItemsPerView();
+window.addEventListener("resize", setupCarousel);
 
-  if (index >= items.length - perView) {
-    index = perView;
-    updatePosition(true);
-  }
-
-  if (index < perView) {
-    index = items.length - (perView * 2);
-    updatePosition(true);
-  }
-
-  isTransitioning = false;
-}
-
-/* resize */
-window.addEventListener("resize", () => {
-  setupClones();
-});
-
-/* init */
+setupCarousel();/* init */
 setupClones();
 </script>
 <script id="swipe-carousel">

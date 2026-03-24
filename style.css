@@ -8,7 +8,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   background: #f5f5f5;
-  color: white;
+  color: rgb(248, 234, 234);
 }
 html, body {
   overflow-x: hidden;
@@ -84,7 +84,8 @@ nav a:hover {
 /* ================= CAROUSEL ================= */
 .carousel-wrapper {
   position: relative;
-  max-width: 950px;
+  max-width: 1100px;
+  width: 95%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -100,27 +101,33 @@ nav a:hover {
 
 .track {
   flex: 0 0 33.333%;
-  padding: 0 9px; /* espacio interno en vez de margin */
+  padding: 0 20px; /* espacio interno en vez de margin */
   box-sizing: border-box;
+  
 }
 
 .track img {
   width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  height: auto; /* 🔥 keeps full image */
+  object-fit: contain; /* 🔥 shows entire image */
+  display: block;
 }
 
 .track p {
   margin-top: 10px;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 1000;
+  font-size: 15px;
+  color: #8B0000;
 }
 
 .listen {
-  font-size: 11px;
+  font-size: 12px;
   opacity: 0.6;
   display: block;
   margin-top: 3px;
+}
+.listen:hover {
+opacity: 1;;
 }
 /* ================= HERO ================= */
 .hero {
@@ -186,7 +193,7 @@ nav a:hover {
 }
 
 .music {
-  padding: 70px 0 30px;
+  padding: 60px 0 30px;
 }
 
 .videos {
@@ -199,11 +206,9 @@ h2 {
   color: #8B0000;
   margin-bottom: 28px;
   letter-spacing: 3px;
-  font-size: 22px; /* 🔥 más grande */
-  font-weight: 800; /* 🔥 más fuerte */
+  font-size: 25px;
+  font-weight: 800;
 }
-
-
 
 /* ARROWS (outside like Sombr) */
 .arrow {
@@ -214,11 +219,9 @@ h2 {
   background: none;
   border: none;
   cursor: pointer;
-  color: black;
   opacity: 0.6;
   z-index: 10;
   color: #8B0000;
-
 }
 
 .arrow.left {
@@ -267,11 +270,14 @@ h2 {
   margin-top: 14px;
   font-size: 13px;
   font-weight: 600;
+  color: #8B0000;
 }
 
 .watch {
-  font-size: 10px;
-  opacity: 0.7;
+  font-size: 12px;
+  opacity: 0.6;
+  display: block;
+  margin-top: 3px;
 }
 .watch:hover {
   opacity: 1;
@@ -280,7 +286,7 @@ h2 {
 footer {
   background: #f5f5f5;
   color: black;
-  padding: 25px 20px;
+  padding: 15px 20px;
   text-align: center;
   font-size: 11px;
   letter-spacing: 0.5px;
@@ -343,8 +349,9 @@ footer a:hover::after {
 .legal-content {
   position: relative;
   z-index: 2;
-  max-width: 700px;
-  padding: 20px;
+  max-width: 750px;
+  width: 90%;
+  padding: 30px 20px;
 }
 
 .legal-content h1 {
@@ -354,38 +361,33 @@ footer a:hover::after {
 }
 
 .legal-text {
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.5;
   opacity: 0.9;
-  max-width: 520px;
-  margin: 0 auto;
+  max-width: 100%
+  margin: 0 0 12px; /* 🔥 tighter + consistent */
   text-align: left; /* 🔥 CLAVE */
 }
-
-.legal-text p {
-  margin-bottom: 18px;
+.legal-text strong {
+  display: block;
+  margin: 12px 0 2px; /* 🔥 tighter top + very tight bottom */
+  font-weight: 700;
+  margin-top: 22px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
 }
 
 /* LINKS */
 .legal-text a {
   text-decoration: underline;
 }
-
+.legal-text p {
+  margin: 0 0 8px; /* 🔥 much tighter */
+}
 /* PRESS BUTTON */
 .legal-content .cta {
   margin-top: 20px;
 }
-.legal-text strong {
-  display: block;
-  margin-top: 22px;
-  margin-bottom: 6px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.legal-text br {
-  display: none; /* 🔥 eliminamos caos */
-}
-
 .legal-text ul {
   margin: 10px 0 20px;
   padding-left: 18px;

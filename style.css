@@ -413,55 +413,46 @@ footer a:hover::after {
 }
 
 @media (max-width: 768px) {
-
   /* HEADER */
   .nav-left nav {
     display: none; /* oculta menú desktop */
   }
-
   .nav-right {
     display: none; /* oculta redes desktop */
+    font-size: 20px; /* 🔥 más grandes */
+    color: #8B0000; 
   }
-
   .menu-toggle {
     display: block;
     font-size: 26px;
     cursor: pointer;
     z-index: 1001;
   }
-
   /* 🔥 MOBILE MENU */
 @media (max-width: 768px) {
-
 .mobile-nav {
   position: fixed;
   inset: 0;
   background: #f5f5f5;
   z-index: 9999;
-
   display: flex;
   flex-direction: column;
-
   transform: translateY(-100%);
   transition: 0.4s ease;
 }
-
 .mobile-nav.open {
   transform: translateY(0);
 }
-
 /* HEADER */
 .mobile-header {
   position: absolute;
   top: 40px;
   left: 25px;
   right: 25px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 /* LOGO */
 .mobile-logo {
   font-family: 'Times New Roman', serif;
@@ -469,49 +460,40 @@ footer a:hover::after {
   letter-spacing: 5px;
   color: black;
 }
-
 /* CLOSE BUTTON */
 .close-menu {
   font-size: 32px;
   cursor: pointer;
   color: #8B0000;
 }
-
 /* 🔥 MENÚ CENTRADO REAL */
 .mobile-nav-links {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   display: flex;
   flex-direction: column;
   gap: 45px;
   text-align: center;
 }
-
 .mobile-nav-links a {
   font-size: 26px;
   font-weight: 700;
   color: #8B0000;
   letter-spacing: 1px;
 }
-
 /* SOCIALS */
 .mobile-socials {
   position: absolute;
   bottom: 40px;
   left: 20px;
   right: 20px;
-
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
-
   font-size: 20px;
-}
-
 }
   /* HERO */
   .hero-content {
@@ -526,24 +508,20 @@ footer a:hover::after {
   .video {
     max-width: 90%;
   }
-
   .play-btn {
     width: 32px;
   }
-
   /* SPACING */
   section {
     padding: 60px 0;
   }
 }
-
 /* 🔥 OCULTAR MOBILE MENU EN DESKTOP */
 @media (min-width: 769px) {
   .mobile-nav {
     display: none;
   }
 }
-
 /* 🔥 HEADER DENTRO DEL MENU */
 .mobile-header {
   position: absolute;
@@ -555,7 +533,6 @@ footer a:hover::after {
   justify-content: space-between;
   align-items: center;
 }
-
 /* LOGO NEGRO */
 .mobile-logo {
   font-family: 'Times New Roman', serif;
@@ -563,7 +540,6 @@ footer a:hover::after {
   letter-spacing: 5px;
   color: black;
 }
-
 /* BOTÓN X */
 .close-menu {
   font-size: 32px;
@@ -581,7 +557,6 @@ footer a:hover::after {
   justify-content: space-between;
   flex-wrap: wrap; /* 🔥 CLAVE */
   gap: 15px;
-
   font-size: 20px;
 }
 /* ================= MOBILE ================= */
@@ -610,10 +585,10 @@ footer a:hover::after {
 }
 @media (max-width: 768px) {
   .header-inner {
-    padding: 55px 20px; /* 🔥 más abajo todavía */
+    padding: 14px 20px; /* 🔥 más abajo todavía */
   }
   .logo-text {
-    font-size: 36px;
-    letter-spacing: 6px;
+    font-size: 22px;
+    letter-spacing: 3.5px;
   }
 }

@@ -93,6 +93,147 @@
     <a href="https://diegryn.com/press">PRESS</a>
   </p>
 </footer>
+    <script>
+/* ================= MOBILE MENU ================= */
+function toggleMenu() {
+  const menu = document.querySelector('.mobile-nav');
+  menu.classList.toggle('open');
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.mobile-nav').classList.remove('open');
+    });
+  });
+});
+
+
+/* ================= CAROUSEL (TRUE INFINITE) ================= */
+const tracks = document.getElementById("tracks");
+let originalItems = Array.from(document.querySelectorAll(".track"));
+
+let index = 0;
+let isTransitioning = false;
+
+function getItemsPerView() {
+  return window.innerWidth <= 768 ? 1 : 3;
+}
+
+function setupCarousel() {
+  const perView = getItemsPerView();
+
+  tracks.innerHTML = "";
+
+  const items = originalItems.map(el => el.cloneNode(true));
+
+  const firstClones = items.slice(0, perView).map(el => el.cloneNode(true));
+  const lastClones = items.slice(-perView).map(el => el.cloneNode(true));
+
+  lastClones.forEach(el => tracks.appendChild(el));
+  items.forEach(el => tracks.appendChild(el));
+  firstClones.forEach(el => tracks.appendChild(el));
+
+  index = perView;
+  updatePosition(true);
+}
+
+function updatePosition(noTransition = false) {
+  const perView = getItemsPerView();
+
+  tracks.style.transition = noTransition ? "none" : "0.4s ease";
+  tracks.style.transform = `translateX(-${index * (100 / perView)}%)`;
+}
+
+function moveCarousel(direction) {
+  if (isTransitioning) return;
+
+  isTransitioning = true;
+  index += direction;
+  updatePosition();
+
+  const perView = getItemsPerView();
+  const total = tracks.children.length;
+
+  setTimeout(() => {
+    if (index >= total - perView) {
+      index = perView;
+      updatePosition(true);
+    }
+
+    if (index < perView) {
+      index = total - (perView * 2);
+      updatePosition(true);
+    }
+
+    isTransitioning = false;
+  }, 400); // same as CSS transition
+}
+
+let resizeTimeout;
+
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(setupCarousel, 200);
+});
+
+setupCarousel();/* init */
+</script>
+<script id="swipe-carousel">
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+
+const carousel = document.querySelector(".carousel");
+
+/* TOUCH (mobile) */
+carousel.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchmove", (e) => {
+  currentX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", () => {
+  handleSwipe();
+});
+
+/* MOUSE (desktop drag) */
+carousel.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.clientX;
+});
+
+carousel.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  currentX = e.clientX;
+});
+
+carousel.addEventListener("mouseup", () => {
+  if (!isDragging) return;
+  isDragging = false;
+  handleSwipe();
+});
+
+carousel.addEventListener("mouseleave", () => {
+  isDragging = false;
+});
+
+/* SWIPE LOGIC */
+function handleSwipe() {
+  const diff = startX - currentX;
+
+  if (Math.abs(diff) < 50) return; // threshold
+
+  if (diff > 0) {
+    moveCarousel(1);  // swipe left → next
+  } else {
+    moveCarousel(-1); // swipe right → prev
+  }
+}
+</script>
+
 
 </body>
 </html>

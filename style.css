@@ -499,11 +499,11 @@ footer a:hover::after {
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    font-size: 30px;
+    font-size: 25px;
     color: #8B0000;
   }
     .mobile-socials i {
-          font-size: 20px;
+          font-size: 17px;
 }
   /* HERO */
   .hero-content {

@@ -485,7 +485,7 @@ footer a:hover::after {
   }
 
   .mobile-nav-links a {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 700;
     color: #8B0000;
   }
@@ -503,7 +503,7 @@ footer a:hover::after {
     color: #8B0000;
   }
     .mobile-socials i {
-          font-size: 25px;
+          font-size: 20px;
 }
   /* HERO */
   .hero-content {

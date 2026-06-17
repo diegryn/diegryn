@@ -169,16 +169,7 @@
   <h2>VIDEOS</h2>
   <div class="video-carousel-wrapper">
       <div class="video-tracks" id="video-tracks">
-      <div class="video-track">
-    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video-thumb">
-      <img src="fake-love-acoustic-video.jpg" alt="Fake Love (acoustic video)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Fake Love (Acoustic Version)</p>
-    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">
-      WATCH NOW
-    </a>
-      </div>
+
       <div class="video-track">
     <a href="https://www.youtube.com/watch?v=uVJJA8kRJI0" target="_blank" class="video-thumb">
       <img src="vroom-vroom-video.jpg" alt="Vroom Vroom (official video)">
@@ -189,6 +180,18 @@
       WATCH NOW
     </a>
     </div>
+       
+      <div class="video-track">
+    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video-thumb">
+      <img src="fake-love-acoustic-video.jpg" alt="Fake Love (acoustic video)">
+      <img class="play-btn" src="play-button.png" alt="Play">
+    </a>
+    <p class="video-title">Fake Love (Acoustic Version)</p>
+    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">
+      WATCH NOW
+    </a>
+      </div>
+
     </div>
     </div>
 </section>
@@ -340,6 +343,26 @@ function handleSwipe() {
   } else {
     moveCarousel(-1); // swipe right → prev
   }
+}
+  const videoTracks = document.getElementById("video-tracks");
+let videoIndex = 0;
+
+function moveVideoCarousel(direction) {
+
+  const total = videoTracks.children.length;
+
+  videoIndex += direction;
+
+  if (videoIndex < 0) {
+    videoIndex = total - 1;
+  }
+
+  if (videoIndex >= total) {
+    videoIndex = 0;
+  }
+
+  videoTracks.style.transform =
+    `translateX(-${videoIndex * 100}%)`;
 }
 </script>
 </body>

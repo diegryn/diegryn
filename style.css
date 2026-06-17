@@ -661,12 +661,20 @@ footer a:hover::after {
 
 
 @media (max-width: 768px) {
+
+  .video-carousel {
+    overflow: hidden;
+  }
+
   .video-tracks {
-    flex-direction: column;
-    gap: 40px;
+    display: flex;
+    transition: transform .4s ease;
   }
 
   .video-track {
+    flex: 0 0 100%;
     max-width: 100%;
+    padding: 0 20px;
   }
+
 }

@@ -240,6 +240,18 @@ h2 {
   max-width: 420px; /* 🔥 closer to Sombr */
   margin: 0 auto;
 }
+.video-tracks {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.video-track {
+  flex: 1;
+  max-width: 420px;
+}
 
 .video-thumb {
   position: relative;

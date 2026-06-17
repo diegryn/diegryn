@@ -658,3 +658,15 @@ footer a:hover::after {
 .carousel:active {
   cursor: grabbing;
 }
+
+
+@media (max-width: 768px) {
+  .video-tracks {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .video-track {
+    max-width: 100%;
+  }
+}

@@ -722,7 +722,7 @@ footer a:hover::after {
 
 @media (max-width: 768px) {
     .video-carousel-wrapper {
-    gap: 16px;
+    gap: 20px;
   }
 
   .video-tracks {
@@ -731,7 +731,7 @@ footer a:hover::after {
 
   .video-track {
     flex: 0 0 100%;
-    padding: 0 20px;
+    padding: 0 10px;
   }
   
   .video-title {

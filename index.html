@@ -344,13 +344,18 @@ function moveCarousel(direction) {
 }
 
 let resizeTimeout;
+let lastWidth = window.innerWidth;
 
 window.addEventListener("resize", () => {
+  if (window.innerWidth === lastWidth) return; // ignore height-only changes (mobile address bar)
+  lastWidth = window.innerWidth;
+
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(setupCarousel, 200);
 });
 
 setupCarousel();/* init */
+
 </script>
 <script id="swipe-carousel">
 let startX = 0;
@@ -473,7 +478,12 @@ function moveVideoCarousel(direction) {
 }
 
 let videoResizeTimeout;
+let lastVideoWidth = window.innerWidth;
+
 window.addEventListener("resize", () => {
+  if (window.innerWidth === lastVideoWidth) return; // ignore height-only changes (mobile address bar)
+  lastVideoWidth = window.innerWidth;
+
   clearTimeout(videoResizeTimeout);
   videoResizeTimeout = setTimeout(setupVideoCarousel, 200);
 });

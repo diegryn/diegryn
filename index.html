@@ -347,6 +347,7 @@ let resizeTimeout;
 let lastWidth = window.innerWidth;
 
 window.addEventListener("resize", () => {
+  if (isDragging) return; // don't rebuild mid-drag
   if (window.innerWidth === lastWidth) return; // ignore height-only changes (mobile address bar)
   lastWidth = window.innerWidth;
 
@@ -481,6 +482,7 @@ let videoResizeTimeout;
 let lastVideoWidth = window.innerWidth;
 
 window.addEventListener("resize", () => {
+  if (videoIsDragging) return; // don't rebuild mid-drag
   if (window.innerWidth === lastVideoWidth) return; // ignore height-only changes (mobile address bar)
   lastVideoWidth = window.innerWidth;
 

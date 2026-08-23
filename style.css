@@ -635,24 +635,6 @@ footer a:hover::after {
   cursor: grabbing;
 }
 
-
-@media (max-width: 768px) {
-
-  .video-tracks {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .video-track {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 20px;
-  }
-
-}
-
-
 /* ================= VIDEOS CAROUSEL ================= */
 
 .video-carousel-wrapper {
@@ -739,7 +721,18 @@ footer a:hover::after {
 
 
 @media (max-width: 768px) {
+    .video-carousel-wrapper {
+    gap: 8px;
+  }
 
+  .video-tracks {
+    gap: 20px;
+  }
+
+  .video-track {
+    flex: 0 0 100%;
+  }
+  
   .video-title {
     font-size: 13px;
   }

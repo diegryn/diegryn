@@ -774,3 +774,9 @@ footer a:hover::after {
 .video-carousel:active {
   cursor: grabbing;
 }
+
+.tracks img,
+.video-tracks img {
+  -webkit-user-drag: none;
+  user-select: none;
+}

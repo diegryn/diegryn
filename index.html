@@ -81,7 +81,7 @@
     <a href="#videos">VIDEOS</a>
     <a href="https://diegryn.bandcamp.com/" target="_blank">SHOP</a>
     <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
-    <a href="https://www.gofundme.com/diegryn" target="_blank">SUPPORT</a>
+    <a href="https://ko-fi.com/diegryn" target="_blank">SUPPORT</a>
   </div>
   <div class="mobile-socials">
   <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -223,15 +223,6 @@
     <p class="video-title">Vroom Vroom<br>(Official Video)</p>
     <a href="https://www.youtube.com/watch?v=uVJJA8kRJI0" target="_blank" class="watch">WATCH NOW</a>
     </div>
-       
-      <div class="video-track">
-    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="video-thumb">
-      <img src="vroomvroom-alice.png" alt="Vroom Vroom (Alice Flynn Remix) (Official Visualiser)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Vroom Vroom (Alice Flynn Remix)<br>(Official Visualiser)</p>
-    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="watch">WATCH NOW</a>
-      </div>
                
       <div class="video-track">
     <a href="https://www.youtube.com/watch?v=XKmAlyhsIjA" target="_blank" class="video-thumb">
@@ -242,6 +233,15 @@
     <a href="https://www.youtube.com/watch?v=XKmAlyhsIjA" target="_blank" class="watch">WATCH NOW</a>
       </div>
 
+     <div class="video-track">
+    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="video-thumb">
+      <img src="vroomvroom-alice.png" alt="Vroom Vroom (Alice Flynn Remix) (Official Visualiser)">
+      <img class="play-btn" src="play-button.png" alt="Play">
+    </a>
+    <p class="video-title">Vroom Vroom (Alice Flynn Remix)<br>(Official Visualiser)</p>
+    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="watch">WATCH NOW</a>
+      </div>
+
       <div class="video-track">
     <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video-thumb">
       <img src="fake-love-acoustic-video.jpg" alt="Fake Love (acoustic video)">
@@ -250,6 +250,7 @@
     <p class="video-title">Fake Love<br>(Acoustic Version)</p>
     <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">WATCH NOW</a>
       </div>
+        
     </div>
     </div>
     <button class="video-arrow video-right" onclick="moveVideoCarousel(1)">›</button>
@@ -373,6 +374,7 @@ carousel.addEventListener("touchend", () => {
 
 /* MOUSE (desktop drag) */
 carousel.addEventListener("mousedown", (e) => {
+  e.preventDefault();
   isDragging = true;
   startX = e.clientX;
 });
@@ -404,64 +406,79 @@ function handleSwipe() {
     moveCarousel(-1); // swipe right → prev
   }
 }
-  /* ================= VIDEO CAROUSEL ================= */
-
-const videoTracks = document.getElementById("video-tracks");
-const videoItems = Array.from(videoTracks.children);
+/* ================= VIDEO CAROUSEL (TRUE INFINITE) ================= */
+const videoTracksEl = document.getElementById("video-tracks");
+let originalVideoItems = Array.from(videoTracksEl.children);
 
 let videoIndex = 0;
+let videoIsTransitioning = false;
 
 function getVideoItemsPerView() {
   return window.innerWidth <= 768 ? 1 : 3;
 }
 
-function updateVideoCarousel() {
+function getVideoGap() {
+  return window.innerWidth <= 768 ? 20 : 30;
+}
 
+function setupVideoCarousel() {
   const perView = getVideoItemsPerView();
 
-  const gap = window.innerWidth <= 768 ? 20 : 30;
+  videoTracksEl.innerHTML = "";
 
-  const itemWidth =
-    (videoTracks.parentElement.offsetWidth - gap * (perView - 1))
-    / perView;
+  const items = originalVideoItems.map(el => el.cloneNode(true));
+  const firstClones = items.slice(0, perView).map(el => el.cloneNode(true));
+  const lastClones = items.slice(-perView).map(el => el.cloneNode(true));
 
+  lastClones.forEach(el => videoTracksEl.appendChild(el));
+  items.forEach(el => videoTracksEl.appendChild(el));
+  firstClones.forEach(el => videoTracksEl.appendChild(el));
+
+  videoIndex = perView;
+  updateVideoPosition(true);
+}
+
+function updateVideoPosition(noTransition = false) {
+  const perView = getVideoItemsPerView();
+  const gap = getVideoGap();
+  const containerWidth = videoTracksEl.parentElement.offsetWidth;
+  const itemWidth = (containerWidth - gap * (perView - 1)) / perView;
   const moveAmount = itemWidth + gap;
 
-  videoTracks.style.transform =
-    `translateX(-${videoIndex * moveAmount}px)`;
+  videoTracksEl.style.transition = noTransition ? "none" : "0.4s ease";
+  videoTracksEl.style.transform = `translateX(-${videoIndex * moveAmount}px)`;
 }
 
 function moveVideoCarousel(direction) {
+  if (videoIsTransitioning) return;
+
+  videoIsTransitioning = true;
+  videoIndex += direction;
+  updateVideoPosition();
 
   const perView = getVideoItemsPerView();
+  const total = videoTracksEl.children.length;
 
-  const maxIndex = videoItems.length - perView;
-
-  videoIndex += direction;
-
-  if (videoIndex < 0) {
-    videoIndex = 0;
-  }
-
-  if (videoIndex > maxIndex) {
-    videoIndex = maxIndex;
-  }
-
-  updateVideoCarousel();
+  setTimeout(() => {
+    if (videoIndex >= total - perView) {
+      videoIndex = perView;
+      updateVideoPosition(true);
+    }
+    if (videoIndex < perView) {
+      videoIndex = total - (perView * 2);
+      updateVideoPosition(true);
+    }
+    videoIsTransitioning = false;
+  }, 400);
 }
 
+let videoResizeTimeout;
 window.addEventListener("resize", () => {
-  const perView = getVideoItemsPerView();
-  const maxIndex = videoItems.length - perView;
-
-  if (videoIndex > maxIndex) {
-    videoIndex = maxIndex;
-  }
-
-  updateVideoCarousel();
+  clearTimeout(videoResizeTimeout);
+  videoResizeTimeout = setTimeout(setupVideoCarousel, 200);
 });
 
-updateVideoCarousel();
+setupVideoCarousel();
 
   /* ================= VIDEO SWIPE ================= */
 
@@ -494,6 +511,7 @@ videoCarousel.addEventListener("touchend", () => {
   let videoIsDragging = false;
 
 videoCarousel.addEventListener("mousedown", (e) => {
+  e.preventDefault();
   videoIsDragging = true;
   videoStartX = e.clientX;
 });

@@ -690,7 +690,8 @@ footer a:hover::after {
 
 .video-carousel {
   overflow: hidden;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .video-tracks {

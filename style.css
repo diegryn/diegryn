@@ -713,6 +713,8 @@ footer a:hover::after {
   padding: 0;
   color: #9d0000;
   line-height: 1;
+  position: relative;
+  top: -35px;
 }
 
 .video-arrow:hover {
@@ -738,7 +740,7 @@ footer a:hover::after {
 
   .video-arrow {
     position: absolute;
-    top: 45%;
+    top: 38%;
     transform: translateY(-50%);
     z-index: 10;
     font-size: 50px;

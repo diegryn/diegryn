@@ -264,13 +264,6 @@ h2 {
 }
 
 /* TEXT */
-.video-title {
-  margin-top: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #8B0000;
-}
-
 .watch {
   font-size: 12px;
   opacity: 0.6;
@@ -716,7 +709,9 @@ footer a:hover::after {
 
 .video-title {
   margin: 15px 0 6px;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8B0000;
   line-height: 1.25;
 }
 
@@ -758,7 +753,7 @@ footer a:hover::after {
   }
 
   .video-title {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .video-arrow {

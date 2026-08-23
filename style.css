@@ -788,3 +788,11 @@ footer a:hover::after {
   }
 
 }
+
+.video-carousel {
+  cursor: grab;
+}
+
+.video-carousel:active {
+  cursor: grabbing;
+}

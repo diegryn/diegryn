@@ -119,7 +119,7 @@
         <a href="https://ffm.to/vroom-vroom" target="_blank">
           <img src="vroomvroom1.jpg">
         </a>
-        <p>Vroom Vroom</p>
+        <p>Vroom Vroom<br></p>
         <a href="https://ffm.to/vroom-vroom" target="_blank" class="listen">LISTEN NOW</a>
       </div>
         <div class="track">
@@ -168,7 +168,7 @@
         <a href="https://melodymover.lnk.to/fakelove" target="_blank">
           <img src="Fake Love Art Cover.jpg">
         </a>
-        <p>Fake Love</p>
+        <p>Fake Love<br></p>
         <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="listen">LISTEN NOW</a>
       </div>    
       <div class="track">
@@ -408,7 +408,7 @@ function handleSwipe() {
   const videoTracks = document.getElementById("video-tracks");
 let videoIndex = 0;
 
-function moveVideoCarousel(direction) {
+/*function moveVideoCarousel(direction) {
 
   const total = videoTracks.children.length;
 
@@ -424,7 +424,96 @@ function moveVideoCarousel(direction) {
 
   videoTracks.style.transform =
     `translateX(-${videoIndex * 100}%)`;
+}*/
+
+  /* ================= VIDEO CAROUSEL ================= */
+
+const videoTracks = document.getElementById("video-tracks");
+const videoItems = Array.from(videoTracks.children);
+
+let videoIndex = 0;
+
+function getVideoItemsPerView() {
+  return window.innerWidth <= 768 ? 1 : 3;
 }
+
+function updateVideoCarousel() {
+
+  const perView = getVideoItemsPerView();
+
+  const gap = window.innerWidth <= 768 ? 20 : 30;
+
+  const itemWidth =
+    (videoTracks.parentElement.offsetWidth - gap * (perView - 1))
+    / perView;
+
+  const moveAmount = itemWidth + gap;
+
+  videoTracks.style.transform =
+    `translateX(-${videoIndex * moveAmount}px)`;
+}
+
+function moveVideoCarousel(direction) {
+
+  const perView = getVideoItemsPerView();
+
+  const maxIndex = videoItems.length - perView;
+
+  videoIndex += direction;
+
+  if (videoIndex < 0) {
+    videoIndex = 0;
+  }
+
+  if (videoIndex > maxIndex) {
+    videoIndex = maxIndex;
+  }
+
+  updateVideoCarousel();
+}
+
+window.addEventListener("resize", () => {
+  const perView = getVideoItemsPerView();
+  const maxIndex = videoItems.length - perView;
+
+  if (videoIndex > maxIndex) {
+    videoIndex = maxIndex;
+  }
+
+  updateVideoCarousel();
+});
+
+updateVideoCarousel();
+
+  /* ================= VIDEO SWIPE ================= */
+
+const videoCarousel = document.querySelector(".video-carousel");
+
+let videoStartX = 0;
+let videoCurrentX = 0;
+
+videoCarousel.addEventListener("touchstart", (e) => {
+  videoStartX = e.touches[0].clientX;
+});
+
+videoCarousel.addEventListener("touchmove", (e) => {
+  videoCurrentX = e.touches[0].clientX;
+});
+
+videoCarousel.addEventListener("touchend", () => {
+
+  const diff = videoStartX - videoCurrentX;
+
+  if (Math.abs(diff) < 50) return;
+
+  if (diff > 0) {
+    moveVideoCarousel(1);
+  } else {
+    moveVideoCarousel(-1);
+  }
+
+});
+  
 </script>
 </body>
 </html>

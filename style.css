@@ -740,18 +740,6 @@ footer a:hover::after {
 
 @media (max-width: 768px) {
 
-  .video-carousel-wrapper {
-    gap: 8px;
-  }
-
-  .video-tracks {
-    gap: 20px;
-  }
-
-  .video-track {
-    flex: 0 0 100%;
-  }
-
   .video-title {
     font-size: 13px;
   }

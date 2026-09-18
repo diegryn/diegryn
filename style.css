@@ -817,16 +817,20 @@ footer a:hover::after {
 }
 
 .shop-thumb {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 300px;
 }
 
 .shop-thumb img {
-  width: 100%;
+  width: 55%;
+  max-width: 260px;
+  max-height: 280px;
   display: block;
   object-fit: contain;
 }
-
 .shop-title {
   margin: 15px 0 12px;
 }
@@ -863,6 +867,11 @@ footer a:hover::after {
 
   .shop-track {
     flex: 0 0 100%;
+  }
+
+  .shop-thumb img {
+    width: 65%;
+    max-width: 240px;
   }
 
   .shop-arrow {

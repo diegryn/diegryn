@@ -48,7 +48,7 @@
       <nav>
         <a href="#music">MUSIC</a>
         <a href="#videos">VIDEOS</a>
-        <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank">SHOP</a>
+        <a href="#shop" target="_blank">SHOP</a>
         <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
         <a href="https://www.gofundme.com/f/vroomvroom-diegryn" target="_blank">SUPPORT</a>
       </nav>
@@ -77,9 +77,9 @@
     <div class="close-menu" onclick="toggleMenu()">✕</div>
   </div>
   <div class="mobile-nav-links">  
-  <a href="#music">MUSIC</a>
+    <a href="#music">MUSIC</a>
     <a href="#videos">VIDEOS</a>
-    <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank">SHOP</a>
+    <a href="#shop" target="_blank">SHOP</a>
     <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
     <a href="https://www.gofundme.com/f/vroomvroom-diegryn" target="_blank">SUPPORT</a>
   </div>
@@ -590,6 +590,194 @@ videoCarousel.addEventListener("mouseup", () => {
 
 videoCarousel.addEventListener("mouseleave", () => {
   videoIsDragging = false;
+});
+  /* ================= SHOP CAROUSEL (TRUE INFINITE) ================= */
+
+const shopTracksEl = document.getElementById("shop-tracks");
+let originalShopItems = Array.from(shopTracksEl.children);
+
+let shopIndex = 0;
+let shopIsTransitioning = false;
+
+function getShopItemsPerView() {
+  return window.innerWidth <= 768 ? 1 : 2;
+}
+
+function getShopGap() {
+  return window.innerWidth <= 768 ? 20 : 30;
+}
+
+function setupShopCarousel() {
+  const perView = getShopItemsPerView();
+
+  shopTracksEl.innerHTML = "";
+
+  const items = originalShopItems.map(el => el.cloneNode(true));
+
+  const firstClones = items
+    .slice(0, perView)
+    .map(el => el.cloneNode(true));
+
+  const lastClones = items
+    .slice(-perView)
+    .map(el => el.cloneNode(true));
+
+  lastClones.forEach(el => shopTracksEl.appendChild(el));
+  items.forEach(el => shopTracksEl.appendChild(el));
+  firstClones.forEach(el => shopTracksEl.appendChild(el));
+
+  shopIndex = perView;
+  updateShopPosition(true);
+}
+
+function updateShopPosition(noTransition = false) {
+
+  const perView = getShopItemsPerView();
+  const gap = getShopGap();
+
+  const containerWidth = shopTracksEl.parentElement.offsetWidth;
+
+  const itemWidth =
+    (containerWidth - gap * (perView - 1)) / perView;
+
+  const moveAmount = itemWidth + gap;
+
+  shopTracksEl.style.transition =
+    noTransition ? "none" : "0.4s ease";
+
+  shopTracksEl.style.transform =
+    `translateX(-${shopIndex * moveAmount}px)`;
+}
+
+function moveShopCarousel(direction) {
+
+  if (shopIsTransitioning) return;
+
+  shopIsTransitioning = true;
+
+  shopIndex += direction;
+
+  updateShopPosition();
+
+  const perView = getShopItemsPerView();
+  const total = shopTracksEl.children.length;
+
+  setTimeout(() => {
+
+    if (shopIndex >= total - perView) {
+      shopIndex = perView;
+      updateShopPosition(true);
+    }
+
+    if (shopIndex < perView) {
+      shopIndex = total - (perView * 2);
+      updateShopPosition(true);
+    }
+
+    shopIsTransitioning = false;
+
+  }, 400);
+}
+
+
+/* SHOP RESIZE */
+
+let shopResizeTimeout;
+let lastShopWidth = window.innerWidth;
+
+window.addEventListener("resize", () => {
+
+  if (window.innerWidth === lastShopWidth) return;
+
+  lastShopWidth = window.innerWidth;
+
+  clearTimeout(shopResizeTimeout);
+
+  shopResizeTimeout = setTimeout(
+    setupShopCarousel,
+    200
+  );
+
+});
+
+
+setupShopCarousel();
+
+
+/* ================= SHOP SWIPE ================= */
+
+const shopCarousel =
+  document.querySelector(".shop-carousel");
+
+let shopStartX = 0;
+let shopCurrentX = 0;
+let shopIsDragging = false;
+
+
+/* TOUCH */
+
+shopCarousel.addEventListener("touchstart", (e) => {
+  shopStartX = e.touches[0].clientX;
+});
+
+shopCarousel.addEventListener("touchmove", (e) => {
+  shopCurrentX = e.touches[0].clientX;
+});
+
+shopCarousel.addEventListener("touchend", () => {
+
+  const diff = shopStartX - shopCurrentX;
+
+  if (Math.abs(diff) < 50) return;
+
+  if (diff > 0) {
+    moveShopCarousel(1);
+  } else {
+    moveShopCarousel(-1);
+  }
+
+});
+
+
+/* MOUSE */
+
+shopCarousel.addEventListener("mousedown", (e) => {
+
+  e.preventDefault();
+
+  shopIsDragging = true;
+  shopStartX = e.clientX;
+
+});
+
+shopCarousel.addEventListener("mousemove", (e) => {
+
+  if (!shopIsDragging) return;
+
+  shopCurrentX = e.clientX;
+
+});
+
+shopCarousel.addEventListener("mouseup", () => {
+
+  if (!shopIsDragging) return;
+
+  shopIsDragging = false;
+
+  const diff = shopStartX - shopCurrentX;
+
+  if (Math.abs(diff) < 50) return;
+
+  if (diff > 0) {
+    moveShopCarousel(1);
+  } else {
+    moveShopCarousel(-1);
+  }
+
+});
+
+shopCarousel.addEventListener("mouseleave", () => {
+  shopIsDragging = false;
 });
   
 </script>

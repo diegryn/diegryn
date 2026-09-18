@@ -777,7 +777,6 @@ footer a:hover::after {
   user-select: none;
 }
 
-
 /* ================= SHOP ================= */
 
 .shop {
@@ -830,29 +829,30 @@ footer a:hover::after {
   object-fit: contain;
 }
 
-/* PRODUCT TITLE */
+/* SHOP TITLE — SAME AS MUSIC TITLES */
 
 .shop-title {
-  display: block;
-  margin: 15px 0 12px;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.4;
-  font-weight: 400;
+  margin-top: 10px;
+  font-weight: 1000;
+  font-size: 15px;
   color: #8B0000;
 }
 
-/* BUY BUTTON */
+/* BUY NOW — SAME AS LISTEN NOW / WATCH NOW */
 
 .shop-track .buy {
-  display: inline-block;
-  margin-top: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 600;
-  color: #8B0000;
+  font-size: 12px;
+  opacity: 0.6;
+  display: block;
+  margin-top: 7px;
+  color: inherit;
+  font-weight: 400;
 }
+
+.shop-track .buy:hover {
+  opacity: 1;
+}
+
 /* ARROWS */
 
 .shop-arrow {
@@ -870,7 +870,7 @@ footer a:hover::after {
 @media (max-width: 768px) {
 
   .shop {
-  padding: 35px 0 45px;
+    padding: 35px 0 45px;
   }
 
   .shop-carousel-wrapper {
@@ -886,23 +886,23 @@ footer a:hover::after {
   }
 
   .shop-thumb {
-  height: 220px;
+    height: 220px;
   }
 
-.shop-thumb img {
-  width: 65%;
-  max-width: 240px;
-  max-height: 220px;
-}
+  .shop-thumb img {
+    width: 65%;
+    max-width: 240px;
+    max-height: 220px;
+  }
 
   .shop-title {
-    margin-top: 15px;
-    font-size: 16px;
+    margin-top: 10px;
+    font-size: 15px;
   }
 
   .shop-track .buy {
-    margin-top: 5px;
-    font-size: 14px;
+    margin-top: 7px;
+    font-size: 12px;
   }
 
   .shop-arrow {

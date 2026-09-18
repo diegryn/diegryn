@@ -831,14 +831,31 @@ footer a:hover::after {
   display: block;
   object-fit: contain;
 }
+
+/* PRODUCT TITLE */
+
 .shop-title {
+  display: block;
   margin: 15px 0 12px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #8B0000;
 }
 
-.buy {
+/* BUY BUTTON */
+
+.shop-track .buy {
   display: inline-block;
+  margin-top: 5px;
   text-decoration: none;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #8B0000;
 }
+/* ARROWS */
 
 .shop-arrow {
   flex-shrink: 0;
@@ -849,7 +866,8 @@ footer a:hover::after {
   padding: 10px;
 }
 
-/* MOBILE */
+
+/* ================= SHOP MOBILE ================= */
 
 @media (max-width: 768px) {
 
@@ -869,9 +887,24 @@ footer a:hover::after {
     flex: 0 0 100%;
   }
 
+  .shop-thumb {
+    height: 260px;
+  }
+
   .shop-thumb img {
     width: 65%;
     max-width: 240px;
+    max-height: 240px;
+  }
+
+  .shop-title {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+
+  .shop-track .buy {
+    margin-top: 5px;
+    font-size: 14px;
   }
 
   .shop-arrow {

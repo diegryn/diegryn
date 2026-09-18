@@ -778,3 +778,95 @@ footer a:hover::after {
   -webkit-user-drag: none;
   user-select: none;
 }
+
+
+/* ================= SHOP ================= */
+
+.shop {
+  padding: 80px 0;
+}
+
+.shop h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.shop-carousel-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shop-carousel {
+  overflow: hidden;
+  flex: 1;
+}
+
+.shop-tracks {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.shop-track {
+  flex: 0 0 calc((100% - 30px) / 2);
+  text-align: center;
+}
+
+.shop-thumb {
+  display: block;
+  width: 100%;
+}
+
+.shop-thumb img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.shop-title {
+  margin: 15px 0 12px;
+}
+
+.buy {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.shop-arrow {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .shop {
+    padding: 60px 0;
+  }
+
+  .shop-carousel-wrapper {
+    gap: 10px;
+  }
+
+  .shop-tracks {
+    gap: 20px;
+  }
+
+  .shop-track {
+    flex: 0 0 100%;
+  }
+
+  .shop-arrow {
+    font-size: 32px;
+  }
+
+}

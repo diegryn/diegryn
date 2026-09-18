@@ -114,7 +114,7 @@ nav a:hover {
   object-fit: cover; /* 🔥 shows entire image */
   display: block;
 }
-
+/* 
 .track p {
   margin-top: 10px;
   font-weight: 1000;
@@ -130,7 +130,9 @@ nav a:hover {
 }
 .listen:hover {
 opacity: 1;;
-}
+}*/
+
+
 /* ================= HERO ================= */
 .hero {
   height: 100vh;
@@ -271,6 +273,38 @@ h2 {
 .watch:hover {
   opacity: 1;
 }
+/* ================= MUSIC / VIDEOS / SHOP TEXT ================= */
+
+/* TITLES */
+.track p,
+.video-title,
+.shop-title {
+  margin: 15px 0 7px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8B0000;
+  line-height: 1.25;
+}
+
+/* LISTEN / WATCH / BUY */
+.listen,
+.watch,
+.buy {
+  display: block;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #777;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.listen:hover,
+.watch:hover,
+.buy:hover {
+  opacity: 1;
+}
+
 /* ================= FOOTER ================= */
 footer {
   background: #f5f5f5;
@@ -686,7 +720,7 @@ footer a:hover::after {
   transform: translate(-50%, -50%);
   object-fit: contain;
 }
-
+/*
 .video-title {
   margin: 15px 0 6px;
   font-size: 15px;
@@ -700,7 +734,7 @@ footer a:hover::after {
   text-decoration: none;
   color: #777;
 }
-
+*/
 .video-arrow {
   flex: 0 0 auto;
   border: none;
@@ -830,16 +864,16 @@ footer a:hover::after {
 }
 
 /* SHOP TITLE — SAME AS MUSIC TITLES */
-
+/*
 .shop-title {
   margin-top: 10px;
   font-weight: 1000;
   font-size: 15px;
   color: #8B0000;
-}
+}*/
 
 /* BUY NOW — SAME AS LISTEN NOW / WATCH NOW */
-
+/*
 .shop-track .buy {
   font-size: 12px;
   opacity: 0.6;
@@ -851,7 +885,7 @@ footer a:hover::after {
 
 .shop-track .buy:hover {
   opacity: 1;
-}
+} */
 
 /* ARROWS */
 

@@ -199,10 +199,8 @@ opacity: 1;;
 }
 
 .videos {
-  padding: 15px 0 30px;
-  padding-bottom: 10px;
-  padding-top: 50px;
-  margin-bottom: 10px;
+  padding: 50px 0 10px;
+  margin-bottom: 0;
 }
 
 h2 {
@@ -783,7 +781,7 @@ footer a:hover::after {
 /* ================= SHOP ================= */
 
 .shop {
-  padding: 80px 0;
+  padding: 35px 0 50px;
 }
 
 .shop h2 {
@@ -821,13 +819,13 @@ footer a:hover::after {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 300px;
+  height: 240px;
 }
 
 .shop-thumb img {
   width: 55%;
   max-width: 260px;
-  max-height: 280px;
+  max-height: 230px;
   display: block;
   object-fit: contain;
 }
@@ -872,7 +870,7 @@ footer a:hover::after {
 @media (max-width: 768px) {
 
   .shop {
-    padding: 60px 0;
+  padding: 35px 0 45px;
   }
 
   .shop-carousel-wrapper {
@@ -888,14 +886,14 @@ footer a:hover::after {
   }
 
   .shop-thumb {
-    height: 260px;
+  height: 220px;
   }
 
-  .shop-thumb img {
-    width: 65%;
-    max-width: 240px;
-    max-height: 240px;
-  }
+.shop-thumb img {
+  width: 65%;
+  max-width: 240px;
+  max-height: 220px;
+}
 
   .shop-title {
     margin-top: 15px;

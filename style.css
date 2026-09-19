@@ -843,7 +843,7 @@ footer a:hover::after {
 }
 
 .shop-track {
-  flex: 0 0 calc((100% - 60px) / 2);
+  flex: 0 0 calc((100% - 60px) / 3);
   text-align: center;
 }
 

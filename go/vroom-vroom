@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Gryn | Vroom Vroom</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Die Gryn — Vroom Vroom, out now.">
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ CONFIG-FRIENDLY COLORS (matches diegryn.com) ============ */
+  :root{
+    --accent:#8B0000;
+    --bg:#0c0c0c;
+    --text:#f8eaea;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{
+    height:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    font-family:'Raleway',sans-serif;
+    background:
+      radial-gradient(circle at 50% 20%, rgba(139,0,0,0.35), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+  }
+
+  .logo{
+    position:absolute;
+    top:28px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Times New Roman', serif;
+    font-size:20px;
+    letter-spacing:5px;
+    font-weight:600;
+    text-transform:uppercase;
+    opacity:0.85;
+  }
+
+  .wrap{
+    max-width:480px;
+    width:100%;
+  }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:0.65;
+    margin-bottom:14px;
+  }
+
+  h1{
+    font-size:44px;
+    letter-spacing:5px;
+    line-height:1.1;
+    margin-bottom:12px;
+  }
+
+  .sub{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:38px;
+    letter-spacing:0.3px;
+  }
+
+  /* ============ CTA BUTTON — starts locked, unlocks after real-interaction check ============ */
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 40px;
+    border:1px solid var(--text);
+    font-size:15px;
+    letter-spacing:2.5px;
+    font-weight:600;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--text);
+    background:transparent;
+    cursor:pointer;
+    transition:0.3s ease;
+    opacity:0.35;
+    pointer-events:none;
+    min-width:260px;
+  }
+
+  .cta.unlocked{
+    opacity:1;
+    pointer-events:auto;
+    border-color:var(--accent);
+    background:var(--accent);
+  }
+
+  .cta.unlocked:hover{
+    background:transparent;
+    color:var(--accent);
+  }
+
+  .cta .spinner{
+    width:12px;
+    height:12px;
+    border:2px solid rgba(248,234,234,0.35);
+    border-top-color:var(--text);
+    border-radius:50%;
+    animation:spin 0.8s linear infinite;
+  }
+
+  .cta.unlocked .spinner{display:none;}
+
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .fineprint{
+    margin-top:28px;
+    font-size:11px;
+    opacity:0.4;
+    letter-spacing:0.4px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="logo">DIE GRYN</div>
+
+<div class="wrap">
+  <div class="eyebrow">New Single</div>
+  <h1>VROOM VROOM</h1>
+  <div class="sub">Tap below to save it to your library</div>
+
+  <button id="ctaBtn" class="cta" disabled>
+    <span class="spinner"></span>
+    <span id="ctaLabel">Preparing your link…</span>
+  </button>
+
+  <div class="fineprint">Opens in Spotify, Apple Music &amp; more</div>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIG — edit these two lines per campaign
+   ========================================================================= */
+  const DESTINATION_URL = "https://ffm.to/vroom-vroom";   // smart link / streaming destination
+  const META_PIXEL_ID   = "YOUR_PIXEL_ID_HERE";            // your Meta Pixel ID
+
+/* =========================================================================
+   META PIXEL — base code
+   ========================================================================= */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', META_PIXEL_ID);
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', { content_name: 'Vroom Vroom — Ad Landing Page' });
+
+/* =========================================================================
+   BOT / LOW-QUALITY-CLICK FILTER
+   Logic: the CTA only unlocks once BOTH are true:
+     1) a minimum dwell time has passed (bots + click-farm scripts usually
+        bounce instantly or fire the redirect immediately)
+     2) at least one real human interaction signal has been seen
+        (mouse movement, touch, scroll, or keypress)
+   This alone won't stop every bad actor, but it filters out the vast
+   majority of scripted/instant clicks cheaply, client-side, with no backend.
+   For stronger protection, pair this with:
+     - Meta Conversions API (send the "RealListener" event server-side too)
+     - Cloudflare Turnstile / invisible reCAPTCHA v3 in front of this page
+     - IP-based rate limiting on your server/CDN
+   ========================================================================= */
+
+  const MIN_DWELL_MS = 4000; // tune this — 3-5s is a reasonable start
+
+  let hasInteracted = false;
+  let dwellPassed = false;
+  let unlocked = false;
+
+  const btn = document.getElementById('ctaBtn');
+  const label = document.getElementById('ctaLabel');
+
+  function markInteraction(){
+    hasInteracted = true;
+    tryUnlock();
+    // one-shot listeners are enough — remove after first real signal
+    window.removeEventListener('mousemove', markInteraction);
+    window.removeEventListener('touchstart', markInteraction);
+    window.removeEventListener('scroll', markInteraction);
+    window.removeEventListener('keydown', markInteraction);
+  }
+
+  window.addEventListener('mousemove', markInteraction, { passive:true });
+  window.addEventListener('touchstart', markInteraction, { passive:true });
+  window.addEventListener('scroll', markInteraction, { passive:true });
+  window.addEventListener('keydown', markInteraction);
+
+  setTimeout(function(){
+    dwellPassed = true;
+    tryUnlock();
+  }, MIN_DWELL_MS);
+
+  function tryUnlock(){
+    if (unlocked || !dwellPassed || !hasInteracted) return;
+    unlocked = true;
+    btn.classList.add('unlocked');
+    btn.disabled = false;
+    label.textContent = 'Save on Spotify';
+  }
+
+  // Safety net: if someone is genuinely reading/listening and hasn't
+  // triggered an interaction event for some reason, unlock on dwell alone
+  // after a longer grace period so real visitors are never fully blocked.
+  setTimeout(function(){
+    if (!unlocked){
+      hasInteracted = true;
+      tryUnlock();
+    }
+  }, 9000);
+
+  btn.addEventListener('click', function(){
+    if (!unlocked) return;
+
+    fbq('trackCustom', 'RealListener', {
+      content_name: 'Vroom Vroom — Ad Landing Page',
+      dwell_ms: MIN_DWELL_MS
+    });
+
+    // small delay so the Pixel event has a moment to fire before navigation
+    setTimeout(function(){
+      window.location.href = DESTINATION_URL;
+    }, 150);
+  });
+</script>
+
+</body>
+</html>

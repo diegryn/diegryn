@@ -8,9 +8,9 @@
 <meta name="description" content="Die Gryn — Vroom Vroom, out now.">
 
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <style>
-  /* ============ CONFIG-FRIENDLY COLORS (matches diegryn.com) ============ */
   :root{
     --accent:#8B0000;
     --bg:#0c0c0c;
@@ -18,11 +18,7 @@
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
-
-  html,body{
-    height:100%;
-    overflow-x:hidden;
-  }
+  html,body{height:100%;overflow-x:hidden;}
 
   body{
     font-family:'Raleway',sans-serif;
@@ -52,10 +48,7 @@
     opacity:0.85;
   }
 
-  .wrap{
-    max-width:480px;
-    width:100%;
-  }
+  .wrap{max-width:480px;width:100%;}
 
   .eyebrow{
     font-size:12px;
@@ -65,21 +58,10 @@
     margin-bottom:14px;
   }
 
-  h1{
-    font-size:44px;
-    letter-spacing:5px;
-    line-height:1.1;
-    margin-bottom:12px;
-  }
+  h1{font-size:44px;letter-spacing:5px;line-height:1.1;margin-bottom:12px;}
 
-  .sub{
-    font-size:14px;
-    opacity:0.75;
-    margin-bottom:38px;
-    letter-spacing:0.3px;
-  }
+  .sub{font-size:14px;opacity:0.75;margin-bottom:38px;letter-spacing:0.3px;}
 
-  /* ============ CTA BUTTON — starts locked, unlocks after real-interaction check ============ */
   .cta{
     display:inline-flex;
     align-items:center;
@@ -108,30 +90,21 @@
     background:var(--accent);
   }
 
-  .cta.unlocked:hover{
-    background:transparent;
-    color:var(--accent);
-  }
-
+  .cta.unlocked:hover{background:transparent;color:var(--accent);}
   .cta .spinner{
-    width:12px;
-    height:12px;
+    width:12px;height:12px;
     border:2px solid rgba(248,234,234,0.35);
     border-top-color:var(--text);
     border-radius:50%;
     animation:spin 0.8s linear infinite;
   }
-
   .cta.unlocked .spinner{display:none;}
-
   @keyframes spin{to{transform:rotate(360deg);}}
 
-  .fineprint{
-    margin-top:28px;
-    font-size:11px;
-    opacity:0.4;
-    letter-spacing:0.4px;
-  }
+  .fineprint{margin-top:28px;font-size:11px;opacity:0.4;letter-spacing:0.4px;}
+
+  /* Turnstile widget stays invisible on screen (mode: invisible below) */
+  #turnstile-container{position:absolute;width:0;height:0;overflow:hidden;}
 </style>
 </head>
 
@@ -152,12 +125,22 @@
   <div class="fineprint">Opens in Spotify, Apple Music &amp; more</div>
 </div>
 
+<div id="turnstile-container"></div>
+
 <script>
 /* =========================================================================
-   CONFIG — edit these two lines per campaign
+   CONFIG — edit per campaign / per deploy
    ========================================================================= */
-  const DESTINATION_URL = "https://ffm.to/vroom-vroom";   // smart link / streaming destination
-  const META_PIXEL_ID   = "YOUR_PIXEL_ID_HERE";            // your Meta Pixel ID
+  const DESTINATION_URL   = "https://ffm.to/vroom-vroom";
+  const META_PIXEL_ID     = "YOUR_PIXEL_ID_HERE";
+  const TURNSTILE_SITE_KEY = "YOUR_TURNSTILE_SITE_KEY_HERE";
+  const VERIFY_ENDPOINT    = "https://verify.diegryn.com/"; // your deployed Worker URL
+  const CAMPAIGN_SLUG      = "vroom-vroom";
+
+  // If the worker doesn't respond within this window (outage, cold start,
+  // network issue), fail OPEN and redirect anyway — a broken backend
+  // should never trap a real fan on the page.
+  const VERIFY_TIMEOUT_MS = 3000;
 
 /* =========================================================================
    META PIXEL — base code
@@ -173,80 +156,129 @@
   fbq('track', 'ViewContent', { content_name: 'Vroom Vroom — Ad Landing Page' });
 
 /* =========================================================================
-   BOT / LOW-QUALITY-CLICK FILTER
-   Logic: the CTA only unlocks once BOTH are true:
-     1) a minimum dwell time has passed (bots + click-farm scripts usually
-        bounce instantly or fire the redirect immediately)
-     2) at least one real human interaction signal has been seen
-        (mouse movement, touch, scroll, or keypress)
-   This alone won't stop every bad actor, but it filters out the vast
-   majority of scripted/instant clicks cheaply, client-side, with no backend.
-   For stronger protection, pair this with:
-     - Meta Conversions API (send the "RealListener" event server-side too)
-     - Cloudflare Turnstile / invisible reCAPTCHA v3 in front of this page
-     - IP-based rate limiting on your server/CDN
+   Shared event ID — passed to BOTH the browser pixel event and the
+   server-side CAPI event so Meta dedupes them into a single event.
    ========================================================================= */
+  function makeEventId(){
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+  }
+  const EVENT_ID = makeEventId();
 
-  const MIN_DWELL_MS = 4000; // tune this — 3-5s is a reasonable start
+  function getQueryParam(name){
+    return new URLSearchParams(window.location.search).get(name);
+  }
+  const FBCLID = getQueryParam('fbclid');
 
+/* =========================================================================
+   LAYER 1 — dwell time + real interaction (client-side, same as before)
+   ========================================================================= */
+  const MIN_DWELL_MS = 4000;
   let hasInteracted = false;
   let dwellPassed = false;
-  let unlocked = false;
+  let layer1Passed = false;
 
   const btn = document.getElementById('ctaBtn');
   const label = document.getElementById('ctaLabel');
 
   function markInteraction(){
     hasInteracted = true;
-    tryUnlock();
-    // one-shot listeners are enough — remove after first real signal
+    tryLayer1();
     window.removeEventListener('mousemove', markInteraction);
     window.removeEventListener('touchstart', markInteraction);
     window.removeEventListener('scroll', markInteraction);
     window.removeEventListener('keydown', markInteraction);
   }
-
   window.addEventListener('mousemove', markInteraction, { passive:true });
   window.addEventListener('touchstart', markInteraction, { passive:true });
   window.addEventListener('scroll', markInteraction, { passive:true });
   window.addEventListener('keydown', markInteraction);
 
-  setTimeout(function(){
-    dwellPassed = true;
-    tryUnlock();
-  }, MIN_DWELL_MS);
+  setTimeout(function(){ dwellPassed = true; tryLayer1(); }, MIN_DWELL_MS);
+  setTimeout(function(){ if(!layer1Passed){ hasInteracted = true; tryLayer1(); } }, 9000);
 
-  function tryUnlock(){
-    if (unlocked || !dwellPassed || !hasInteracted) return;
-    unlocked = true;
+  function tryLayer1(){
+    if (layer1Passed || !dwellPassed || !hasInteracted) return;
+    layer1Passed = true;
     btn.classList.add('unlocked');
     btn.disabled = false;
     label.textContent = 'Save on Spotify';
   }
 
-  // Safety net: if someone is genuinely reading/listening and hasn't
-  // triggered an interaction event for some reason, unlock on dwell alone
-  // after a longer grace period so real visitors are never fully blocked.
-  setTimeout(function(){
-    if (!unlocked){
-      hasInteracted = true;
-      tryUnlock();
-    }
-  }, 9000);
+/* =========================================================================
+   LAYER 2 — Turnstile + Worker verification, runs on click
+   ========================================================================= */
+  let turnstileWidgetId = null;
+  let verifying = false;
+
+  window.onTurnstileLoad = function(){
+    turnstileWidgetId = turnstile.render('#turnstile-container', {
+      sitekey: TURNSTILE_SITE_KEY,
+      size: 'invisible',
+      callback: function(token){
+        verifyAndRedirect(token);
+      },
+      'error-callback': function(){
+        // Turnstile itself failed to run — fail open rather than trap the user.
+        redirect();
+      }
+    });
+  };
+
+  // Turnstile's script calls a global callback named in its query string;
+  // simplest reliable approach here is polling for the library to be ready.
+  (function waitForTurnstile(){
+    if (window.turnstile){ window.onTurnstileLoad(); }
+    else { setTimeout(waitForTurnstile, 150); }
+  })();
 
   btn.addEventListener('click', function(){
-    if (!unlocked) return;
+    if (!layer1Passed || verifying) return;
+    verifying = true;
+    label.textContent = 'Verifying…';
 
-    fbq('trackCustom', 'RealListener', {
-      content_name: 'Vroom Vroom — Ad Landing Page',
-      dwell_ms: MIN_DWELL_MS
-    });
+    // Safety timeout — if verification hangs, redirect anyway after
+    // VERIFY_TIMEOUT_MS so a backend hiccup never blocks a real fan.
+    const failOpenTimer = setTimeout(redirect, VERIFY_TIMEOUT_MS);
 
-    // small delay so the Pixel event has a moment to fire before navigation
-    setTimeout(function(){
-      window.location.href = DESTINATION_URL;
-    }, 150);
+    if (turnstileWidgetId !== null && window.turnstile){
+      turnstile.execute('#turnstile-container');
+      window._failOpenTimer = failOpenTimer;
+    } else {
+      clearTimeout(failOpenTimer);
+      redirect();
+    }
   });
+
+  function verifyAndRedirect(token){
+    clearTimeout(window._failOpenTimer);
+
+    fetch(VERIFY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        turnstileToken: token,
+        eventId: EVENT_ID,
+        campaign: CAMPAIGN_SLUG,
+        fbclid: FBCLID
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      fbq('trackCustom', 'RealListener', {
+        content_name: 'Vroom Vroom — Ad Landing Page'
+      }, { eventID: EVENT_ID });
+      redirect();
+    })
+    .catch(function(){
+      // Network/worker error — still fail open.
+      redirect();
+    });
+  }
+
+  function redirect(){
+    window.location.href = DESTINATION_URL;
+  }
 </script>
 
 </body>

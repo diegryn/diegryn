@@ -36,7 +36,7 @@
     inset:0;
     background:
       linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
-      url("/vroomvroom1.jpg") center 20% / cover no-repeat,
+      url("/vroomvroom3.jpg") center 20% / cover no-repeat,
       #0c0c0c;
     z-index:0;
   }
@@ -185,6 +185,13 @@
 
   const VERIFY_TIMEOUT_MS = 3000;
 
+  // TEMPORARY DEBUG SWITCH — set to false once everything is confirmed working.
+  const DEBUG_MODE = true;
+  function dlog(msg, extra){
+    if (!DEBUG_MODE) return;
+    console.log('[DEBUG]', msg, extra !== undefined ? extra : '');
+  }
+
 /* =========================================================================
    META PIXEL — base code
    ========================================================================= */
@@ -254,13 +261,15 @@
   let verifying = false;
 
   window.onTurnstileLoad = function(){
+    dlog('Turnstile library loaded, rendering widget');
     turnstileWidgetId = turnstile.render('#turnstile-container', {
       sitekey: TURNSTILE_SITE_KEY,
-      size: 'invisible',
       callback: function(token){
+        dlog('Turnstile callback fired, token received', token ? token.slice(0,20) + '…' : token);
         verifyAndRedirect(token);
       },
-      'error-callback': function(){
+      'error-callback': function(err){
+        dlog('Turnstile ERROR callback fired — this means Turnstile itself failed', err);
         redirect();
       }
     });
@@ -272,16 +281,22 @@
   })();
 
   btn.addEventListener('click', function(){
+    dlog('Button clicked. layer1Passed=' + layer1Passed + ' verifying=' + verifying);
     if (!layer1Passed || verifying) return;
     verifying = true;
     label.textContent = 'Verifying…';
 
-    const failOpenTimer = setTimeout(redirect, VERIFY_TIMEOUT_MS);
+    const failOpenTimer = setTimeout(function(){
+      dlog('VERIFY_TIMEOUT_MS reached — failing open without ever getting a Turnstile token');
+      redirect();
+    }, VERIFY_TIMEOUT_MS);
 
     if (turnstileWidgetId !== null && window.turnstile){
+      dlog('Calling turnstile.execute()');
       turnstile.execute('#turnstile-container');
       window._failOpenTimer = failOpenTimer;
     } else {
+      dlog('turnstileWidgetId is null or turnstile not loaded — skipping straight to redirect', { turnstileWidgetId, hasTurnstile: !!window.turnstile });
       clearTimeout(failOpenTimer);
       redirect();
     }
@@ -289,6 +304,7 @@
 
   function verifyAndRedirect(token){
     clearTimeout(window._failOpenTimer);
+    dlog('Calling fetch() to VERIFY_ENDPOINT', VERIFY_ENDPOINT);
 
     fetch(VERIFY_ENDPOINT, {
       method: 'POST',
@@ -300,19 +316,26 @@
         fbclid: FBCLID
       })
     })
-    .then(function(res){ return res.json(); })
+    .then(function(res){ dlog('Worker responded with HTTP status', res.status); return res.json(); })
     .then(function(data){
+      dlog('Worker response body', data);
       fbq('trackCustom', 'RealListener', {
         content_name: 'Vroom Vroom — Ad Landing Page'
       }, { eventID: EVENT_ID });
+      dlog('fbq trackCustom RealListener fired with eventID', EVENT_ID);
       redirect();
     })
-    .catch(function(){
+    .catch(function(err){
+      dlog('fetch() to Worker THREW/REJECTED — this is likely a CORS or network failure', String(err));
       redirect();
     });
   }
 
   function redirect(){
+    if (DEBUG_MODE){
+      dlog('About to redirect to', DESTINATION_URL);
+      alert('DEBUG PAUSE — check the Console/Network tab now, then click OK to continue to Spotify.');
+    }
     window.location.href = DESTINATION_URL;
   }
 </script>

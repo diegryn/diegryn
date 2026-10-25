@@ -1,812 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Die Gryn | Home</title>
-<link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Die Gryn. Something new is coming.">
+<meta property="og:title" content="Die Gryn">
+<meta property="og:description" content="Something new is coming.">
+<meta property="og:image" content="https://diegryn.com/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<title>Die Gryn — Climax</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Raleway:wght@400;500&display=swap">
+<style>
+  /* Layout: one full-bleed photograph; wordmark top-left, teaser line low-left, "enter site" box bottom-right. Single dark look on purpose. */
+  :root {
+    --night: #0b0c0a;          /* ground behind the photo */
+    --ink: #f3efe6;            /* text, slightly warm like the streetlight */
+    --ink-dim: rgba(243, 239, 230, 0.62);
+    --line: rgba(243, 239, 230, 0.85);
+    --amber: #d9a25b;          /* sodium-lamp glow, used once */
+    --font-display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+    --font-ui: "Raleway", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--night);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    overflow: hidden;
+  }
 
-<meta name="description" content="Die Gryn is a pop artist, singer and songwriter. The new single 'Vroom Vroom' is now out.">
+  .stage {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+  }
 
-<link rel="manifest" href="/site.webmanifest">
+  .photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: 78% 55%;  /* keeps the face in frame on phones */
+    z-index: -2;
+    animation: settle 9s cubic-bezier(.2,.6,.2,1) both;
+  }
+  /* darken the edges so type reads, keep the lit body untouched */
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(to bottom, rgba(11,12,10,.55) 0%, rgba(11,12,10,0) 22%),
+      linear-gradient(to top, rgba(11,12,10,.75) 0%, rgba(11,12,10,0) 38%);
+    pointer-events: none;
+  }
+  /* film grain */
+  .stage::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .09;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 1.2s steps(4) infinite;
+  }
 
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  .frame {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-block: clamp(20px, 4vh, 44px);
+    padding-left: max(clamp(16px, 4vw, 56px), env(safe-area-inset-left, 0px));
+    padding-right: max(clamp(16px, 4vw, 56px), env(safe-area-inset-right, 0px));
+  }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MusicArtist",
-  "name": "Die Gryn",
-  "url": "https://diegryn.com",
-  "image": "https://diegryn.com/VroomVroom7053 opaca.jpg",
-  "genre": ["Pop", "Dance"],
-  "sameAs": [
-    "https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2",
-    "https://music.apple.com/artist/die-gryn/1852066460",
-    "https://www.instagram.com/diegryn",
-    "https://www.tiktok.com/@diegryn",
-    "https://www.youtube.com/@DieGryn"]
-}
-</script>
+  .wordmark {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 34px);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    animation: rise 1.4s .3s ease-out both;
+  }
+
+  .bottom {
+    grid-row: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .tease {
+    margin: 0;
+    min-width: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.8vw, 38px);
+    line-height: 1.15;
+    color: var(--ink);
+    text-wrap: balance;
+    animation: rise 1.6s 1.2s ease-out both;
+  }
+  .tease .dot { color: var(--amber); font-style: normal; }
+
+  .exit {
+    display: grid;
+    justify-items: end;
+    gap: 10px;
+    animation: rise 1.4s 2s ease-out both;
+  }
+  .exit small {
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    background: rgba(11,12,10,.18);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: background .35s ease, color .35s ease;
+  }
+  .enter .arrow { transition: transform .35s ease; }
+  .enter:hover, .enter:focus-visible { background: var(--ink); color: var(--night); }
+  .enter:hover .arrow, .enter:focus-visible .arrow { transform: translateX(4px); }
+  .enter:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+
+  @keyframes settle { from { transform: scale(1.07); filter: brightness(.6); } to { transform: scale(1); filter: brightness(1); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes grain {
+    0% { transform: translate(0,0); } 25% { transform: translate(-3%,2%); }
+    50% { transform: translate(2%,-3%); } 75% { transform: translate(-2%,-1%); } 100% { transform: translate(0,0); }
+  }
+
+  @media (max-width: 640px) {
+    .bottom { flex-direction: column; align-items: flex-start; }
+    .exit { justify-items: start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
 </head>
-
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <div class="nav-left">
-      <a href="https://diegryn.com">
-      <div class="logo-text">DIE GRYN</div>
-      </a>
-
-      <nav>
-        <a href="#music">MUSIC</a>
-        <a href="#videos">VIDEOS</a>
-        <a href="https://shop.diegryn.com" target="_blank">SHOP</a>
-        <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
-        <a href="https://shop.diegryn.com/support" target="_blank">SUPPORT</a>
-      </nav>
+<main class="stage">
+  <img class="photo" src="climax-splash.jpg" alt="Die Gryn lying on a Barcelona pavement at night, in a white powdered wig and a floral waistcoat">
+  <div class="frame">
+    <h1 class="wordmark">Die Gryn</h1>
+    <div class="bottom">
+      <p class="tease">something new is coming</p>
+      <div class="exit">
+        <small>previous era</small>
+        <!-- Point this at wherever the current site will live, e.g. https://diegryn.com/home -->
+        <a class="enter" href="https://diegryn.com/home">Enter site <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
     </div>
-    <!-- BOTÓN MOBILE -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <!-- REDES -->    
-<div class="nav-right">
-  <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-  <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-  <a href="https://www.youtube.com/@DieGryn" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-  <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
-  <a href="https://music.apple.com/es/artist/die-gryn/1852066460" target="_blank"><i class="fa-brands fa-apple"></i></a>
-  <a href="https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn" target="_blank"><i class="fa-brands fa-amazon"></i></a>
-  <a href="https://soundcloud.com/diegryn" target="_blank"><i class="fa-brands fa-soundcloud"></i></a>
-  <a href="https://whatsapp.com/channel/0029Vb8FTAPEgGfShRFmF90X" target="_blank"><i class="fa-brands fa-whatsapp"></i></a> </div>
   </div>
-  </header>
-   <!-- MENÚ MOBILE -->
-<nav class="mobile-nav">
-    <!-- 🔥 TOP BAR -->
-  <div class="mobile-header">
-          <a href="https://diegryn.com">
-<div class="mobile-logo">DIE GRYN</div></a>
-    <div class="close-menu" onclick="toggleMenu()">✕</div>
-  </div>
-  <div class="mobile-nav-links">  
-    <a href="#music">MUSIC</a>
-    <a href="#videos">VIDEOS</a>
-    <a href="https://shop.diegryn.com" target="_blank">SHOP</a>
-    <a href="https://diegryn.mailerpage.io/" target="_blank">SUBSCRIBE</a>
-        <a href="https://shop.diegryn.com/support" target="_blank">SUPPORT</a>
-  </div>
-  <div class="mobile-socials">
-  <a href="https://www.facebook.com/diegryn/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-  <a href="https://www.instagram.com/diegryn/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@diegryn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-  <a href="https://www.youtube.com/@DieGryn" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-  <a href="https://open.spotify.com/artist/2SOlNu7uSepBZmPI4YEQA2" target="_blank"><i class="fa-brands fa-spotify"></i></a>
-  <a href="https://music.apple.com/es/artist/die-gryn/1852066460" target="_blank"><i class="fa-brands fa-apple"></i></a>
-  <a href="https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn" target="_blank"><i class="fa-brands fa-amazon"></i></a>
-  <a href="https://soundcloud.com/diegryn" target="_blank"><i class="fa-brands fa-soundcloud"></i></a>
-  <a href="https://whatsapp.com/channel/0029Vb8FTAPEgGfShRFmF90X" target="_blank"><i class="fa-brands fa-whatsapp"></i></a> </div>
-</nav>
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>VROOM VROOM</h1>
-    <a href="https://ffm.to/vroom-vroom" target="_blank" class="cta">LISTEN NOW</a>
-  </div>
-</section>
-
-<p class="seo-artist-line">
-  Die Gryn is a pop artist, performer, singer and songwriter based in Europe.
-</p>
-
-<!-- MUSIC -->
-<section id="music" class="music">
-  <h2>MUSIC</h2>
-
-<div class="carousel-wrapper">
-    <button class="arrow left" onclick="moveCarousel(-1)">‹</button>
-  <div class="carousel">
-    <div class="tracks" id="tracks">
-       
-      <div class="track">
-        <a href="https://ffm.to/vroom-vroom" target="_blank">
-          <img src="vroomvroom1.jpg">
-        </a>
-        <p>Vroom Vroom</p>
-        <a href="https://ffm.to/vroom-vroom" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-            <div class="track">
-        <a href="https://ffm.to/die-gryn-you-go-vroom-vroom" target="_blank">
-          <img src="YOU GO VROOM VROOM.png">
-        </a>
-        <p>You Go Vroom Vroom</p>
-        <a href="https://ffm.to/die-gryn-you-go-vroom-vroom" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-            <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-live-acoustic-session" target="_blank">
-          <img src="/VroomVroom_Live_Acoustic_Session.jpg">
-        </a>
-        <p>Vroom Vroom (Live Acoustic Session)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-live-acoustic-session" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-          <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-remixes" target="_blank">
-          <img src="VroomVroom_remixes.jpg">
-        </a>
-        <p>Vroom Vroom (Remixes)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-remixes" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-        <div class="track">
-        <a href="https://ffm.to/die-gryn-nick-pes" target="_blank">
-          <img src="vroom vroom_featnickpes.jpg">
-        </a>
-        <p>Vroom Vroom (feat. Nick Pes)</p>
-        <a href="https://ffm.to/die-gryn-nick-pes" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-      <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-aurumm-remix" target="_blank">
-          <img src="VroomVroom_aurumm_remix_cover.jpg">
-        </a>
-        <p>Vroom Vroom (Aurumm Remix)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-aurumm-remix" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-      <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-alice-flynn-remix" target="_blank">
-          <img src="VroomVroom_alice_flynn_remix_cover.png">
-        </a>
-        <p>Vroom Vroom (Alice Flynn Remix)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-alice-flynn-remix" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-      <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-adrian-remix" target="_blank">
-          <img src="VroomVroom_adrian_remix_cover.jpg">
-        </a>
-        <p>Vroom Vroom (a.d.r.i.a.n. Remix)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-adrian-remix" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-            <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-wanuk-remix" target="_blank">
-          <img src="VroomVroom_wanuk_remix_cover.png">
-        </a>
-        <p>Vroom Vroom (wanük Remix)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-wanuk-remix" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-         <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-extended-version" target="_blank">
-          <img src="vroomvroom-extendedcover-title.jpg">
-        </a>
-        <p>Vroom Vroom (Extended Version)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-extended-version" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-      <div class="track">
-        <a href="https://ffm.to/die-gryn-vroom-vroom-acoustic-version" target="_blank">
-          <img src="vroomvroom-acousticcover.jpg">
-        </a>
-        <p>Vroom Vroom (Acoustic Version)</p>
-        <a href="https://ffm.to/die-gryn-vroom-vroom-acoustic-version" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-      <div class="track">
-        <a href="https://melodymover.lnk.to/fakelove" target="_blank">
-          <img src="Fake Love Art Cover.jpg">
-        </a>
-        <p>Fake Love</p>
-        <a href="https://melodymover.lnk.to/fakelove" target="_blank" class="listen">LISTEN NOW</a>
-      </div>    
-      <div class="track">
-        <a href="https://ffm.to/fake-love-mixes" target="_blank">
-          <img src="Fake.love.rmx.final.covers.jpg">
-        </a>
-        <p>Fake Love (Fran Garro Mixes)</p>
-        <a href="https://ffm.to/fake-love-mixes" target="_blank" class="listen">LISTEN NOW</a>
-      </div>
-
-      <div class="track">
-        <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank">
-          <img src="fake.love_extendedc_cover.JPG">
-        </a>
-        <p>Fake Love (Extended Version)</p>
-        <a href="https://ffm.to/die-gryn-fake-love-extended-version" target="_blank"class="listen">LISTEN NOW</a>
-      </div>
-
-          <div class="track">
-        <a href="https://ffm.to/fake-love-acoustic" target="_blank">
-          <img src="fake.love_acoustic_cover.JPG">
-        </a>
-        <p>Fake Love (Acoustic Version)</p>
-        <a href="https://ffm.to/fake-love-acoustic" target="_blank"class="listen">LISTEN NOW</a>
-      </div>
-
-        <div class="track">
-        <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix" target="_blank">
-          <img src="fake.love_schweigen_cover.JPG">
-        </a>
-        <p>Fake Love (Schweigen Mix)</p>
-        <a href="https://ffm.to/die-gryn-fake-love-schweigen-mix" target="_blank"class="listen">LISTEN NOW</a>
-      </div>
-    </div>  </div>
-    <button class="arrow right" onclick="moveCarousel(1)">›</button>
-  </div>
-</section>
-
-  <!-- VIDEOS -->
-<section id="videos" class="videos">
-  <h2>VIDEOS</h2>
-  <div class="video-carousel-wrapper">
-    <button class="video-arrow video-left" onclick="moveVideoCarousel(-1)">‹</button>
-      <div class="video-carousel">
-      <div class="video-tracks" id="video-tracks">
-
-      <div class="video-track">
-    <a href="https://www.youtube.com/watch?v=uVJJA8kRJI0" target="_blank" class="video-thumb">
-      <img src="vroom-vroom-video.jpg" alt="Vroom Vroom (official video)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Vroom Vroom (Official Video)</p>
-    <a href="https://www.youtube.com/watch?v=uVJJA8kRJI0" target="_blank" class="watch">WATCH NOW</a>
-    </div>
-         <div class="video-track">
-    <a href="https://youtu.be/JVlgGh1ESa4" target="_blank" class="video-thumb">
-      <img src="vroomvrom-liveacousticsession-cover.JPG" alt="Vroom Vroom (Live Acoustic Session)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Vroom Vroom (Live Acoustic Session)</p>
-    <a href="https://youtu.be/JVlgGh1ESa4" target="_blank" class="watch">WATCH NOW</a>
-      </div>
-        <div class="video-track">
-    <a href="https://www.youtube.com/watch?v=XKmAlyhsIjA" target="_blank" class="video-thumb">
-      <img src="vroomvrom-nick.JPG" alt="Vroom Vroom (feat. Nick Pes) (Official Visualiser)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Vroom Vroom (feat. Nick Pes)<br>(Official Visualiser)</p>
-    <a href="https://www.youtube.com/watch?v=XKmAlyhsIjA" target="_blank" class="watch">WATCH NOW</a>
-      </div>
-
-     <div class="video-track">
-    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="video-thumb">
-      <img src="vroomvroom-alice.png" alt="Vroom Vroom (Alice Flynn Remix) (Official Visualiser)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Vroom Vroom (Alice Flynn Remix)<br>(Official Visualiser)</p>
-    <a href="https://youtu.be/lwIgMkqp7Yw?si=OznWvmn3qtDjXcj7" target="_blank" class="watch">WATCH NOW</a>
-      </div>
-
-      <div class="video-track">
-    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="video-thumb">
-      <img src="fake-love-acoustic-video.jpg" alt="Fake Love (acoustic video)">
-      <img class="play-btn" src="play-button.png" alt="Play">
-    </a>
-    <p class="video-title">Fake Love (Acoustic Version)</p>
-    <a href="https://www.youtube.com/watch?v=fVC-PMoMJPs" target="_blank" class="watch">WATCH NOW</a>
-      </div>
-        
-    </div>
-    </div>
-    <button class="video-arrow video-right" onclick="moveVideoCarousel(1)">›</button>
-    </div>
-</section>
-
-    <!-- SHOP -->
-<section id="shop" class="shop">
-  <h2>SHOP</h2>
-  <div class="shop-carousel-wrapper">
-    <button class="shop-arrow shop-left" onclick="moveShopCarousel(-1)">‹</button>
-      <div class="shop-carousel">
-      <div class="shop-tracks" id="shop-tracks">
-
-      <div class="shop-track">
-    <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank" class="shop-thumb">
-      <img src="vroomvroom_vinyl.png" alt="Vroom Vroom Vinyl"></a>
-    <p class="shop-title">Vroom Vroom 12" Vinyl</p>
-    <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank" class="buy">BUY NOW</a>
-    </div>
-               
-      <div class="shop-track">
-    <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank" class="shop-thumb">
-      <img src="vroomvroom_cd.png" alt="Vroom Vroom CD"></a>
-    <p class="shop-title">Vroom Vroom CD</p>
-    <a href="https://elasticstage.com/diegryn/releases/vroom-vroom-singleep" target="_blank" class="buy">BUY NOW</a>
-      </div>
-       <div class="shop-track">
-    <a href="https://diegryn.bandcamp.com/track/vroom-vroom" target="_blank" class="shop-thumb">
-    <img src="vroomvroom_digitalcopy.png" alt="Vroom Vroom Digital Copy"></a>
-    <p class="shop-title">Vroom Vroom Digital Copy</p>
-    <a href="https://diegryn.bandcamp.com/track/vroom-vroom" target="_blank" class="buy">BUY NOW</a>
-      </div>
-        
-    </div>
-    </div>
-    <button class="shop-arrow shop-right" onclick="moveShopCarousel(1)">›</button>
-    </div>
-</section>
-
-<footer>
-  <p>
-    ©2026 DIE GRYN |
-    <a href="https://diegryn.com/privacy">PRIVACY POLICY |</a>
-    <a href="https://diegryn.com/cookies">COOKIES POLICY |</a>
-    <a href="https://diegryn.com/terms">TERMS OF USE |</a>
-    <a href="https://diegryn.com/press">PRESS</a>
-  </p>
-</footer>
-<script>
-/* ================= MOBILE MENU ================= */
-function toggleMenu() {
-  const menu = document.querySelector('.mobile-nav');
-  menu.classList.toggle('open');
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.mobile-nav').classList.remove('open');
-    });
-  });
-});
-
-
-/* ================= CAROUSEL (TRUE INFINITE) ================= */
-const tracks = document.getElementById("tracks");
-let originalItems = Array.from(document.querySelectorAll(".track"));
-
-let index = 0;
-let isTransitioning = false;
-
-function getItemsPerView() {
-  return window.innerWidth <= 768 ? 1 : 3;
-}
-
-function setupCarousel() {
-  const perView = getItemsPerView();
-
-  tracks.innerHTML = "";
-
-  const items = originalItems.map(el => el.cloneNode(true));
-
-  const firstClones = items.slice(0, perView).map(el => el.cloneNode(true));
-  const lastClones = items.slice(-perView).map(el => el.cloneNode(true));
-
-  lastClones.forEach(el => tracks.appendChild(el));
-  items.forEach(el => tracks.appendChild(el));
-  firstClones.forEach(el => tracks.appendChild(el));
-
-  index = perView;
-  updatePosition(true);
-}
-
-function updatePosition(noTransition = false) {
-  const perView = getItemsPerView();
-
-  tracks.style.transition = noTransition ? "none" : "0.4s ease";
-  tracks.style.transform = `translateX(-${index * (100 / perView)}%)`;
-}
-
-function moveCarousel(direction) {
-  if (isTransitioning) return;
-
-  isTransitioning = true;
-  index += direction;
-  updatePosition();
-
-  const perView = getItemsPerView();
-  const total = tracks.children.length;
-
-  setTimeout(() => {
-    if (index >= total - perView) {
-      index = perView;
-      updatePosition(true);
-    }
-
-    if (index < perView) {
-      index = total - (perView * 2);
-      updatePosition(true);
-    }
-
-    isTransitioning = false;
-  }, 400); // same as CSS transition
-}
-
-let resizeTimeout;
-let lastWidth = window.innerWidth;
-
-window.addEventListener("resize", () => {
-  if (isDragging) return; // don't rebuild mid-drag
-  if (window.innerWidth === lastWidth) return; // ignore height-only changes (mobile address bar)
-  lastWidth = window.innerWidth;
-
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(setupCarousel, 200);
-});
-
-setupCarousel();/* init */
-
-</script>
-<script id="swipe-carousel">
-let startX = 0;
-let currentX = 0;
-let isDragging = false;
-
-const carousel = document.querySelector(".carousel");
-
-/* TOUCH (mobile) */
-carousel.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-carousel.addEventListener("touchmove", (e) => {
-  currentX = e.touches[0].clientX;
-});
-
-carousel.addEventListener("touchend", () => {
-  handleSwipe();
-});
-
-/* MOUSE (desktop drag) */
-carousel.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  isDragging = true;
-  startX = e.clientX;
-});
-
-carousel.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  currentX = e.clientX;
-});
-
-carousel.addEventListener("mouseup", () => {
-  if (!isDragging) return;
-  isDragging = false;
-  handleSwipe();
-});
-
-carousel.addEventListener("mouseleave", () => {
-  isDragging = false;
-});
-
-/* SWIPE LOGIC */
-function handleSwipe() {
-  const diff = startX - currentX;
-
-  if (Math.abs(diff) < 50) return; // threshold
-
-  if (diff > 0) {
-    moveCarousel(1);  // swipe left → next
-  } else {
-    moveCarousel(-1); // swipe right → prev
-  }
-}
-/* ================= VIDEO CAROUSEL (TRUE INFINITE) ================= */
-const videoTracksEl = document.getElementById("video-tracks");
-let originalVideoItems = Array.from(videoTracksEl.children);
-
-let videoIndex = 0;
-let videoIsTransitioning = false;
-
-function getVideoItemsPerView() {
-  return window.innerWidth <= 768 ? 1 : 3;
-}
-
-function getVideoGap() {
-  return window.innerWidth <= 768 ? 20 : 30;
-}
-
-function setupVideoCarousel() {
-  const perView = getVideoItemsPerView();
-
-  videoTracksEl.innerHTML = "";
-
-  const items = originalVideoItems.map(el => el.cloneNode(true));
-  const firstClones = items.slice(0, perView).map(el => el.cloneNode(true));
-  const lastClones = items.slice(-perView).map(el => el.cloneNode(true));
-
-  lastClones.forEach(el => videoTracksEl.appendChild(el));
-  items.forEach(el => videoTracksEl.appendChild(el));
-  firstClones.forEach(el => videoTracksEl.appendChild(el));
-
-  videoIndex = perView;
-  updateVideoPosition(true);
-}
-
-function updateVideoPosition(noTransition = false) {
-  const perView = getVideoItemsPerView();
-  const gap = getVideoGap();
-  const containerWidth = videoTracksEl.parentElement.offsetWidth;
-  const itemWidth = (containerWidth - gap * (perView - 1)) / perView;
-  const moveAmount = itemWidth + gap;
-
-  videoTracksEl.style.transition = noTransition ? "none" : "0.4s ease";
-  videoTracksEl.style.transform = `translateX(-${videoIndex * moveAmount}px)`;
-}
-
-function moveVideoCarousel(direction) {
-  if (videoIsTransitioning) return;
-
-  videoIsTransitioning = true;
-  videoIndex += direction;
-  updateVideoPosition();
-
-  const perView = getVideoItemsPerView();
-  const total = videoTracksEl.children.length;
-
-  setTimeout(() => {
-    if (videoIndex >= total - perView) {
-      videoIndex = perView;
-      updateVideoPosition(true);
-    }
-    if (videoIndex < perView) {
-      videoIndex = total - (perView * 2);
-      updateVideoPosition(true);
-    }
-    videoIsTransitioning = false;
-  }, 400);
-}
-
-let videoResizeTimeout;
-let lastVideoWidth = window.innerWidth;
-
-window.addEventListener("resize", () => {
-  if (videoIsDragging) return; // don't rebuild mid-drag
-  if (window.innerWidth === lastVideoWidth) return; // ignore height-only changes (mobile address bar)
-  lastVideoWidth = window.innerWidth;
-
-  clearTimeout(videoResizeTimeout);
-  videoResizeTimeout = setTimeout(setupVideoCarousel, 200);
-});
-
-setupVideoCarousel();
-
-  /* ================= VIDEO SWIPE ================= */
-
-const videoCarousel = document.querySelector(".video-carousel");
-
-let videoStartX = 0;
-let videoCurrentX = 0;
-
-videoCarousel.addEventListener("touchstart", (e) => {
-  videoStartX = e.touches[0].clientX;
-});
-
-videoCarousel.addEventListener("touchmove", (e) => {
-  videoCurrentX = e.touches[0].clientX;
-});
-
-videoCarousel.addEventListener("touchend", () => {
-
-  const diff = videoStartX - videoCurrentX;
-
-  if (Math.abs(diff) < 50) return;
-
-  if (diff > 0) {
-    moveVideoCarousel(1);
-  } else {
-    moveVideoCarousel(-1);
-  }
-
-});
-  let videoIsDragging = false;
-
-videoCarousel.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  videoIsDragging = true;
-  videoStartX = e.clientX;
-});
-
-videoCarousel.addEventListener("mousemove", (e) => {
-  if (!videoIsDragging) return;
-  videoCurrentX = e.clientX;
-});
-
-videoCarousel.addEventListener("mouseup", () => {
-  if (!videoIsDragging) return;
-  videoIsDragging = false;
-
-  const diff = videoStartX - videoCurrentX;
-  if (Math.abs(diff) < 50) return;
-  if (diff > 0) {
-    moveVideoCarousel(1);
-  } else {
-    moveVideoCarousel(-1);
-  }
-});
-
-videoCarousel.addEventListener("mouseleave", () => {
-  videoIsDragging = false;
-});
-  /* ================= SHOP CAROUSEL (TRUE INFINITE) ================= */
-
-const shopTracksEl = document.getElementById("shop-tracks");
-let originalShopItems = Array.from(shopTracksEl.children);
-
-let shopIndex = 0;
-let shopIsTransitioning = false;
-
-function getShopItemsPerView() {
-  return window.innerWidth <= 768 ? 1 : 3;
-}
-
-function getShopGap() {
-  return window.innerWidth <= 768 ? 20 : 30;
-}
-
-function setupShopCarousel() {
-  const perView = getShopItemsPerView();
-
-  shopTracksEl.innerHTML = "";
-
-  const items = originalShopItems.map(el => el.cloneNode(true));
-
-  const firstClones = items
-    .slice(0, perView)
-    .map(el => el.cloneNode(true));
-
-  const lastClones = items
-    .slice(-perView)
-    .map(el => el.cloneNode(true));
-
-  lastClones.forEach(el => shopTracksEl.appendChild(el));
-  items.forEach(el => shopTracksEl.appendChild(el));
-  firstClones.forEach(el => shopTracksEl.appendChild(el));
-
-  shopIndex = perView;
-  updateShopPosition(true);
-}
-
-function updateShopPosition(noTransition = false) {
-
-  const perView = getShopItemsPerView();
-  const gap = getShopGap();
-
-  const containerWidth = shopTracksEl.parentElement.offsetWidth;
-
-  const itemWidth =
-    (containerWidth - gap * (perView - 1)) / perView;
-
-  const moveAmount = itemWidth + gap;
-
-  shopTracksEl.style.transition =
-    noTransition ? "none" : "0.4s ease";
-
-  shopTracksEl.style.transform =
-    `translateX(-${shopIndex * moveAmount}px)`;
-}
-
-function moveShopCarousel(direction) {
-
-  if (shopIsTransitioning) return;
-
-  shopIsTransitioning = true;
-
-  shopIndex += direction;
-
-  updateShopPosition();
-
-  const perView = getShopItemsPerView();
-  const total = shopTracksEl.children.length;
-
-  setTimeout(() => {
-
-    if (shopIndex >= total - perView) {
-      shopIndex = perView;
-      updateShopPosition(true);
-    }
-
-    if (shopIndex < perView) {
-      shopIndex = total - (perView * 2);
-      updateShopPosition(true);
-    }
-
-    shopIsTransitioning = false;
-
-  }, 400);
-}
-
-
-/* SHOP RESIZE */
-
-let shopResizeTimeout;
-let lastShopWidth = window.innerWidth;
-
-window.addEventListener("resize", () => {
-
-  if (window.innerWidth === lastShopWidth) return;
-
-  lastShopWidth = window.innerWidth;
-
-  clearTimeout(shopResizeTimeout);
-
-  shopResizeTimeout = setTimeout(
-    setupShopCarousel,
-    200
-  );
-
-});
-
-
-setupShopCarousel();
-
-
-/* ================= SHOP SWIPE ================= */
-
-const shopCarousel =
-  document.querySelector(".shop-carousel");
-
-let shopStartX = 0;
-let shopCurrentX = 0;
-let shopIsDragging = false;
-
-
-/* TOUCH */
-
-shopCarousel.addEventListener("touchstart", (e) => {
-  shopStartX = e.touches[0].clientX;
-});
-
-shopCarousel.addEventListener("touchmove", (e) => {
-  shopCurrentX = e.touches[0].clientX;
-});
-
-shopCarousel.addEventListener("touchend", () => {
-
-  const diff = shopStartX - shopCurrentX;
-
-  if (Math.abs(diff) < 50) return;
-
-  if (diff > 0) {
-    moveShopCarousel(1);
-  } else {
-    moveShopCarousel(-1);
-  }
-
-});
-
-
-/* MOUSE */
-
-shopCarousel.addEventListener("mousedown", (e) => {
-
-  e.preventDefault();
-
-  shopIsDragging = true;
-  shopStartX = e.clientX;
-
-});
-
-shopCarousel.addEventListener("mousemove", (e) => {
-
-  if (!shopIsDragging) return;
-
-  shopCurrentX = e.clientX;
-
-});
-
-shopCarousel.addEventListener("mouseup", () => {
-
-  if (!shopIsDragging) return;
-
-  shopIsDragging = false;
-
-  const diff = shopStartX - shopCurrentX;
-
-  if (Math.abs(diff) < 50) return;
-
-  if (diff > 0) {
-    moveShopCarousel(1);
-  } else {
-    moveShopCarousel(-1);
-  }
-
-});
-
-shopCarousel.addEventListener("mouseleave", () => {
-  shopIsDragging = false;
-});
-  
-</script>
+</main>
 </body>
 </html>

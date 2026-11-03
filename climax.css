@@ -195,3 +195,8 @@ footer a:hover { color: var(--ink); }
 .ml-form-embedSubmit .btn { cursor: pointer; color: var(--ink); font-family: var(--ui); }
 .ml-form-embedSubmit .btn.loading { opacity: .6; }
 .nl-success { font-family: var(--display); font-size: clamp(18px, 2vw, 24px); letter-spacing: .12em; color: var(--violet); margin: 10px 0 0 !important; }
+
+/* footer socials */
+footer { align-items: center; }
+.footer-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; font-size: 16px; }
+@media (max-width: 900px) { footer .footer-socials { display: none; } }

@@ -12,7 +12,8 @@ var NAV = [
   { label: 'VIDEOS',     href: '/#videos' },
   { label: 'SHOP',       href: '/#shop' },
   { label: 'NEWSLETTER', href: '/#newsletter' },
-  { label: 'ABOUT',      href: '/about' }
+  { label: 'ABOUT',      href: '/about' },
+    { label: 'SUPPORT',    href: 'https://shop.diegryn.com/support', external: true },
 ];
 
 /* desktop: true = also shown in the desktop header (mobile menu shows all) */
@@ -43,7 +44,7 @@ var LEGAL = [
       return '<a href="' + s.href + '" target="_blank" rel="noopener" aria-label="' + s.name + '"><i class="fa-brands ' + s.icon + '"></i></a>';
     }).join('');
   }
-  var navLinks = NAV.map(function (n) { return '<a href="' + n.href + '">' + n.label + '</a>'; }).join('');
+  var navLinks = NAV.map(function (n) { return '<a href="' + n.href + '"' + (n.external ? ' target="_blank" rel="noopener"' : '') + '>' + n.label + '</a>'; }).join('');
 
   var h = document.getElementById('site-header');
   if (h) h.outerHTML =
@@ -61,7 +62,9 @@ var LEGAL = [
 
   var f = document.getElementById('site-footer');
   if (f) f.outerHTML =
-    '<footer><span>©' + new Date().getFullYear() + ' DIE GRYN</span><nav aria-label="Legal">' +
+    '<footer><span>©' + new Date().getFullYear() + ' DIE GRYN</span>' +
+    '<div class="socials footer-socials">' + socials(SOCIALS) + '</div>' +
+    '<nav aria-label="Legal">' +
     LEGAL.map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
     '</nav></footer>';
 

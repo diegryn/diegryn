@@ -13,7 +13,7 @@ var NAV = [
   { label: 'SHOP',       href: '/#shop' },
   { label: 'NEWSLETTER', href: '/#newsletter' },
   { label: 'ABOUT',      href: '/about' },
-    { label: 'SUPPORT',    href: 'https://shop.diegryn.com/support', external: true },
+  { label: 'SUPPORT',    href: 'https://shop.diegryn.com/support', external: true }
 ];
 
 /* desktop: true = also shown in the desktop header (mobile menu shows all) */
@@ -26,6 +26,7 @@ var SOCIALS = [
   { name: 'Amazon Music',icon: 'fa-amazon',     href: 'https://www.amazon.com/music/player/artists/B0G1P836JN/die-gryn' },
   { name: 'Bandcamp',    icon: 'fa-bandcamp',   href: 'https://diegryn.bandcamp.com' },
   { name: 'SoundCloud',  icon: 'fa-soundcloud', href: 'https://soundcloud.com/diegryn' },
+  { name: 'X',           icon: 'fa-x-twitter',  href: 'https://x.com/diegryn' },
   { name: 'Facebook',    icon: 'fa-facebook',   href: 'https://www.facebook.com/diegryn/' },
   { name: 'WhatsApp',    icon: 'fa-whatsapp',   href: 'https://whatsapp.com/channel/0029Vb8FTAPEgGfShRFmF90X' }
 ];

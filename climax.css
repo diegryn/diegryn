@@ -200,3 +200,6 @@ footer a:hover { color: var(--ink); }
 footer { align-items: center; }
 .footer-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; font-size: 16px; }
 @media (max-width: 900px) { footer .footer-socials { display: none; } }
+
+/* mobile menu socials: one row */
+.mobile-nav .socials { left: 18px; right: 18px; bottom: max(40px, env(safe-area-inset-bottom)); padding: 0; flex-wrap: nowrap; justify-content: space-between; gap: 0; font-size: 18px; }
